@@ -22,6 +22,7 @@
           <label>Password</label>
           <input type="password" class="form-control" placeholder="Password" formControlName="passWord">
           <p *ngIf="!loginForm.get('passWord')?.valid && loginForm.get('passWord')?.touched" style="color: red">Nhập lỗi</p>
+          <p id="checkLogin" style="color: red ; display: none">Sai tên đăng nhập hoặc mật khẩu </p>
         </div>
         <button type="submit" class="btn btn-black">Login</button>
         <a routerLink="/register" class="btn btn-secondary">Register</a>

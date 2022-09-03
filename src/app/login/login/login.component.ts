@@ -21,8 +21,19 @@ export class LoginComponent implements OnInit {
 
   login(){
     this.loginService.login(this.loginForm.value).subscribe((data)=>{
-      console.log(data)
-      this.loginService.setToken(data.token);
+      // console.log(data)
+      // this.loginService.setToken(data.token);
+      if (data==null){
+        console.log("đăng nhập sai")
+        // @ts-ignore
+        document.getElementById("checkLogin").style.display="flex";
+
+      } else {
+        console.log(data)
+        this.loginService.setToken(data.token);
+        // @ts-ignore
+        document.getElementById("checkLogin").style.display="none";
+      }
     })
   }
 }
