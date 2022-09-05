@@ -22,8 +22,7 @@ export class LoginComponent implements OnInit {
 
   login(){
     this.loginService.login(this.loginForm.value).subscribe((data)=>{
-      // console.log(data)
-      // this.loginService.setToken(data.token);
+
       if (data==null){
         // @ts-ignore
         document.getElementById("checkLogin").style.display="flex";
@@ -31,6 +30,7 @@ export class LoginComponent implements OnInit {
       } else {
         this.loginService.setToken(data.token);
         localStorage.setItem('un',data.userName);
+        localStorage.setItem('id',data.id)
         let roles=data.roles
         let size= roles.length;
         for (let i = 0; i < size; i++) {
