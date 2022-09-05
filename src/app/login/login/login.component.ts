@@ -31,6 +31,8 @@ export class LoginComponent implements OnInit {
       } else {
         console.log(data)
         this.loginService.setToken(data.token);
+        this.loginService.setUserToken(data);
+        this.loginService.checkrole();
         // @ts-ignore
         document.getElementById("checkLogin").style.display="none";
       }

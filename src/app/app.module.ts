@@ -8,14 +8,17 @@ import {HttpClientModule} from "@angular/common/http";
 import {ReactiveFormsModule} from "@angular/forms";
 import {LoginComponent} from "./login/login/login.component";
 import {RegisterComponent} from "./login/register/register.component";
-import { AdminComponent } from './admin/admin/admin.component';
+import {AdminComponent} from "./admin/admin/admin.component";
+import { PageErorComponent } from './page-eror/page-eror.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    AdminComponent
+    AdminComponent,
+    PageErorComponent
   ],
     imports: [
         BrowserModule,
