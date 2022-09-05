@@ -33,7 +33,7 @@ export class RegisterComponent implements OnInit {
         if (!this.checkDuplicateUsername){
           this.registerService.register(this.registerForm.value).subscribe(()=>{
             alert("Đăng ký tài khoản thành công")
-            this.router.navigate([""])
+            this.router.navigate(["login"])
           });
         }
       }

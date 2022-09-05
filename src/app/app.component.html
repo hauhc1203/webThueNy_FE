@@ -29,7 +29,7 @@
                   <li><a routerLink="" >Online Users</a></li>
                   <li><a  routerLink="">Countries</a></li>
                   <li><a routerLink="">Filter Profile</a></li>
-                  <li *ngIf="token!=''"><a  routerLink="">{{userName}}</a></li>
+                  <li *ngIf="token!=''"><a  routerLink="profile">{{userName}}</a></li>
                   <li *ngIf="token!=''"><a (click)="logout()" routerLink="">Logout</a></li>
                 </ul>
               </nav>
