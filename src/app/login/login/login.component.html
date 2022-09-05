@@ -1,11 +1,11 @@
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!--<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">-->
+<!--<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>-->
+<!--<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>-->
 <!------ Include the above in your HEAD tag ---------->
 
 <div class="sidenav">
   <div class="login-main-text">
-    <h2>Application<br> Login Page</h2>
+    <h2>Hire a Lover<br> Login Page</h2>
     <p>Login or register from here to access.</p>
   </div>
 </div>
@@ -24,8 +24,11 @@
           <p *ngIf="!loginForm.get('passWord')?.valid && loginForm.get('passWord')?.touched" style="color: red">Nhập lỗi</p>
           <p id="checkLogin" style="color: red ; display: none">Sai tên đăng nhập hoặc mật khẩu </p>
         </div>
-        <button type="submit" class="btn btn-black">Login</button>
-        <a routerLink="/register" class="btn btn-secondary">Register</a>
+        <div class="btna">
+          <button type="submit" class="btn btn-black">Login</button>
+          <button routerLink="/register" class="btn btn-secondary">Register</button>
+        </div>
+
       </form>
     </div>
   </div>

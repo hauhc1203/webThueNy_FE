@@ -16,7 +16,9 @@ export class AuthInterceptor implements HttpInterceptor {
   constructor(private loginService:LoginService) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    let token = this.loginService.getToke();
+    let token = localStorage.getItem('token');
+    console.log("di qua intercepter")
+    console.log(token)
     request = request.clone(
       {
         headers: request.headers.set('Authorization', `Bearer ${token}`)
