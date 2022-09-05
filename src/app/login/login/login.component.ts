@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {LoginService} from "../../service/login.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -9,14 +10,14 @@ import {LoginService} from "../../service/login.service";
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private loginService:LoginService) { }
+  constructor(private loginService:LoginService,private router:Router) { }
 
   ngOnInit(): void {
   }
 
   loginForm=new FormGroup({
-    userName: new FormControl("",Validators.required),
-    passWord: new FormControl("",Validators.required)
+    userName: new FormControl("hauhc1203",Validators.required),
+    passWord: new FormControl("abcd1234",Validators.required)
   })
 
   login(){
@@ -24,15 +25,26 @@ export class LoginComponent implements OnInit {
       // console.log(data)
       // this.loginService.setToken(data.token);
       if (data==null){
-        console.log("đăng nhập sai")
         // @ts-ignore
         document.getElementById("checkLogin").style.display="flex";
 
       } else {
-        console.log(data)
         this.loginService.setToken(data.token);
+        localStorage.setItem('un',data.userName);
+        let roles=data.roles
+        let size= roles.length;
+        for (let i = 0; i < size; i++) {
+            if (roles[i].name=='user'){
+              this.router.navigate([""])
+              break
+            }else if (roles[i].name=='admin'){
+              this.router.navigate(['admin'])
+              break
+            }
+        }
+
         // @ts-ignore
-        document.getElementById("checkLogin").style.display="none";
+        // document.getElementById("checkLogin").style.display="none";
       }
     })
   }

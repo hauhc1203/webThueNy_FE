@@ -9,13 +9,15 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {LoginComponent} from "./login/login/login.component";
 import {RegisterComponent} from "./login/register/register.component";
 import { AdminComponent } from './admin/admin/admin.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    AdminComponent
+    AdminComponent,
+    HomeComponent
   ],
     imports: [
         BrowserModule,

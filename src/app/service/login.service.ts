@@ -31,4 +31,10 @@ export class LoginService {
   getToke(){
     localStorage.getItem("token");
   }
+
+  logout(){
+    localStorage.setItem('token','')
+    localStorage.setItem('un','')
+  }
+
 }

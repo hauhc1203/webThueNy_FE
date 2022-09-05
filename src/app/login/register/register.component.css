@@ -44,22 +44,27 @@ body {
   .sidenav{
     width: 40%;
     position: fixed;
-    z-index: 1;
+    z-index: 0;
     top: 0;
     left: 0;
   }
 
   .login-form{
-    margin-top: 40%;
+    margin-top: 40px;
+    min-height: 600px;
+    padding: 10px;
   }
 
   .register-form{
     margin-top: 20%;
   }
 }
-
+.form-group{
+  margin-bottom: 10px;
+}
 
 .login-main-text{
+  margin-top: 100px;
   padding: 60px;
   color: #fff;
 }
@@ -71,4 +76,10 @@ body {
 .btn-black{
   background-color: #000 !important;
   color: #fff;
+}
+.btna{
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  width: 300px;
 }

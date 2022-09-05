@@ -1,52 +1,6 @@
-<!--<div id="frame">-->
-<!--  <div id="header">-->
-<!--    <h2 >Đăng ký tài khoản</h2>-->
-
-<!--  </div>-->
-<!--  <div class="info">-->
-<!--    <p class="title">Họ và Tên :</p>-->
-<!--    <input type="text" class="detail" placeholder="Nhập vào họ tên"></div>-->
-<!--  <div class="info">-->
-
-
-
-
-<!--    <p class="title">Email :</p>-->
-<!--    <input type="email" class="detail" placeholder="Nhập vào email"></div>-->
-<!--  <div class="info">-->
-<!--    <p class="title">Số điện thoại :</p>-->
-<!--    <input type="text" class="detail" placeholder="Nhập vào số điện thoại"></div>-->
-<!--  <div class="info">-->
-<!--    <p class="title">Địa chỉ :</p>-->
-<!--    <input type="text" class="detail" placeholder="Nhập vào địa chỉ"></div>-->
-<!--  <div class="info">-->
-<!--    <p class="title">Ngày sinh :</p>-->
-<!--    <input type="date" class="detail"></div>-->
-<!--  <div class="info">-->
-<!--    <p class="title">Giới tính :</p>-->
-<!--    <select class="detail">-->
-<!--      <option value="0">Nam</option>-->
-<!--      <option value="1">Nữ</option>-->
-
-<!--    </select></div>-->
-
-<!--  <div id="confirm">-->
-<!--    <button class="btn btn-danger">Hủy</button>-->
-<!--    <button class="btn btn-primary">Xác nhận </button>-->
-<!--  </div>-->
-<!--</div>-->
-<!--&lt;!&ndash;private String email;&ndash;&gt;-->
-<!--&lt;!&ndash;private String phoneNumber;&ndash;&gt;-->
-<!--&lt;!&ndash;private String address;&ndash;&gt;-->
-
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-
 <div class="sidenav">
   <div class="login-main-text">
-    <h2>Application<br> Login Page</h2>
+    <h2>Hire a Lover<br> Register Page</h2>
     <p>Login or register from here to access.</p>
   </div>
 </div>
@@ -58,7 +12,7 @@
           <label>User Name</label>
           <input type="text" class="form-control" placeholder="Nhập User Name" formControlName="userName">
           <p *ngIf="!registerForm.get('userName')?.valid && registerForm.get('userName')?.touched" style="color: red" >Không được để trống</p>
-          <p id="checkUserName" style="color: red ; display: none">Trùng User Name rồi!</p>
+          <p id="checkUserName" style="color: red " *ngIf="checkDuplicateUsername">Trùng User Name rồi!</p>
         </div>
         <div class="form-group">
           <label>Password</label>
@@ -70,15 +24,17 @@
           <label>Email</label>
           <input type="text" class="form-control" placeholder="Nhập Email" formControlName="email">
           <p *ngIf="!registerForm.get('email')?.valid && registerForm.get('email')?.touched" style="color: red">Không được để trống</p>
-          <p id="checkMail" style="color: red ; display: none">Email đã được sử dụng vui lòng chọn Email khác!</p>
+          <p id="checkMail" style="color: red " *ngIf="checkDuplicateMail">Email đã được sử dụng vui lòng chọn Email khác!</p>
         </div>
         <div class="form-group">
           <label>SDT</label>
-          <input type="text" class="form-control" placeholder="Nhập SĐT" formControlName="sdt">
-          <p *ngIf="!registerForm.get('sdt')?.valid && registerForm.get('sdt')?.touched" style="color: red">Không được để trống</p>
+          <input type="text" class="form-control" placeholder="Nhập SĐT" formControlName="phoneNumber">
+          <p *ngIf="!registerForm.get('phoneNumber')?.valid && registerForm.get('phoneNumber')?.touched" style="color: red">Không được để trống</p>
         </div>
-        <a routerLink="/login"  class="btn btn-secondary">Login</a>
-        <button type="submit" class="btn btn-black">Register</button>
+        <div class="btna">
+          <button routerLink="/login"  class="btn btn-secondary">Login</button>
+          <button type="submit" class="btn btn-black">Register</button>
+        </div>
       </form>
     </div>
   </div>
