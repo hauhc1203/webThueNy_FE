@@ -11,6 +11,12 @@ import {LoginComponent} from "./login/login/login.component";
 import {RegisterComponent} from "./login/register/register.component";
 import { AdminComponent } from './admin/admin/admin.component';
 import {AuthInterceptor} from "./auth.interceptor";
+import {environment} from "../environments/environment";
+import {AngularFireStorageModule} from "@angular/fire/compat/storage";
+import {AngularFireModule} from "@angular/fire/compat";
+
+
+
 
 @NgModule({
   declarations: [
@@ -25,7 +31,10 @@ import {AuthInterceptor} from "./auth.interceptor";
         BrowserModule,
         AppRoutingModule,
         ReactiveFormsModule,
-        HttpClientModule
+        HttpClientModule,
+      AngularFireStorageModule,
+      AngularFireModule.initializeApp(environment.firebaseConfig, "cloud")
+
     ],
   providers: [
     {

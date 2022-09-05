@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ProfileService} from "../../service/profile.service";
+import {FormControl, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-profile',
@@ -8,6 +9,7 @@ import {ProfileService} from "../../service/profile.service";
 })
 export class ProfileComponent implements OnInit {
   id:number=0;
+  editForm: any;
   constructor(private profileService:ProfileService) {
 
     // @ts-ignore
@@ -17,7 +19,12 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+  // @ts-ignore
   ngOnInit(): void {
+    // @ts-ignore
+   this.editForm = new FormGroup({
+      fullname : new FormControl
+    })
   }
 
 
