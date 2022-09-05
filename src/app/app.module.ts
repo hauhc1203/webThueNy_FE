@@ -9,6 +9,9 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {ReactiveFormsModule} from "@angular/forms";
 import {LoginComponent} from "./login/login/login.component";
 import {RegisterComponent} from "./login/register/register.component";
+import {AdminComponent} from "./admin/admin/admin.component";
+import { PageErorComponent } from './page-eror/page-eror.component';
+
 import { AdminComponent } from './admin/admin/admin.component';
 import {AuthInterceptor} from "./auth.interceptor";
 
@@ -17,6 +20,8 @@ import {AuthInterceptor} from "./auth.interceptor";
     AppComponent,
     LoginComponent,
     RegisterComponent,
+    AdminComponent,
+    PageErorComponent,
     AdminComponent,
     HomeComponent,
     AppComponent,

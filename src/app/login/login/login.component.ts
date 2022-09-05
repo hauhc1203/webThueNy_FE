@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {LoginService} from "../../service/login.service";
-import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -10,41 +9,32 @@ import {Router} from "@angular/router";
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private loginService:LoginService,private router:Router) { }
+  constructor(private loginService:LoginService) { }
 
   ngOnInit(): void {
   }
 
   loginForm=new FormGroup({
-    userName: new FormControl("hauhc1203",Validators.required),
-    passWord: new FormControl("abcd1234",Validators.required)
+    userName: new FormControl("",Validators.required),
+    passWord: new FormControl("",Validators.required)
   })
 
   login(){
     this.loginService.login(this.loginForm.value).subscribe((data)=>{
-
+      // console.log(data)
+      // this.loginService.setToken(data.token);
       if (data==null){
+        console.log("đăng nhập sai")
         // @ts-ignore
         document.getElementById("checkLogin").style.display="flex";
 
       } else {
+        console.log(data)
         this.loginService.setToken(data.token);
-        localStorage.setItem('un',data.userName);
-        localStorage.setItem('id',data.id)
-        let roles=data.roles
-        let size= roles.length;
-        for (let i = 0; i < size; i++) {
-            if (roles[i].name=='user'){
-              this.router.navigate([""])
-              break
-            }else if (roles[i].name=='admin'){
-              this.router.navigate(['admin'])
-              break
-            }
-        }
-
+        this.loginService.setUserToken(data);
+        this.loginService.checkrole();
         // @ts-ignore
-        // document.getElementById("checkLogin").style.display="none";
+        document.getElementById("checkLogin").style.display="none";
       }
     })
   }
