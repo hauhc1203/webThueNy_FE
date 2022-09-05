@@ -23,9 +23,7 @@ const routes: Routes = [
     canActivate: [AdminGuard]
   },
   {
-    path:'pageEror',component:PageErorComponent},{
-
-  },
+    path:'pageEror',component:PageErorComponent},
   {
     path:'',component:HomeComponent
   }

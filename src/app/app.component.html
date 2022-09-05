@@ -30,7 +30,7 @@
                   <li><a  routerLink="">Countries</a></li>
                   <li><a routerLink="">Filter Profile</a></li>
                   <li *ngIf="token!=''"><a  routerLink="profile">{{userName}}</a></li>
-                  <li *ngIf="token!=''"><a (click)="logout()" routerLink="">Logout</a></li>
+                  <li ><a (click)="logout()" routerLink="">Logout</a></li>
                 </ul>
               </nav>
             </div>

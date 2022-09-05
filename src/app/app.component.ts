@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {LoginService} from "./service/login.service";
 import {Router} from "@angular/router";
+import {LoginComponent} from "./login/login/login.component";
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,7 @@ export class AppComponent {
   title = 'ProjectA';
   token:string='';
   userName:string=''
-  constructor(private loginService:LoginService)  {
+  constructor(private loginService:LoginService,private router:Router)  {
     // // @ts-ignore
     // this.token=localStorage.getItem('token')
     // // @ts-ignore
@@ -25,6 +26,7 @@ export class AppComponent {
   }
   logout(){
     this.loginService.logout();
+    this.router.navigate(["/login"])
   }
 
 }

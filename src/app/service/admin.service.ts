@@ -11,6 +11,12 @@ export class AdminService {
   constructor(private http:HttpClient) { }
 
   showUser():Observable<AppUser[]>{
-    return this.http.get<AppUser[]>("http://localhost:8080/user")
+    return this.http.get<AppUser[]>("http://localhost:8080/admin")
   }
+
+  ban(id: number): Observable<void> {
+    return this.http.get<void>(`http://localhost:8080/admin/ban/${id}`);
+  }
+
+
 }

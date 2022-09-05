@@ -49,7 +49,6 @@ export class RegisterComponent implements OnInit {
         this.checkDuplicateUsername=false;
       }
       this.checkMail();
-
     });
   }
   register(){

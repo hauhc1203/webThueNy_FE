@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {AppUser} from "../../models/AppUser";
 import {AdminService} from "../../service/admin.service";
-import {data} from "jquery";
+import {data, param} from "jquery";
+import {Observable} from "rxjs";
+import {HttpClient} from "@angular/common/http";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-admin',
@@ -10,12 +13,27 @@ import {data} from "jquery";
 })
 export class AdminComponent implements OnInit {
   appUsers : AppUser[] = []
-  constructor(private adminService:AdminService) { }
+  constructor(private adminService:AdminService,private http:HttpClient,private route:ActivatedRoute,private  router:Router) { }
 
+  message:string = "ban thanh cong";
   ngOnInit(): void {
     this.adminService.showUser().subscribe((data)=>{
       this.appUsers=data;
     })
+
   }
+
+  ban(id:any){
+    this.adminService.ban(id).subscribe(()=>{
+        this.ngOnInit();
+    })
+  }
+
+
+
+
+
+
+
 
 }

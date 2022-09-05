@@ -30,12 +30,13 @@ export class LoginService {
   findByEmail(email:any):Observable<any>{
     return this.http.get(`http://localhost:8080/findByEmail/${email}`)
   }
-  getToke(){
+  getToken(){
     localStorage.getItem("token");
   }
 
   setUserToken(userToken: UserToken){
     localStorage.setItem("userToken",JSON.stringify(userToken));
+    console.log(userToken)
   }
 
   getUserToken(): UserToken{
@@ -44,12 +45,21 @@ export class LoginService {
 
   checkrole(){
     let usertoken = this.getUserToken();
+    let url = "";
     for (const role of usertoken?.roles) {
       if (role.name == 'ROLE_ADMIN'){
-        this.router.navigate(["/admin"])
-      }if (role.name == '') {
-        this.router.navigate(["/pageEror"])
+        url = "/admin";
+        break;
       }
     }
+    this.router.navigate([url])
   }
+
+  logout(){
+    localStorage.removeItem("token");
+    localStorage.removeItem("userToken") ;
+    this.router.navigate([""])
+  }
+
+
 }

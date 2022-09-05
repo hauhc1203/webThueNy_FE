@@ -12,7 +12,6 @@ import {RegisterComponent} from "./login/register/register.component";
 import {AdminComponent} from "./admin/admin/admin.component";
 import { PageErorComponent } from './page-eror/page-eror.component';
 
-import { AdminComponent } from './admin/admin/admin.component';
 import {AuthInterceptor} from "./auth.interceptor";
 
 @NgModule({
