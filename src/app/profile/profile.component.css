@@ -3,7 +3,7 @@ body{margin-top:20px;
   color:#69707a;
 }
 .img-account-profile {
-  height: auto;
+  height: 374px;
 }
 .rounded-circle {
   border-radius: 50% !important;
@@ -56,4 +56,8 @@ body{margin-top:20px;
   padding-right: 0;
   margin-left: 1rem;
   margin-right: 1rem;
+}
+#inputCountry ,#inputCity {
+  padding: 8px;
+
 }

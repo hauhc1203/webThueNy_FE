@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {ProfileComponent} from "./profile/profile/profile.component";
+import {ProfileComponent} from "./profile/profile.component";
 import {LoginComponent} from "./login/login/login.component";
 import {RegisterComponent} from "./login/register/register.component";
 import {AdminComponent} from "./admin/admin/admin.component";
@@ -19,13 +19,12 @@ const routes: Routes = [
   },
   {
     path: 'admin',
+    component:AdminComponent,
     loadChildren: () => import('../app/admin/admin/admin.module').then(module => module.AdminModule),
     canActivate: [AdminGuard]
   },
   {
-    path:'pageEror',component:PageErorComponent},{
-
-  },
+    path:'pageEror',component:PageErorComponent},
   {
     path:'',component:HomeComponent
   }

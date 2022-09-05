@@ -12,16 +12,13 @@ export class AppComponent {
   token:string='';
   userName:string=''
   constructor(private loginService:LoginService)  {
-    // // @ts-ignore
-    // this.token=localStorage.getItem('token')
-    // // @ts-ignore
-    // this.userName=localStorage.getItem('un');
+
   }
   ngDoCheck(){
     // @ts-ignore
     this.token=localStorage.getItem('token')
-    // @ts-ignore
-    this.userName=localStorage.getItem('un');
+    this.userName=this.loginService.getUserToken()?.userName;
+
   }
   logout(){
     this.loginService.logout();
