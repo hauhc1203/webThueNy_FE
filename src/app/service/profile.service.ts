@@ -10,6 +10,7 @@ export class ProfileService {
   constructor(private http:HttpClient) {
     // @ts-ignore
     this.token=localStorage.getItem('token')
+
   }
 
 
@@ -17,5 +18,10 @@ export class ProfileService {
   getProfile(id:number):Observable<any>{
     return this.http.get<any>("http://localhost:8080/profile/"+id)
   }
-
+  getCity(id:number):Observable<any>{
+    return this.http.get<any>("http://localhost:8080/city/"+id)
+  }
+  getCountry():Observable<any>{
+    return this.http.get<any>("http://localhost:8080/country")
+  }
 }
