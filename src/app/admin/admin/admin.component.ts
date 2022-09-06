@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AppUser} from "../../models/AppUser";
 import {AdminService} from "../../service/admin.service";
-import {data, param} from "jquery";
-import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {ActivatedRoute, Router} from "@angular/router";
 
@@ -20,14 +18,56 @@ export class AdminComponent implements OnInit {
     this.adminService.showUser().subscribe((data)=>{
       this.appUsers=data;
     })
-
   }
 
-  ban(id:any){
+  ban(id:any, i:any){
+    this.appUsers[i].status =2;
     this.adminService.ban(id).subscribe(()=>{
-        this.ngOnInit();
+      console.log(id)
     })
   }
+
+  search(input: any) {
+    this.adminService.showUser().subscribe((data) => {
+      let adminSearch:AppUser[]=[]
+      for (const a of data) {
+        if (a.userName.toLowerCase().normalize('NFD') .replace(/[\u0300-\u036f]/g, '')
+          .replace(/đ/g, 'd').replace(/Đ/g, 'D').includes(input.toLowerCase().normalize('NFD') .replace(/[\u0300-\u036f]/g, '')
+            .replace(/đ/g, 'd').replace(/Đ/g, 'D'))){
+          adminSearch.push(a)
+        }
+      }
+      console.log(adminSearch)
+      this.appUsers=adminSearch;
+    })
+  }
+
+  offline(id:any, index:any){
+    this.appUsers[index].status =0;
+    this.adminService.offline(id).subscribe(()=>{
+      console.log(id)
+    })
+  }
+
+  vipp(id:any, indexxx:any){
+    this.appUsers[indexxx].vip = true;
+    this.adminService.vip(id).subscribe(()=>{
+      console.log(id)
+    })
+  }
+
+
+  unvip(id:any, indexx:any){
+    this.appUsers[indexx].vip = false;
+    this.adminService.unvip(id).subscribe(()=>{
+      console.log(id)
+    })
+  }
+
+
+
+
+
 
 
 
