@@ -20,9 +20,8 @@ export class UploadIMGService {
   constructor(private loginService:LoginService,private storage: AngularFireStorage,private http:HttpClient)  {
 
   }
-  promise1=new Promise((resolve,reject)=>{
     // @ts-ignore
-    function onFileSelected(event){
+    onFileSelected(event,to:string){
       let n = Date.now();
       const file = event.target.files[0];
       const filePath = `RoomsImages/${n}`;
@@ -42,7 +41,7 @@ export class UploadIMGService {
                 // @ts-ignore
                 this.fb = url;
               }
-              resolve
+              this.up(this.fb,to)
             });
           })
         )
@@ -57,12 +56,10 @@ export class UploadIMGService {
 
 
 
-  })
-
-
-  UpAvarta(img:string){
-    this.http.post(`http://localhost:8080/profiles/editAvarta`,img)
-
+  up(img:string,to:string){
+    this.http.post(`http://localhost:8080/profile/`+to,img).subscribe(()=>{
+      alert('upload anh thanh cong')
+    })
   }
 
 }

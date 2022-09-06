@@ -13,10 +13,11 @@ import { PageErorComponent } from './page-eror/page-eror.component';
 
 import { AdminComponent } from './admin/admin/admin.component';
 import {AuthInterceptor} from "./auth.interceptor";
-import {ProfileComponent} from "./profile/profile.component";
 import {AngularFireStorageModule} from "@angular/fire/compat/storage";
 import {AngularFireModule} from "@angular/fire/compat";
 import {environment} from "../environments/environment";
+import { ShowprofileComponent } from './profile/showprofile/showprofile.component';
+import { EditprofileComponent } from './profile/editprofile/editprofile.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,9 @@ import {environment} from "../environments/environment";
     AdminComponent,
     PageErorComponent,
     HomeComponent,
-    ProfileComponent
+    ShowprofileComponent,
+    EditprofileComponent,
+
   ],
     imports: [
         BrowserModule,

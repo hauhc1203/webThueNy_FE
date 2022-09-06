@@ -61,3 +61,16 @@ body{margin-top:20px;
   padding: 8px;
 
 }
+
+.container-xl px-4 mt-4{
+  margin-top: 100px;
+}
+.nav-borders{
+  width: 1250px;
+  margin:auto;
+  height: 100px;
+}
+.nav-link{
+  margin-top: 30px;
+  font-size: 20px;
+}

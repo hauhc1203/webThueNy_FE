@@ -11,14 +11,18 @@ export class AppComponent {
   title = 'ProjectA';
   token:string='';
   userName:string=''
+  // @ts-ignore
+  idAppuser:number;
   constructor(private loginService:LoginService)  {
 
   }
   ngDoCheck(){
     // @ts-ignore
     this.token=localStorage.getItem('token')
-    this.userName=this.loginService.getUserToken()?.userName;
-
+    // @ts-ignore
+    let userToken=this.loginService.getUserToken();
+    this.idAppuser=userToken?.id;
+    this.userName=userToken?.userName;
   }
   logout(){
     this.loginService.logout();
