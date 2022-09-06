@@ -55,6 +55,16 @@ export class LoginService {
   }
   logout(){
     localStorage.clear();
+    this.router.navigate(["/login"])
   }
-
+  containsRole(role:string,userToken:any):boolean{
+    console.log(userToken)
+    let size=userToken.roles.length
+    for (let i = 0; i <size ; i++) {
+        if (role==userToken.roles[i]?.name){
+          return true;
+        }
+    }
+    return false;
+  }
 }

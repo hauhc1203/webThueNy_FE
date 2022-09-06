@@ -1,0 +1,83 @@
+<div id="frame">
+  <div id="content">
+    <nav class="nav nav-borders" >
+      <a class="nav-link" [routerLink]="'/profile/show/'" >Your Profile</a>
+
+      <a class="nav-link" [routerLink]="'/profile/edit/'" >Edit Profile</a>
+      <a class="nav-link" [routerLink]="'/profile/service'">Service</a>
+      <a class="nav-link" href="" >Order</a>
+      <a class="nav-link" href="" >Email&Password</a>
+    </nav>
+    <hr class="mt-0 mb-4">
+    <div id="main">
+        <div id="newbie-alert" *ngIf="!roleCCDV">
+            <p id="newbie-item">You have not registered to provide the service</p>
+            <div (click)="showForm()" class="item btn btn-primary" id="btn-regis">
+            Register to provide services
+            </div>
+        </div>
+        <div id="formCCDV" >
+          <div class="formCCDV-item a1" i>
+            <p id="formCCDV-item-tit">Select services you want to provice</p>
+          </div>
+            <div class="formCCDV-item a2">
+              <div class="selectSevice">
+                <h3>Free service</h3>
+                <div class="form-check" *ngFor="let f of freeS">
+                  <input class="form-check-input" type="checkbox" value="{{f?.id}}" >
+                  <label class="form-check-label" >
+                    {{f?.name}}
+                  </label>
+                </div>
+
+              </div>
+              <div class="selectSevice">
+                <h3>Basic service</h3>
+                <div class="form-check" *ngFor="let b of basicS">
+                  <input class="form-check-input" type="checkbox" value="{{b?.id}}" >
+                  <label class="form-check-label">
+                    {{b?.name}}
+                  </label>
+                </div>
+              </div>
+              <div class="selectSevice">
+                <h3>Advance service</h3>
+                <div class="form-check" *ngFor="let a of advanceS">
+                  <input class="form-check-input" type="checkbox"  value="{{a?.id}}" >
+                  <label class="form-check-label">
+                    {{a?.name}}
+                  </label>
+                </div>
+              </div>
+            </div>
+          <div class="formCCDV-item a4"  >
+            <label for="cost">Price</label>
+            <input style="margin-left: 20px;height: 40px" type="number" id="cost"  placeholder="enter your price ">
+            <p style="color: red;margin-left: 20px;font-size: 20px" *ngIf="checkPrice" >Min price is 10000</p>
+
+          </div>
+          <div class="formCCDV-item a3">
+            <button class="btn-danger btn" id="clBTN">Cancel</button>
+            <button class="btn-primary btn" id="cfBtn" (click)="cf()">Confirm</button>
+          </div>
+        </div>
+        <div id="ccdvM" *ngIf="roleCCDV" >
+          <div id="menu">
+
+            <div class="item"></div>
+          </div>
+          <div id="data">
+
+            <div class="data-item"></div>
+            <div class="data-item"></div>
+            <div class="data-item"></div>
+            <div class="data-item"></div>
+
+          </div>
+        </div>
+    </div>
+  </div>
+  <div id="alert">
+
+</div>
+</div>

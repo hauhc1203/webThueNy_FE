@@ -5,9 +5,13 @@
 <div class="container-xl px-4 mt-4">
   <!-- Account page navigation-->
   <nav class="nav nav-borders" >
+    <a class="nav-link" [routerLink]="'/profile/show/'+id" >Your Profile</a>
+
     <a class="nav-link" [routerLink]="'/profile/edit/'+id" >Edit Profile</a>
-    <a class="nav-link" href="" >Service</a>
+    <a class="nav-link" [routerLink]="'/profile/service'">Service</a>
     <a class="nav-link" href="" >Order</a>
+    <a class="nav-link" href="" >Email&Password</a>
+
   </nav>
   <hr class="mt-0 mb-4">
   <div class="row">
@@ -31,74 +35,77 @@
         <div class="card-body">
           <form  >
             <!-- Form Group (username)-->
-            <div class="mb-3 form-group">
-              <label class="small mb-1" for="inputUsername">Full Name </label>
-              <input id="inputUsername" type="text" class="form-control"    readonly placeholder="full Name"  value="{{profile?.fullName}}">
+            <div class="row gx-3 mb-3">
+
+              <div class="col-md-6">
+                <label class="small mb-1" for="inputUsername">Full Name </label>
+                <p id="inputUsername"   >{{profile?.fullName}}</p>
+              </div> <div class="col-md-6">
+              <label class="small mb-1" for="inputBirthday">Birthday :</label>
+              <p id="inputBirthday" >{{profile?.birthDay}}</p>
+            </div>
             </div>
             <!-- Form Row-->
             <div class="row gx-3 mb-3">
               <!-- Form Group (first name)-->
               <div class="col-md-6">
-                <label class="small mb-1" for="inputHight">Hight (nhập từ 50 - 250. Đơn vị Cm)</label>
-                <input class="form-control"  readonly   id="inputHight" type="number" placeholder="Enter your hight"  value="{{profile?.high}}">
+                <label class="small mb-1" for="inputHight">Hight :</label>
+                <p    id="inputHight" >{{profile?.high}} Cm</p>
               </div>
               <!-- Form Group (last name)-->
               <div class="col-md-6">
-                <label class="small mb-1" for="inputWeight">Weight (nhập từ 30 - 200. Đơn vị Kg)</label>
-                <input  class="form-control" readonly   id="inputWeight" type="number" placeholder="Enter your hight" value="{{profile?.weight}}">
+                <label class="small mb-1" for="inputWeight">Weight : </label>
+                <p     id="inputWeight" >{{profile?.weight}} Kg</p>
               </div>
             </div>
             <!-- Form Row        -->
             <div class="row gx-3 mb-3">
               <!-- Form Group (organization name)-->
               <div class="col-md-6">
-                <label class="small mb-1" for="inputHobby">Hobby</label>
-                <input class="form-control" readonly   id="inputHobby" type="text" placeholder="Enter your hobby"  value="{{profile?.hobby}}">
+                <label class="small mb-1" for="inputHobby">Hobby :</label>
+                <p    id="inputHobby" type="text" >{{profile?.hobby}}</p>
 
               </div>
               <div class="col-md-6">
-                <label class="small mb-1" for="inputCountry">Country</label>
-                <input class="form-control"  readonly  id="inputCountry" type="text" placeholder="Enter your country" value="{{profile?.country?.name}}">
+                <label class="small mb-1" for="inputCountry">Country :</label>
+                <p  id="inputCountry" type="text">{{profile?.country?.name}}</p>
               </div>
               <!-- Form Group (location)-->
               <div class="col-md-6">
-                <label class="small mb-1" for="inputCity">City</label>
-                <input class="form-control"  readonly  id="inputCity" type="text" placeholder="Enter your location" value="{{profile?.city?.name}}" >
+                <label class="small mb-1" for="inputCity">City : </label>
+                <p  id="inputCity"  >{{profile?.city?.name}}</p>
               </div>
               <div class="col-md-6">
-                <label class="small mb-1" for="inputIntroduction">Introduction</label>
-                <input class="form-control"  readonly  id="inputIntroduction" type="text" placeholder="Enter your Introduction"  value="{{profile?.introduction}}">
+                <label class="small mb-1" for="inputIntroduction">Introduction :</label>
+                <p  id="inputIntroduction">{{profile?.introduction}}</p>
 
               </div>
               <div class="col-md-6">
-                <label class="small mb-1" for="inputFacebookLink">FacebookLink</label>
+                <label class="small mb-1" for="inputFacebookLink">FacebookLink:</label><br>
 
-                <input class="form-control"  readonly  id="inputFacebookLink" type="text" placeholder="Enter your FacebookLink"  value="{{profile?.facebookLink}}">
+                <a  id="inputFacebookLink"   href="{{profile?.facebookLink}}" target="_blank">{{profile?.facebookLink}}</a>
 
               </div>
 
               <div class="col-md-6">
-                <label class="small mb-1" >Gender</label>
+                <label class="small mb-1" >Gender :</label>
 
-                <input class="form-control"  readonly   type="text" placeholder="Enter your FacebookLink"  *ngIf="profile?.gender" value="Nam">
-                <input class="form-control"  readonly  type="text" placeholder="Enter your FacebookLink"  *ngIf="!profile?.gender" value="Nữ">
+                <p  *ngIf="profile?.gender" >Nam</p>
+                <p  *ngIf="!profile?.gender"> Nữ</p>
 
 
               </div>
 
 
               <div class="col-md-6">
-                <label class="small mb-1" for="inputCreatDate">Creat Date</label>
-                <input readonly class="form-control"    id="inputCreatDate" type="date" placeholder="Enter your Status" value="{{createDate}}" >
+                <label class="small mb-1" for="inputCreatDate">Creat Date :</label>
+                <p    id="inputCreatDate" >{{createDate}}</p>
               </div>
               <div class="col-md-6">
-                <label class="small mb-1" for="inputEmailAddress">Email address</label>
-                <input class="form-control"  readonly  id="inputEmailAddress" type="email" placeholder="Enter your email address"  value="{{profile?.appUser?.email}}" >
+                <label class="small mb-1" for="inputEmailAddress">Email address :</label>
+                <p id="inputEmailAddress"  >{{profile?.appUser?.email}}</p>
               </div>
-              <div class="col-md-6">
-                <label class="small mb-1" for="inputBirthday">Birthday</label>
-                <input class="form-control"  readonly  id="inputBirthday" type="date"  placeholder="Enter your birthday"  value="{{profile?.birthDay}}">
-              </div>
+
             </div>
             <div class="row gx-9 mb-3">
               <div class="col-md-3">
@@ -122,7 +129,7 @@
 
               <div class="mb-3" >
                 <label class="small mb-1" for="requirementsForHirer">Requirements For Hirer</label>
-                <textarea class="form-control"    readonly id="requirementsForHirer"  placeholder="Requirements For Hirer" formControlName="requirementsForHirer" value="{{profile?.requirementsForHirer}}"></textarea>
+                <p id="requirementsForHirer" >{{profile?.requirementsForHirer}}</p>
               </div>
             </div>
             <!-- Save changes button-->
