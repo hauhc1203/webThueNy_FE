@@ -10,28 +10,38 @@
       <form [formGroup]="registerForm" (ngSubmit)="register()">
         <div class="form-group">
           <label>User Name</label>
-          <input type="text" class="form-control" placeholder="Nhập User Name" formControlName="userName">
-          <p *ngIf="registerForm.get('userName')?.errors?.['required'] && registerForm.get('userName')?.touched" style="color: red" >Không được để trống</p>
-          <p *ngIf="registerForm.get('userName')?.errors?.['minlength'] " style="color: red" >Độ dài chưa đủ</p>
-
-          <p id="checkUserName" style="color: red " *ngIf="!checkDuplicateUsername">Trùng User Name rồi!</p>
+          <p style="color:darkgray; font-size: 13px">* Enter user name longer than 4 characters</p>
+          <input type="text" class="form-control" placeholder="Import User Name" formControlName="userName">
+          <p *ngIf="registerForm.get('userName')?.errors?.['required'] && registerForm.get('userName')?.touched" style="color: red" >Can't be left blank</p>
+          <p *ngIf="registerForm.get('userName')?.errors?.['minlength'] " style="color: red" >No less than 5 characters</p>
+          <p id="checkUserName" style="color: red " *ngIf="!checkDuplicateUsername">Same User!</p>
         </div>
         <div class="form-group">
-          <label>Password</label>
-          <input type="password" class="form-control" placeholder="Nhập Password" formControlName="passWord">
-          <p *ngIf="!registerForm.get('passWord')?.valid && registerForm.get('passWord')?.touched" style="color: red">Không được để trống</p>
-
+          <label>Pass Word</label>
+          <p style="color:darkgray; font-size: 13px">* Enter user name longer than 4 characters</p>
+          <input type="password" class="form-control" placeholder="Import Pass Word" formControlName="passWord">
+          <p *ngIf="registerForm.get('passWord')?.errors?.['required'] && registerForm.get('passWord')?.touched" style="color: red">Can't be left blank</p>
+          <p *ngIf="registerForm.get('passWord')?.errors?.['minlength'] " style="color: red" >No less than 5 characters</p>
         </div>
         <div class="form-group">
           <label>Email</label>
-          <input type="text" class="form-control" placeholder="Nhập Email" formControlName="email">
-          <p *ngIf="!registerForm.get('email')?.valid && registerForm.get('email')?.touched" style="color: red">Không được để trống</p>
-          <p id="checkMail" style="color: red " *ngIf="!checkDuplicateMail">Email đã được sử dụng vui lòng chọn Email khác!</p>
+          <p style="color:darkgray; font-size: 13px">* Enter email in the correct format (eg = abc@gmail.com)</p>
+          <input type="text" class="form-control" placeholder="Import Email" formControlName="email">
+
+
+          <!--          <p *ngIf="registerForm.get('email')?.errors?.['required']&& registerForm.get('email')?.touched" style="color: red">Không được để trống</p>-->
+<!--          <p *ngIf="registerForm.get('email')?.errors?.['minlength'] " style="color: red" >Không để dưới 5 kí tự</p>-->
+          <p *ngIf="!registerForm.get('email')?.valid && registerForm.get('email')?.touched " style="color: red" >Wrong email format</p>
+          <p id="checkMail" style="color: red " *ngIf="!checkDuplicateMail">Email already in use, please choose another email!</p>
         </div>
         <div class="form-group">
-          <label>SDT</label>
-          <input type="text" class="form-control" placeholder="Nhập SĐT" formControlName="phoneNumber">
-          <p *ngIf="!registerForm.get('phoneNumber')?.valid && registerForm.get('phoneNumber')?.touched" style="color: red">Không được để trống</p>
+          <label>Phone Number</label>
+          <p style="color:darkgray; font-size: 13px">* Enter the correct 10 digit phone number (eg = 0123456789)</p>
+
+          <input type="text" class="form-control" placeholder="Import Phone Number" formControlName="phoneNumber">
+          <p *ngIf="registerForm.get('phoneNumber')?.errors?.['required'] && registerForm.get('phoneNumber')?.touched" style="color: red">Can't be left blank</p>
+          <p *ngIf="registerForm.get('phoneNumber')?.errors?.['minlength'] " style="color: red" >Enter the correct phone number</p>
+          <p *ngIf="registerForm.get('phoneNumber')?.errors?.['maxlength'] " style="color: red" >Enter the correct phone number</p>
         </div>
         <div class="btna">
           <button routerLink="/login"  class="btn btn-secondary">Login</button>
