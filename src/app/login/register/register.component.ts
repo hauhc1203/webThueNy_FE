@@ -8,8 +8,8 @@ import {Router} from "@angular/router";
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  checkDuplicateMail:boolean = false;
-  checkDuplicateUsername:boolean = false;
+  checkDuplicateMail:boolean = true;
+  checkDuplicateUsername:boolean = true;
 
   constructor(private registerService:LoginService,private router:Router) { }
 
@@ -17,41 +17,45 @@ export class RegisterComponent implements OnInit {
   }
 
   registerForm= new FormGroup({
-    userName : new FormControl("hauhc1203",Validators.required),
-    passWord : new FormControl("abcd1234",Validators.required),
-    email : new FormControl ("hau.hc1203@gmail.com",Validators.required),
-    phoneNumber : new FormControl ("0345066663",Validators.required)
+    userName : new FormControl("",[Validators.required,Validators.minLength(10)]),
+    passWord : new FormControl("",Validators.required),
+    email : new FormControl ("",Validators.required),
+    phoneNumber : new FormControl ("",Validators.required)
   })
 
-  checkMail(){
-    this.registerService.findByEmail(this.registerForm.value.email).subscribe( (data)=>{
-      if (data!=null){
-        this.checkDuplicateMail=true;
-      }
-      else {
-        this.checkDuplicateMail=false;
-        if (!this.checkDuplicateUsername){
-          this.registerService.register(this.registerForm.value).subscribe(()=>{
-            alert("Đăng ký tài khoản thành công")
-            this.router.navigate(["login"])
-          });
-        }
-      }
-    });
-  }
-
-  checkUserName(){
-    this.registerService.findByUser(this.registerForm.value.userName).subscribe(  (data:any)=>{
-      if(data!=null) {
-        this.checkDuplicateUsername=true;
-      }
-      else {
-        this.checkDuplicateUsername=false;
-      }
-      this.checkMail();
-    });
-  }
+  // checkMail(){
+  //   this.registerService.findByEmail(this.registerForm.value.email).subscribe( (data)=>{
+  //     if (data!=null){
+  //       this.checkDuplicateMail=true;
+  //     }
+  //     else {
+  //       this.checkDuplicateMail=false;
+  //       if (!this.checkDuplicateUsername){
+  //
+  //       }
+  //     }
+  //   });
+  // }
+  //
+  // checkUserName(){
+  //   this.registerService.findByUser(this.registerForm.value.userName).subscribe(  (data:any)=>{
+  //     if(data!=null) {
+  //       this.checkDuplicateUsername=true;
+  //     }
+  //     else {
+  //       this.checkDuplicateUsername=false;
+  //     }
+  //     this.checkMail();
+  //   });
+  // }
   register(){
-    this.checkUserName();
-  }
+    this.registerService.register(this.registerForm.value).subscribe((data)=>{
+      this.checkDuplicateUsername=data[0];
+      this.checkDuplicateMail=data[1];
+      if (data[0]&&data[1]){
+        alert("Đăng ký tài khoản thành công")
+        this.router.navigate(["login"])
+      }
+
+    });  }
 }
