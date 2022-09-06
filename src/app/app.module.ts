@@ -14,6 +14,8 @@ import {AuthInterceptor} from "./auth.interceptor";
 import {environment} from "../environments/environment";
 import {AngularFireStorageModule} from "@angular/fire/compat/storage";
 import {AngularFireModule} from "@angular/fire/compat";
+import {ProfileComponent} from "./profile/profile/profile.component";
+import {ProfileModule} from "./profile/profile.module";
 
 
 
