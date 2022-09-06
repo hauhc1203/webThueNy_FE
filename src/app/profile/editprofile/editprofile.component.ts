@@ -98,6 +98,7 @@ export class EditprofileComponent implements OnInit {
   choosefile(filename:any,to:string) {
     let id ='#'+to;
     let id2='input'+to;
+    console.log(id2)
     let link= document.getElementById(id2)
 
 

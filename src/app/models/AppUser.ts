@@ -8,9 +8,10 @@ export class AppUser{
   private _roles: Role[];
   private _status: any;
   private _isConfirm:boolean;
+  private _vip:boolean;
 
 
-  constructor(id: number, userName: string, passWord: string, email: string, roles: Role[], status: any, isConfirm: boolean) {
+  constructor(id: number, userName: string, passWord: string, email: string, roles: Role[], status: any, isConfirm: boolean,vip:boolean) {
     this._id = id;
     this._userName = userName;
     this._passWord = passWord;
@@ -18,6 +19,7 @@ export class AppUser{
     this._roles = roles;
     this._status = status;
     this._isConfirm = isConfirm;
+    this._vip = vip;
   }
 
 
@@ -75,5 +77,14 @@ export class AppUser{
 
   set isConfirm(value: boolean) {
     this._isConfirm = value;
+  }
+
+
+  get vip(): boolean {
+    return this._vip;
+  }
+
+  set vip(value: boolean) {
+    this._vip = value;
   }
 }

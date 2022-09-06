@@ -11,13 +11,13 @@ import {LoginComponent} from "./login/login/login.component";
 import {RegisterComponent} from "./login/register/register.component";
 import { PageErorComponent } from './page-eror/page-eror.component';
 
-import { AdminComponent } from './admin/admin/admin.component';
 import {AuthInterceptor} from "./auth.interceptor";
 import {AngularFireStorageModule} from "@angular/fire/compat/storage";
 import {AngularFireModule} from "@angular/fire/compat";
 import {environment} from "../environments/environment";
 import { ShowprofileComponent } from './profile/showprofile/showprofile.component';
 import { EditprofileComponent } from './profile/editprofile/editprofile.component';
+import {AdminComponent} from "./admin/admin/admin.component";
 
 @NgModule({
   declarations: [
