@@ -24,31 +24,7 @@ export class RegisterComponent implements OnInit {
     phoneNumber : new FormControl ("",[Validators.required,Validators.minLength(10),Validators.maxLength(10)])
   })
 
-  // checkMail(){
-  //   this.registerService.findByEmail(this.registerForm.value.email).subscribe( (data)=>{
-  //     if (data!=null){
-  //       this.checkDuplicateMail=true;
-  //     }
-  //     else {
-  //       this.checkDuplicateMail=false;
-  //       if (!this.checkDuplicateUsername){
-  //
-  //       }
-  //     }
-  //   });
-  // }
-  //
-  // checkUserName(){
-  //   this.registerService.findByUser(this.registerForm.value.userName).subscribe(  (data:any)=>{
-  //     if(data!=null) {
-  //       this.checkDuplicateUsername=true;
-  //     }
-  //     else {
-  //       this.checkDuplicateUsername=false;
-  //     }
-  //     this.checkMail();
-  //   });
-  // }
+
   register(){
     this.registerService.register(this.registerForm.value).subscribe((data)=>{
       console.log(data)
@@ -56,7 +32,7 @@ export class RegisterComponent implements OnInit {
       this.checkDuplicateMail=data[1];
       if (data[0]&&data[1]){
         alert("Đăng ký tài khoản thành công")
-        this.router.navigate(["login"])
+        this.router.navigate(["/login"])
       }
 
     });  }

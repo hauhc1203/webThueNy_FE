@@ -46,8 +46,9 @@ export class LoginService {
   checkrole(){
     let usertoken = this.getUserToken();
     for (const role of usertoken?.roles) {
-      if (role.name == 'ROLE_ADMIN'){
+      if (this.containsRole("ROLE_ADMIN",usertoken)){
         this.router.navigate(["/admin"])
+        break;
       }else  {
         this.router.navigate([""])
       }

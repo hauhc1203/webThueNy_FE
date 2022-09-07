@@ -76,7 +76,7 @@ export class ServiceComponent implements OnInit {
         serviceids.push(cost)
         this.provideService.registerService(serviceids).subscribe(()=>
         {
-          alert("Bạn cần đăng nhập lại để tiếp tục")
+          alert("Đăng ký thành công, bạn cần đăng nhập lại để tiếp tục")
           this.loginService.logout()
           })
 
