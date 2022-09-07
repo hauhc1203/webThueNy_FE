@@ -1,4 +1,5 @@
 import {Component, DoCheck, OnInit} from '@angular/core';
+import {LoginService} from "../service/login.service";
 
 @Component({
   selector: 'app-home',
@@ -8,16 +9,14 @@ import {Component, DoCheck, OnInit} from '@angular/core';
 export class HomeComponent implements OnInit,DoCheck {
 
   token:string='';
-  constructor() {
+  constructor(private loginService:LoginService) {
 
   }
 
 
   ngDoCheck(){
     // @ts-ignore
-    this.token=localStorage.getItem('token')
-    // @ts-ignore
-    this.userName=localStorage.getItem('un');
+    this.token=this.loginService.getToke()
   }
 
   ngOnInit(): void {

@@ -1,75 +1,79 @@
 import { Component, OnInit } from '@angular/core';
-import {finalize, Observable} from "rxjs";
-import {LoginService} from "../../service/login.service";
-import {AngularFireStorage} from "@angular/fire/compat/storage";
+import {AppUser} from "../../models/AppUser";
+import {AdminService} from "../../service/admin.service";
 import {HttpClient} from "@angular/common/http";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.css']
 })
-export class AdminComponent  {
-  title = "cloudsSorage";
-  // @ts-ignore
-  selectedFile: File = null;
-  // @ts-ignore
-  fb;
-  // @ts-ignore
-  downloadURL: Observable<string>;
-  token:string='';
-  userName:string=''
-  constructor(private loginService:LoginService,private storage: AngularFireStorage,private http:HttpClient)  {
-    // // @ts-ignore
-    // this.token=localStorage.getItem('token')
-    // // @ts-ignore
-    // this.userName=localStorage.getItem('un');
-  }
-  // @ts-ignore
-  onFileSelected(event) {
-    var n = Date.now();
-    const file = event.target.files[0];
-    const filePath = `RoomsImages/${n}`;
-    // @ts-ignore
-    const fileRef = this.storage.ref(filePath);
-    // @ts-ignore
-    const task = this.storage.upload(`RoomsImages/${n}`, file);
-    task
-      .snapshotChanges()
-      .pipe(
-        finalize(() => {
-          // @ts-ignore
-          this.downloadURL = fileRef.getDownloadURL();
-          // @ts-ignore
-          this.downloadURL.subscribe(url => {
-            if (url) {
-              // @ts-ignore
-              this.fb = url;
-            }
-            console.log(this.fb);
-          });
-        })
-      )
-      .subscribe(url => {
-        if (url) {
-          console.log(url);
-          // @ts-ignore
-          this.UpAvarta(url)
-        }
-      });
-  }
-  ngDoCheck(){
-    // @ts-ignore
-    this.token=localStorage.getItem('token')
-    // @ts-ignore
-    this.userName=localStorage.getItem('un');
-  }
-  logout(){
-    this.loginService.logout();
-  }
-  UpAvarta(img:string){
-    this.http.post(`http://localhost:8080/profiles/editAvarta`,img)
+export class AdminComponent implements OnInit {
+  appUsers : AppUser[] = []
+  constructor(private adminService:AdminService,private http:HttpClient,private route:ActivatedRoute,private  router:Router) { }
 
+  message:string = "ban thanh cong";
+  ngOnInit(): void {
+    this.adminService.showUser().subscribe((data)=>{
+      this.appUsers=data;
+    })
   }
+
+  ban(id:any, i:any){
+    this.appUsers[i].status =2;
+    this.adminService.ban(id).subscribe(()=>{
+      console.log(id)
+    })
+  }
+
+  search(input: any) {
+    this.adminService.showUser().subscribe((data) => {
+      let adminSearch:AppUser[]=[]
+      for (const a of data) {
+        if (a.userName.toLowerCase().normalize('NFD') .replace(/[\u0300-\u036f]/g, '')
+          .replace(/đ/g, 'd').replace(/Đ/g, 'D').includes(input.toLowerCase().normalize('NFD') .replace(/[\u0300-\u036f]/g, '')
+            .replace(/đ/g, 'd').replace(/Đ/g, 'D'))){
+          adminSearch.push(a)
+        }
+      }
+      console.log(adminSearch)
+      this.appUsers=adminSearch;
+    })
+  }
+
+  offline(id:any, index:any){
+    this.appUsers[index].status =0;
+    this.adminService.offline(id).subscribe(()=>{
+      console.log(id)
+    })
+  }
+
+  vipp(id:any, indexxx:any){
+    this.appUsers[indexxx].vip = true;
+    this.adminService.vip(id).subscribe(()=>{
+      console.log(id)
+    })
+  }
+
+
+  unvip(id:any, indexx:any){
+    this.appUsers[indexx].vip = false;
+    this.adminService.unvip(id).subscribe(()=>{
+      console.log(id)
+    })
+  }
+
+
+
+
+
+
+
+
+
+
+
+
 
 }

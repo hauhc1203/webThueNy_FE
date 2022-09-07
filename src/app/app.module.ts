@@ -6,19 +6,18 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {LoginComponent} from "./login/login/login.component";
 import {RegisterComponent} from "./login/register/register.component";
-import { AdminComponent } from './admin/admin/admin.component';
+import { PageErorComponent } from './page-eror/page-eror.component';
+
 import {AuthInterceptor} from "./auth.interceptor";
-import {environment} from "../environments/environment";
 import {AngularFireStorageModule} from "@angular/fire/compat/storage";
 import {AngularFireModule} from "@angular/fire/compat";
-import {ProfileComponent} from "./profile/profile/profile.component";
-import {ProfileModule} from "./profile/profile.module";
-
-
-
+import {environment} from "../environments/environment";
+import { ShowprofileComponent } from './profile/showprofile/showprofile.component';
+import { EditprofileComponent } from './profile/editprofile/editprofile.component';
+import {AdminComponent} from "./admin/admin/admin.component";
 
 @NgModule({
   declarations: [
@@ -26,17 +25,20 @@ import {ProfileModule} from "./profile/profile.module";
     LoginComponent,
     RegisterComponent,
     AdminComponent,
+    PageErorComponent,
     HomeComponent,
-    AppComponent,
+    ShowprofileComponent,
+    EditprofileComponent,
+
   ],
     imports: [
         BrowserModule,
         AppRoutingModule,
+        FormsModule,
         ReactiveFormsModule,
         HttpClientModule,
       AngularFireStorageModule,
       AngularFireModule.initializeApp(environment.firebaseConfig, "cloud")
-
     ],
   providers: [
     {
