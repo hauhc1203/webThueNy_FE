@@ -28,7 +28,6 @@ export class ProfileService {
   }
   // @ts-ignore
   updateProfile(profile:any):Observable<any>{
-    console.log(profile)
     // @ts-ignore
     return this.http.post<any>("http://localhost:8080/profile/edit/",profile)
   }

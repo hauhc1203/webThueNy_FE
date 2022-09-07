@@ -19,7 +19,20 @@ export class EditprofileComponent implements OnInit {
   profile: any;
   // @ts-ignore
   createDate: string;
-  editForm: any;
+  editForm: any = new FormGroup({
+    id: new FormControl(),
+    fullName: new FormControl(),
+    high: new FormControl(),
+    weight: new FormControl(),
+    hobby: new FormControl(),
+    country: new FormControl(),
+    city: new FormControl(),
+    introduction: new FormControl(),
+    facebookLink: new FormControl(),
+    gender: new FormControl(),
+    birthDay: new FormControl(),
+    requirementsForHirer: new FormControl(),
+  });
 
   countrys: any;
   citys: any;
@@ -28,7 +41,7 @@ export class EditprofileComponent implements OnInit {
   cityDropdown: number = 0;
 
   // @ts-ignore
-  constructor(private profileService: ProfileService, private uploadFile: UploadIMGService, private route: ActivatedRoute,private router: Router) {
+  constructor(private profileService: ProfileService, private uploadFile: UploadIMGService, private route: ActivatedRoute, private router: Router) {
 
     profileService.getCountry().subscribe((d) => {
       this.countrys = d;
@@ -43,31 +56,28 @@ export class EditprofileComponent implements OnInit {
     this.route.paramMap.subscribe(paramMap => {
       // @ts-ignore
       this.id = paramMap.get('id');
-      this.profileService.getProfile(this.id).subscribe((data)=>{
-        this.profile=data;
-        console.log(data)
+      this.profileService.getProfile(this.id).subscribe((data) => {
+        this.profile = data;
+        console.log("dât get", data)
         // @ts-ignore
-      this.editForm = new FormGroup({
-          id: new FormControl,
+        this.editForm = new FormGroup({
+          id: new FormControl(data.id),
           fullName: new FormControl(data.fullName),
           high: new FormControl(data.high),
           weight: new FormControl(data.weight),
           hobby: new FormControl(data.hobby),
-          country: new FormControl(data.country),
-          city: new FormControl(data.city),
+          country: new FormControl(data.country.id),
+          city: new FormControl(data.city.id),
           introduction: new FormControl(data.introduction),
           facebookLink: new FormControl(data.facebookLink),
           gender: new FormControl(data.gender),
           birthDay: new FormControl(data.birthDay),
-        requirementsForHirer: new FormControl(data.requirementsForHirer),
-
-
-        })
-
+          requirementsForHirer: new FormControl(data.requirementsForHirer),
+        });
+        console.log("form value", this.editForm.value)
       });
     });
   }
-
 
 
   upfile(event: any, to: string) {
@@ -95,28 +105,34 @@ export class EditprofileComponent implements OnInit {
 
   editProfile() {
     let edit = {
-      id: this.editForm.value.id,
-      country:{
-        id: this.editForm.value.country
+      id: this.profile.id,
+      country: {
+        id: this.editForm.value.country,
+        name: this.profile.country.name
       },
-      city:{
-        id:this.editForm.value.city
+      city: {
+        id: this.editForm.value.city,
+        name: this.profile.city.name,
+        country: this.profile.country
       },
-      fullName:this.editForm.value.fullName,
-      high:this.editForm.value.high,
-      weight:this.editForm.value.weight,
-      hobby:this.editForm.value.hobby,
-      introduction:this.editForm.value.introduction,
-      facebookLink:this.editForm.value.facebookLink,
-      gender:this.editForm.value.gender,
-      birthDay:this.editForm.value.birthDay,
-      requirementsForHirer:this.editForm.value.requirementsForHirer,
+      fullName: this.editForm.value.fullName,
+      high: this.editForm.value.high,
+      weight: this.editForm.value.weight,
+      hobby: this.editForm.value.hobby,
+      introduction: this.editForm.value.introduction,
+      facebookLink: this.editForm.value.facebookLink,
+      gender: this.editForm.value.gender,
+      birthDay: this.editForm.value.birthDay,
+      requirementsForHirer: this.editForm.value.requirementsForHirer,
 
     }
-    console.log(edit)
+    console.log('data edited', this.editForm.value)
+    console.log(' edited', edit)
     // @ts-ignore
     this.profileService.updateProfile(edit).subscribe();
     // this.router.navigate(["/profile/show"])
   }
+
+
 
 }
