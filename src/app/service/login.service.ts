@@ -45,14 +45,12 @@ export class LoginService {
 
   checkrole(){
     let usertoken = this.getUserToken();
-    for (const role of usertoken?.roles) {
       if (this.containsRole("ROLE_ADMIN",usertoken)){
         this.router.navigate(["/admin"])
-        break;
       }else  {
         this.router.navigate([""])
       }
-    }
+
   }
   logout(){
     localStorage.clear();
