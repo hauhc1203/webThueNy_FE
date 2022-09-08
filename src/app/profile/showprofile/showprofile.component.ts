@@ -17,15 +17,19 @@ export class ShowprofileComponent implements OnInit {
   // @ts-ignore
   createDate:string;
   // @ts-ignore
-  constructor(private profileService:ProfileService,private uploadFile:UploadIMGService,private route:ActivatedRoute,private routing:Router) {
+
+  isYourP:boolean;
+  constructor(private profileService:ProfileService,private uploadFile:UploadIMGService,private route:ActivatedRoute,private loginS:LoginService) {
 
   }
   ngOnInit(): void {
     this.route.paramMap.subscribe(paramMap => {
       // @ts-ignore
       this.id = paramMap.get('id');
-    this.profileService.getProfile(this.id).subscribe((data)=>{
+      this.isYourP=this.loginS.getUserToken().id==this.id;
+      this.profileService.getProfile(this.id).subscribe((data)=>{
       this.profile=data;
+      this.profileService.profile=data;
       let day=new Date(this.profile.createDate)
       let m:any=day.getMonth()+1
       if (m<10){
@@ -38,14 +42,9 @@ export class ShowprofileComponent implements OnInit {
       this.createDate=date+"-"+m+"-"+day.getFullYear()
     });
     });
+
+
   }
-
-
-
-
-
-
-
 
 
 

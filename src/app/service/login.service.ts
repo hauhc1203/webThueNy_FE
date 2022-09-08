@@ -45,11 +45,11 @@ export class LoginService {
 
   checkrole(){
     let usertoken = this.getUserToken();
-      if (this.containsRole("ROLE_ADMIN",usertoken)){
-        this.router.navigate(["/admin"])
-      }else  {
-        this.router.navigate([""])
-      }
+    if (this.containsRole("ROLE_ADMIN",usertoken)){
+      this.router.navigate(["/admin"])
+    }else  {
+      this.router.navigate([""])
+    }
 
   }
   logout(){
@@ -57,7 +57,6 @@ export class LoginService {
     this.router.navigate(["/login"])
   }
   containsRole(role:string,userToken:any):boolean{
-    console.log(userToken)
     let size=userToken.roles.length
     for (let i = 0; i <size ; i++) {
         if (role==userToken.roles[i]?.name){

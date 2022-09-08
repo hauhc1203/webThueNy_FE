@@ -64,27 +64,6 @@ export class EditprofileComponent implements OnInit {
   }
 
 
-  // profileForm=new FormGroup({
-  //   fullName: new FormControl("",Validators.required),
-  //   high: new FormControl(0,Validators.required),
-  //   weight: new FormControl(0,[Validators.required,Validators.min(40),Validators.max(200)]),
-  //   hobby:new FormControl("",Validators.required),
-  //   introduction:new FormControl("",Validators.required),
-  //   facebookLink:new FormControl("",Validators.required),
-  //   requirementsForHirer:new FormControl("",Validators.required),
-  //   country:new FormControl("",Validators.required),
-  //   city:new FormControl("",Validators.required),
-  //   birthDay:new FormControl('',Validators.required),
-  //   img1:new FormControl("",Validators.required),
-  //   img2:new FormControl("",Validators.required),
-  //   img3:new FormControl("",Validators.required),
-
-
-  // country: new FormControl("abcd1234",Validators.required)
-  // })
-  // save(){
-  //   console.log(this.profileForm.value)
-  // }
 
 
 

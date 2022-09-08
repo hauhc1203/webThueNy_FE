@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {LoginService} from "../../service/login.service";
 import {ProvideServiceService} from "../../service/provide-service.service";
 import * as $ from "jquery";
+import {ProfileService} from "../../service/profile.service";
 
 @Component({
   selector: 'app-service',
@@ -18,13 +19,15 @@ export class ServiceComponent implements OnInit {
   basicS=new Array();
   // @ts-ignore
   advanceS=new Array();
-
   checkPrice:boolean=false;
-  constructor(private loginService:LoginService,private provideService:ProvideServiceService) {
+
+  profile:any;
+  constructor(private loginService:LoginService,private provideService:ProvideServiceService,private profileS:ProfileService) {
 
   }
 
   ngOnInit(): void {
+    this.profile=this.profileS.profile;
     let uT=this.loginService.getUserToken();
     // @ts-ignore
     this.roleCCDV=this.loginService.containsRole('ROLE_CCDV',uT);
@@ -50,8 +53,13 @@ export class ServiceComponent implements OnInit {
 
   }
   showForm(){
-      $('#newbie-alert').css('display','none');
-      $('#formCCDV').css('display','block');
+     if (this.profile.isConfirm){
+       $('#newbie-alert').css('display','none');
+       $('#formCCDV').css('display','block');
+     }else {
+       alert("bạn cần hoàn thiện thông tin profile trước")
+     }
+     
   }
 
   cf(){
@@ -66,7 +74,7 @@ export class ServiceComponent implements OnInit {
     }
 
     if (serviceids.length<3){
-      alert("You must chose at least 3 services")
+      alert("You must choose at least 3 services")
     }else {
       // @ts-ignore
       let cost=document.getElementById("cost").value;

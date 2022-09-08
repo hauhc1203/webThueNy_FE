@@ -7,12 +7,12 @@ import {HttpClient} from "@angular/common/http";
 })
 export class ProfileService {
   token:string =''
+  profile:any;
   constructor(private http:HttpClient) {
     // @ts-ignore
     this.token=localStorage.getItem('token')
 
   }
-
 
 
   getProfile(id:number):Observable<any>{
