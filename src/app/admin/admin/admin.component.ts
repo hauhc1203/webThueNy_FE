@@ -3,6 +3,8 @@ import {AppUser} from "../../models/AppUser";
 import {AdminService} from "../../service/admin.service";
 import {HttpClient} from "@angular/common/http";
 import {ActivatedRoute, Router} from "@angular/router";
+import {data} from "jquery";
+import {Order} from "../../models/Order";
 
 @Component({
   selector: 'app-admin',
@@ -10,13 +12,18 @@ import {ActivatedRoute, Router} from "@angular/router";
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
-  appUsers : AppUser[] = []
+  appUsers : AppUser[] = [];
+  orders:Order[]=[];
   constructor(private adminService:AdminService,private http:HttpClient,private route:ActivatedRoute,private  router:Router) { }
 
   message:string = "ban thanh cong";
+  p: any;
   ngOnInit(): void {
     this.adminService.showUser().subscribe((data)=>{
       this.appUsers=data;
+    });
+    this.adminService.showOrder().subscribe((dataOrder)=>{
+      this.orders=dataOrder;
     })
   }
 
@@ -63,6 +70,8 @@ export class AdminComponent implements OnInit {
       console.log(id)
     })
   }
+
+
 
 
 
