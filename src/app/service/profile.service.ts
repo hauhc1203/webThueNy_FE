@@ -34,4 +34,9 @@ export class ProfileService {
     // @ts-ignore
     return this.http.post<any>("http://localhost:8080/profile/edit/",profile)
   }
+  // @ts-ignore
+  getProfileByView():Observable<Profile[]>{
+    // @ts-ignore
+    return this.http.get<Profile[]>("https://localhost:8080/profile/showViews/")
+  }
 }
