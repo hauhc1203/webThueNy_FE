@@ -3,16 +3,21 @@
 <!--</div>-->
 
 <div class="container-xl px-4 mt-4">
-  <!-- Account page navigation-->
-  <nav class="nav nav-borders" *ngIf="isYourP" >
-    <a class="nav-link" [routerLink]="'/profile/show/'+id" >Your Profile</a>
+  <div id="khungtren" style=" min-height: 100px;margin-top: 10px">
+    <!-- Account page navigation-->
+    <nav class="nav nav-borders" *ngIf="isYourP" >
+      <a class="nav-link" [routerLink]="'/profile/show/'+id" >Your Profile</a>
+      <a class="nav-link" [routerLink]="'/profile/edit/'+id" >Edit Profile</a>
+      <a class="nav-link" [routerLink]="'/profile/service'">Service</a>
+      <a class="nav-link" href="" >Order</a>
+      <a class="nav-link" href="" >Email&Password</a>
+    </nav>
+    <div id="item-khungtren" *ngIf="!isYourP">
+        <h1> Profile of {{profile?.appUser?.userName}}</h1>
+    </div>
+  </div>
 
-    <a class="nav-link" [routerLink]="'/profile/edit/'+id" >Edit Profile</a>
-    <a class="nav-link" [routerLink]="'/profile/service'">Service</a>
-    <a class="nav-link" href="" >Order</a>
-    <a class="nav-link" href="" >Email&Password</a>
 
-  </nav>
   <hr class="mt-0 mb-4">
   <div class="row">
     <div class="col-xl-4">
@@ -61,20 +66,22 @@
             <!-- Form Row        -->
             <div class="row gx-3 mb-3">
               <!-- Form Group (organization name)-->
+
+              <div class="col-md-6">
+                <label class="small mb-1" for="inputCountry">Country :</label>
+                <p  id="inputCountry" type="text">{{profile?.country?.name}}</p>
+              </div>
+              <div class="col-md-6">
+                <label class="small mb-1" for="inputCity">City : </label>
+                <p  id="inputCity"  >{{profile?.city?.name}}</p>
+              </div>
+              <!-- Form Group (location)-->
               <div class="col-md-6">
                 <label class="small mb-1" for="inputHobby">Hobby :</label>
                 <p    id="inputHobby" type="text" >{{profile?.hobby}}</p>
 
               </div>
-              <div class="col-md-6">
-                <label class="small mb-1" for="inputCountry">Country :</label>
-                <p  id="inputCountry" type="text">{{profile?.country?.name}}</p>
-              </div>
-              <!-- Form Group (location)-->
-              <div class="col-md-6">
-                <label class="small mb-1" for="inputCity">City : </label>
-                <p  id="inputCity"  >{{profile?.city?.name}}</p>
-              </div>
+
               <div class="col-md-6">
                 <label class="small mb-1" for="inputIntroduction">Introduction :</label>
                 <p  id="inputIntroduction">{{profile?.introduction}}</p>
@@ -123,15 +130,15 @@
             <!-- Form Group (email address)-->
 
             <!-- Form Row-->
-            <div class="row gx-3 mb-3">
-              <!-- Form Group (phone number)-->
-              <!-- Form Group (birthday)-->
+<!--            <div class="row gx-3 mb-3">-->
+<!--              &lt;!&ndash; Form Group (phone number)&ndash;&gt;-->
+<!--              &lt;!&ndash; Form Group (birthday)&ndash;&gt;-->
 
-              <div class="mb-3" >
-                <label class="small mb-1" for="requirementsForHirer">Requirements For Hirer</label>
-                <p id="requirementsForHirer" >{{profile?.requirementsForHirer}}</p>
-              </div>
-            </div>
+<!--              <div class="mb-3" >-->
+<!--                <label class="small mb-1" for="requirementsForHirer">Requirements For Hirer</label>-->
+<!--                <p id="requirementsForHirer" >{{profile?.requirementsForHirer}}</p>-->
+<!--              </div>-->
+<!--            </div>-->
             <!-- Save changes button-->
           </form>
         </div>

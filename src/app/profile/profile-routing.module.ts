@@ -3,11 +3,18 @@ import { RouterModule, Routes } from '@angular/router';
 import {ShowprofileComponent} from "./showprofile/showprofile.component";
 import {EditprofileComponent} from "./editprofile/editprofile.component";
 import {ServiceComponent} from "./service/service.component";
+import {LoginGuard} from "../guard/login.guard";
 
 const routes: Routes = [
   {path:'show/:id',component:ShowprofileComponent},
-  {path:'edit/:id',component:EditprofileComponent},
-  {path:'service',component:ServiceComponent},
+  {
+    path:'edit/:id',
+    component:EditprofileComponent,
+    canActivate:[LoginGuard]
+  },
+  {path:'service',component:ServiceComponent,
+    canActivate:[LoginGuard]
+  },
 
 ];
 

@@ -21,7 +21,8 @@
         <div class="card-header">Avatar</div>
         <div class="card-body text-center">
           <!-- Profile picture image-->
-          <label for="inputavatar" ><img *ngIf="profile?.avatar==null" class="img-account-profile rounded-circle mb-2"  src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="">
+          <label for="inputavatar">
+            <img *ngIf="profile?.avatar==null" class="img-account-profile rounded-circle mb-2" src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="">
             <img *ngIf="profile?.avatar!=null" class="img-account-profile rounded-circle mb-2" id="avatar" src="{{profile?.avatar}}" alt=""></label>
           <input class="btn btn-primary" id="inputavatar" type="file" hidden (change)="upfile($event,'avatar')">
         </div>
@@ -33,104 +34,130 @@
       <div class="card mb-4">
         <div class="card-header">Account Details</div>
         <div class="card-body">
-          <form  >
+          <form [formGroup]="editForm" (ngSubmit)="editProfile()">
             <!-- Form Group (username)-->
-            <div class="mb-3 form-group">
-              <label class="small mb-1" for="inputUsername">Full Name </label>
-              <input id="inputUsername" type="text" class="form-control"    readonly placeholder="full Name"  value="{{profile?.fullName}}">
+            <div class="row gx-3 mb-3">
+
+
+              <div class="col-md-6">
+                <label class="small mb-1" for="inputUsername">Full Name </label>
+                <input id="inputUsername" type="text" class="form-control" placeholder="full Name"
+                       formControlName="fullName" value="">
+              </div>
+              <div class="col-md-6">
+                <label class="small mb-1" for="inputBirthday">Birthday</label>
+                <input class="form-control" id="inputBirthday" type="date" placeholder="Enter your birthday"
+                       formControlName="birthDay" value="">
+              </div>
             </div>
             <!-- Form Row-->
             <div class="row gx-3 mb-3">
               <!-- Form Group (first name)-->
               <div class="col-md-6">
                 <label class="small mb-1" for="inputHight">Hight (nhập từ 50 - 250. Đơn vị Cm)</label>
-                <input class="form-control"  readonly   id="inputHight" type="number" placeholder="Enter your hight"  value="{{profile?.high}}">
+                <input class="form-control" id="inputHight" type="number" placeholder="Enter your hight"
+                       formControlName="high" value="">
               </div>
               <!-- Form Group (last name)-->
               <div class="col-md-6">
                 <label class="small mb-1" for="inputWeight">Weight (nhập từ 30 - 200. Đơn vị Kg)</label>
-                <input  class="form-control" readonly   id="inputWeight" type="number" placeholder="Enter your hight" value="{{profile?.weight}}">
+                <input class="form-control" id="inputWeight" type="number" placeholder="Enter your hight"
+                       formControlName="weight"  value="">
               </div>
             </div>
             <!-- Form Row        -->
             <div class="row gx-3 mb-3">
               <!-- Form Group (organization name)-->
-              <div class="col-md-6">
-                <label class="small mb-1" for="inputHobby">Hobby</label>
-                <input class="form-control" readonly   id="inputHobby" type="text" placeholder="Enter your hobby"  value="{{profile?.hobby}}">
 
-              </div>
               <div class="col-md-6">
                 <label class="small mb-1" for="inputCountry">Country</label>
-                <input class="form-control"  readonly  id="inputCountry" type="text" placeholder="Enter your country" value="{{profile?.country?.name}}">
+                <select class="form-control" id="inputCountry" formControlName="country">
+                  <option *ngFor="let country of countrys" [defaultSelected]="profile?.country?.id==country.id" value="{{country?.id}}">{{country?.name}}</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+
+                <label class="small mb-1" for="inputCity">City: </label>
+                <select  class="form-control" id="inputCity" formControlName="city">
+                  <option value="{{profile?.city?.id}}" selected>{{profile?.city?.name}}</option>
+                  <option *ngFor="let c of citys" [defaultSelected]="profile?.city?.id==c.id" value="{{c?.id}}">{{c?.name}}</option>
+                </select>
               </div>
               <!-- Form Group (location)-->
               <div class="col-md-6">
-                <label class="small mb-1" for="inputCity">City</label>
-                <input class="form-control"  readonly  id="inputCity" type="text" placeholder="Enter your location" value="{{profile?.city?.name}}" >
+                <label class="small mb-1" for="inputHobby">Hobby</label>
+                <input class="form-control" id="inputHobby" type="text" placeholder="Enter your hobby"
+                       formControlName="hobby" value="">
+
               </div>
+
               <div class="col-md-6">
                 <label class="small mb-1" for="inputIntroduction">Introduction</label>
-                <input class="form-control"  readonly  id="inputIntroduction" type="text" placeholder="Enter your Introduction"  value="{{profile?.introduction}}">
+                <input class="form-control" id="inputIntroduction" type="text" placeholder="Enter your Introduction"
+                       formControlName="introduction" value="" >
 
               </div>
               <div class="col-md-6">
                 <label class="small mb-1" for="inputFacebookLink">FacebookLink</label>
 
-                <input class="form-control"  readonly  id="inputFacebookLink" type="text" placeholder="Enter your FacebookLink"  value="{{profile?.facebookLink}}">
+                <input class="form-control" id="inputFacebookLink" type="text" placeholder="Enter your FacebookLink"
+                       formControlName="facebookLink" value="">
 
               </div>
 
               <div class="col-md-6">
-                <label class="small mb-1" >Gender</label>
+                <label class="small mb-1" for="gender">Gender</label>
+                <select name="" id="gender" class="form-select" formControlName="gender">
+                  <option [defaultSelected]="profile?.gender" value=true selected>Nam</option>
+                  <option [defaultSelected]="!profile?.gender" value=false selected>Nữ</option>
 
-                <input class="form-control"  readonly   type="text" placeholder="Enter your FacebookLink"  *ngIf="profile?.gender" value="Nam">
-                <input class="form-control"  readonly  type="text" placeholder="Enter your FacebookLink"  *ngIf="!profile?.gender" value="Nữ">
-
-
+                </select>
               </div>
 
 
-              <div class="col-md-6">
-                <label class="small mb-1" for="inputCreatDate">Creat Date</label>
-                <input readonly class="form-control"    id="inputCreatDate" type="date" placeholder="Enter your Status" value="{{createDate}}" >
-              </div>
-              <div class="col-md-6">
-                <label class="small mb-1" for="inputEmailAddress">Email address</label>
-                <input class="form-control"  readonly  id="inputEmailAddress" type="email" placeholder="Enter your email address"  value="{{profile?.appUser?.email}}" >
-              </div>
-              <div class="col-md-6">
-                <label class="small mb-1" for="inputBirthday">Birthday</label>
-                <input class="form-control"  readonly  id="inputBirthday" type="date"  placeholder="Enter your birthday"  value="{{profile?.birthDay}}">
-              </div>
+
             </div>
-            <div class="row gx-9 mb-3">
-              <div class="col-md-3">
+
+            <style>
+              .images input{
+                float: left;
+                width: 100px;
+                height: 100px;
+                background-size: cover;
+              }
+            </style>
+            <div class="row gx-9 mb-3 ">
+              <div class="col-md-3 images" >
                 <label class="small mb-1" for="inputimg1"><img id="img1" src="{{profile?.img1}}" alt="img1"></label>
-                <input class="form-control"  hidden  id="inputimg1" type="file" placeholder="Enter your img" (change)="upfile($event,'img1')" >
+                <input class="form-control" hidden id="inputimg1" type="file" placeholder="Enter your img"
+                       (change)="upfile($event,'img1')">
               </div>
-              <div class="col-md-3">
+              <div class="col-md-3 images">
                 <label class="small mb-1" for="inputimg2"><img id="img2" src="{{profile?.img2}}" alt="img2"></label>
-                <input class="form-control"    id="inputimg2" type="file" hidden placeholder="Enter your img" (change)="upfile($event,'img2')" >
+                <input class="form-control" id="inputimg2" type="file" hidden placeholder="Enter your img"
+                       (change)="upfile($event,'img2')">
               </div>
-              <div class="col-md-3">
+              <div class="col-md-3 images">
                 <label class="small mb-1" for="inputimg3"><img id="img3" src="{{profile?.img3}}" alt="img3"></label>
-                <input class="form-control"  hidden  id="inputimg3" type="file" placeholder="Enter your img" (change)="upfile($event,'img3')" >
+                <input class="form-control" hidden id="inputimg3" type="file" placeholder="Enter your img"
+                       (change)="upfile($event,'img3')">
               </div>
             </div>
             <!-- Form Group (email address)-->
 
             <!-- Form Row-->
-            <div class="row gx-3 mb-3">
+<!--            <div class="row gx-3 mb-3">-->
               <!-- Form Group (phone number)-->
               <!-- Form Group (birthday)-->
 
-              <div class="mb-3" >
-                <label class="small mb-1" for="requirementsForHirer">Requirements For Hirer</label>
-                <textarea class="form-control"    readonly id="requirementsForHirer"  placeholder="Requirements For Hirer" formControlName="requirementsForHirer" value="{{profile?.requirementsForHirer}}"></textarea>
-              </div>
-            </div>
+<!--              <div class="mb-3">-->
+<!--                <label class="small mb-1" for="requirementsForHirer">Requirements For Hirer</label>-->
+<!--                <textarea class="form-control" id="requirementsForHirer" placeholder="Requirements For Hirer"-->
+<!--                          formControlName="requirementsForHirer" value="{{profile?.requirementsForHirer}}"></textarea>-->
+<!--              </div>-->
+<!--            </div>-->
             <!-- Save changes button-->
+            <button class="btn btn-primary" type="submit">Save changes</button>
           </form>
         </div>
       </div>

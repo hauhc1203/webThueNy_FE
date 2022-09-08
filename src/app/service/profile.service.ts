@@ -15,6 +15,11 @@ export class ProfileService {
   }
 
 
+  findByid(id:number):Observable<any>{
+    // @ts-ignore
+    return this.http.get<any>("https://localhost:8080/profile/{id}"+id)
+  }
+
   getProfile(id:number):Observable<any>{
     return this.http.get<any>("http://localhost:8080/profile/"+id)
   }
@@ -23,5 +28,10 @@ export class ProfileService {
   }
   getCountry():Observable<any>{
     return this.http.get<any>("http://localhost:8080/country")
+  }
+  // @ts-ignore
+  updateProfile(profile:any):Observable<any>{
+    // @ts-ignore
+    return this.http.post<any>("http://localhost:8080/profile/edit/",profile)
   }
 }

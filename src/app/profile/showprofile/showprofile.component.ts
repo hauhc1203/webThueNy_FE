@@ -17,7 +17,6 @@ export class ShowprofileComponent implements OnInit {
   // @ts-ignore
   createDate:string;
   // @ts-ignore
-
   isYourP:boolean;
   constructor(private profileService:ProfileService,private uploadFile:UploadIMGService,private route:ActivatedRoute,private loginS:LoginService) {
 

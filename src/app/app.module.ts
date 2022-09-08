@@ -18,6 +18,7 @@ import {environment} from "../environments/environment";
 import { ShowprofileComponent } from './profile/showprofile/showprofile.component';
 import { EditprofileComponent } from './profile/editprofile/editprofile.component';
 import {AdminComponent} from "./admin/admin/admin.component";
+import {LoginGuard} from "./guard/login.guard";
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import {AdminComponent} from "./admin/admin/admin.component";
       provide:HTTP_INTERCEPTORS,
       useClass:AuthInterceptor,
       multi:true
-    }
+    },
+    LoginGuard
   ],
   bootstrap: [AppComponent]
 })
