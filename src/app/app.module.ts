@@ -19,6 +19,7 @@ import { ShowprofileComponent } from './profile/showprofile/showprofile.componen
 import { EditprofileComponent } from './profile/editprofile/editprofile.component';
 import {AdminComponent} from "./admin/admin/admin.component";
 import {LoginGuard} from "./guard/login.guard";
+import {NgxPaginationModule} from "ngx-pagination";
 
 @NgModule({
   declarations: [
@@ -38,8 +39,9 @@ import {LoginGuard} from "./guard/login.guard";
         FormsModule,
         ReactiveFormsModule,
         HttpClientModule,
-      AngularFireStorageModule,
-      AngularFireModule.initializeApp(environment.firebaseConfig, "cloud")
+        AngularFireStorageModule,
+        AngularFireModule.initializeApp(environment.firebaseConfig, "cloud"),
+        NgxPaginationModule
     ],
   providers: [
     {
