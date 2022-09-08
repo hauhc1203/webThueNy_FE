@@ -30,6 +30,10 @@ export class AdminService {
     return this.http.get<any>(`http://localhost:8080/admin/unvip/${id}`)
   }
 
+  showOrder():Observable<any>{
+    return this.http.get<any>(`http://localhost:8080/admin/showOrder`)
+  }
+
 
 
 }
