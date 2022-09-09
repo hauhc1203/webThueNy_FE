@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {LoginComponent} from "./login/login/login.component";
 import {RegisterComponent} from "./login/register/register.component";
 import {AdminComponent} from "./admin/admin/admin.component";
-import {AdminGuard} from "./admin/admin/admin.guard";
+import {AdminGuard} from "./admin/admin.guard";
 import {PageErorComponent} from "./page-eror/page-eror.component";
 import {HomeComponent} from "./home/home.component";
 import {ShowprofileComponent} from "./profile/showprofile/showprofile.component";
@@ -23,7 +23,7 @@ const routes: Routes = [
   },
   {
     path: 'admin',
-    loadChildren: () => import('../app/admin/admin/admin.module').then(module => module.AdminModule),
+    loadChildren: () => import('./admin/admin.module').then(module => module.AdminModule),
     canActivate: [AdminGuard]
   },
   {

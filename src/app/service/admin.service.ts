@@ -34,6 +34,10 @@ export class AdminService {
     return this.http.get<any>(`http://localhost:8080/admin/showOrder`)
   }
 
+  showOrderDetail(id:number):Observable<any>{
+    return this.http.get<any>(`http://localhost:8080/admin/showOder/${id}`,)
+  }
+
 
 
 }

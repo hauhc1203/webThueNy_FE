@@ -5,6 +5,8 @@ import {HttpClient} from "@angular/common/http";
 import {ActivatedRoute, Router} from "@angular/router";
 import {data} from "jquery";
 import {Order} from "../../models/Order";
+import {DatePipe} from "@angular/common";
+import {Profile} from "../../models/Profile";
 
 @Component({
   selector: 'app-admin',
@@ -13,7 +15,10 @@ import {Order} from "../../models/Order";
 })
 export class AdminComponent implements OnInit {
   appUsers : AppUser[] = [];
+  date: Date =new Date();
+
   orders:Order[]=[];
+  order !: Order ;
   constructor(private adminService:AdminService,private http:HttpClient,private route:ActivatedRoute,private  router:Router) { }
 
   message:string = "ban thanh cong";
@@ -68,6 +73,14 @@ export class AdminComponent implements OnInit {
     this.appUsers[indexx].vip = false;
     this.adminService.unvip(id).subscribe(()=>{
       console.log(id)
+    })
+  }
+
+  showOrderDetail(id:any){
+    this.adminService.showOrderDetail(id).subscribe((data)=>{
+      this.order=data;
+      console.log(data);
+      console.log(id);
     })
   }
 

@@ -20,6 +20,7 @@ import { EditprofileComponent } from './profile/editprofile/editprofile.componen
 import {AdminComponent} from "./admin/admin/admin.component";
 import {LoginGuard} from "./guard/login.guard";
 import {NgxPaginationModule} from "ngx-pagination";
+import { ShowOrderDetailComponent } from './admin/show-order-detail/show-order-detail.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import {NgxPaginationModule} from "ngx-pagination";
     HomeComponent,
     ShowprofileComponent,
     EditprofileComponent,
+    ShowOrderDetailComponent,
 
   ],
     imports: [
