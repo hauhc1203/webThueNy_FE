@@ -20,4 +20,9 @@ export class ProvideServiceService {
   }
 
 
+  changeStatus():Observable<any>{
+    return this.http.get<any>("http://localhost:8080/service/changestatus")
+  }
+
+
 }

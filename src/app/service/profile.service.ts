@@ -37,4 +37,10 @@ export class ProfileService {
     // @ts-ignore
     return this.http.post<any>("http://localhost:8080/profile/edit/",profile)
   }
+  editPrice(profile:any):Observable<any>{
+    return this.http.post<any>("http://localhost:8080/profile/editprice",profile)
+  }
+  editRQM(profile:any):Observable<any>{
+    return this.http.post<any>("http://localhost:8080/profile/editrqm",profile)
+  }
 }

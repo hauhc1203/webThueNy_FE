@@ -86,7 +86,6 @@ export class EditprofileComponent implements OnInit {
   choosefile(filename: any, to: string) {
     let id = '#' + to;
     let id2 = 'input' + to;
-    console.log(id2)
     let link = document.getElementById(id2)
     let reader = new FileReader();
     reader.onload = function (e) {
@@ -123,10 +122,11 @@ export class EditprofileComponent implements OnInit {
       gender: this.editForm.value.gender,
       birthDay: this.editForm.value.birthDay,
     }
-    console.log('data edited', this.editForm.value)
-    console.log(' edited', edit)
+
     // @ts-ignore
-    this.profileService.updateProfile(edit).subscribe();
+    this.profileService.updateProfile(edit).subscribe(()=>{
+      alert("Chỉnh sửa thông tin thành công")
+    });
     // this.router.navigate(["/profile/show"])
   }
 

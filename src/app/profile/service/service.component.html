@@ -53,7 +53,8 @@
               </div>
             </div>
           <div class="formCCDV-item a4"  >
-            <label for="cost">Price</label>
+            <label for="cost" style="font-size: 20px;  margin-left: 40px;
+">Price</label>
             <input style="margin-left: 20px;height: 40px" type="number" id="cost"  placeholder="enter your price ">
             <p style="color: red;margin-left: 20px;font-size: 20px" *ngIf="checkPrice" >Min price is 10000</p>
 
@@ -70,7 +71,63 @@
           </div>
           <div id="data">
 
-            <div class="data-item"></div>
+            <div class="data-item">
+                <h3 style="margin-left: 10px">The services you are providing</h3>
+                <div id="sv">
+                  <div class="sv-item" >
+                    <h4>Basic</h4>
+                    <ul>
+                      <li *ngFor="let b of mbasicS">{{b?.name}}</li>
+                    </ul>
+                  </div>
+                  <div class="sv-item">
+                    <h4>Free</h4>
+                    <ul>
+                      <li *ngFor="let f of mfreeS">{{f?.name}}</li>
+                    </ul>
+                  </div>
+                  <div class="sv-item">
+                    <h4>Advance</h4>
+                    <ul>
+                      <li *ngFor="let a of madvanceS">{{a?.name}}</li>
+                    </ul>
+                  </div>
+                </div>
+                <div id="requipment">
+                  <h3>Requipment for hirer</h3>
+                  <div id="cnt">
+                    <textarea id="rqm"  readonly placeholder="enter your requipment for hirer" [value]="profile?.requirementsForHirer"></textarea>
+                    <button id="btneditT" class="priceS-item btn btn-facebook" (click)="showEditRQM(true)">Edit</button>
+                    <button id="btncancelT" class="priceS-item btn btn-danger" (click)="cancelEditRQM()" >Cancel</button>
+                    <button id="btnsaveT" class="priceS-item btn btn-primary" (click)="editRQM()" >Save</button>
+                  </div>
+
+                </div>
+                <div id="price-and-status">
+                    <div id="priceS">
+                      <h3>Price/hour</h3>
+                      <p id="vldP"  style=" color: red;display: none">Min price is 10000</p>
+                      <div class="pas">
+                        <input id="inputPrice" (input)="vldP()" readonly style="width: 180px ;height: 40px"  type="number" placeholder="enter your price" value="{{profile?.cost}}">
+                        <button id="btnedit" class="priceS-item btn btn-facebook" (click)="showEditPrice(true)">Edit</button>
+                        <button id="btncancel" class="priceS-item btn btn-danger" (click)="cancelEditPrice()" >Cancel</button>
+                        <button id="btnsave" class="priceS-item btn btn-primary" (click)="editPrice()" >Save</button>
+
+                      </div>
+
+                    </div>
+                  <div id ="statusS">
+                    <h3>Service provice status</h3>
+                    <div class="pas">
+                      <input  type="range" min="4" max="5" step="1" value="{{profile?.status}}" (change)="changeStatus()" style="width: 50px">
+                      <p *ngIf="profile?.status==4" style="margin-left: 20px;font-size: 20px;margin-top: 10px;margin-bottom: 10px" >Stop provide service</p>
+                      <p *ngIf="profile?.status==5"  style="margin-left: 20px;font-size: 20px;margin-top: 10px;margin-bottom: 10px">Start provide service</p>
+
+                    </div>
+                  </div>
+                </div>
+
+            </div>
 
 
           </div>

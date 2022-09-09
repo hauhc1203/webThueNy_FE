@@ -20,6 +20,13 @@ export class ServiceComponent implements OnInit {
   basicS=new Array();
   // @ts-ignore
   advanceS=new Array();
+
+  mfreeS=new Array();
+  // @ts-ignore
+  mbasicS=new Array();
+  // @ts-ignore
+  madvanceS=new Array();
+
   checkPrice:boolean=false;
   profile:any;
 
@@ -32,18 +39,30 @@ export class ServiceComponent implements OnInit {
       let yourID=uT.id;
       profileS.getProfile(yourID).subscribe((data)=>{
         this.profile=data;
-        console.log(this.profile)
         this.status=this.profile?.isConfirm;
+        let svList=data.serviceList
+        for (let d of svList){
+          switch (d?.category){
+            case 'free':
+              // @ts-ignore
+              this.mfreeS.push(d);
+              break
+            case 'basic':
+              // @ts-ignore
+              this.mbasicS.push(d);
+              break
+            case  'advance':
+              // @ts-ignore
+              this.madvanceS.push(d);
+              break
+          }
+        }
       })
 
 
     // @ts-ignore
     this.roleCCDV=this.loginService.containsRole('ROLE_CCDV',uT);
-    if (this.roleCCDV){
-      this.provideService.getServiceByProfile(yourID).subscribe((d)=>{
-        console.log(d)
-      })
-    }
+
     this.provideService.getAllService().subscribe((data)=>{
       this.allService=data;
       for (let d of data){
@@ -69,10 +88,38 @@ export class ServiceComponent implements OnInit {
 
 
   }
+  cancelEditPrice(){
+    // @ts-ignore
+    document.getElementById("inputPrice").value=this.profile.cost
+    this.showEditPrice(false)
+  }
+
+
+  showEditPrice(check:boolean){
+   if (check){
+     // @ts-ignore
+    $('#inputPrice').attr('readonly',false)
+     $('#btnedit').css('display','none');
+     $('#btncancel').css('display','block');
+     $('#btnsave').css('display','block');
+   }else {
+     $('#btnedit').css('display','block');
+     $('#btncancel').css('display','none');
+     $('#btnsave').css('display','none');
+     // @ts-ignore
+     $('#inputPrice').attr('readonly',true)
+
+   }
+  }
+
+
+
+
   closeForm(){
-    console.log(this.status)
     $('#formCCDV').css('display','none');
-    if (this.status==1||this.status==0||this.status==3){
+    console.log(this.status)
+    console.log( this.profile)
+    if (this.status==0||this.status==1||(this.status==2&&this.profile.status==0)){
       $('#newbie-alert').css('display','block');
     }else {
       $('#ccdvM').css('display','flex');
@@ -140,6 +187,77 @@ export class ServiceComponent implements OnInit {
 
 
   }
+  changeStatus(){
+    this.provideService.changeStatus().subscribe((data)=>{
+      this.profile=data;
+    })
+  }
+  vldP():any{
+    // @ts-ignore
+    let p=document.getElementById("inputPrice").value
+    if (p<10000){
+      $('#vldP').css('display','block');
+      return false;
+    }else {
+      $('#vldP').css('display','none');
+      return p;
+    }
+  }
+  editPrice(){
+      // @ts-ignore
+    let price=this.vldP();
+    if (price){
+      let p={
+        cost: price
+      }
+
+      this.profileS.editPrice(p).subscribe((d)=>{
+        this.profile=d;
+        this.showEditPrice(false);
+        alert("Chỉnh sửa giá thành công")
+      });
+
+    }else {
+      alert("Giá thấp nhất là 10000")
+    }
+  }
+  editRQM(){
+    // @ts-ignore
+    let rqms=document.getElementById("rqm").value;
+    let p={
+      requirementsForHirer:rqms
+    }
+    this.profileS.editRQM(p).subscribe((d)=>{
+      this.profile=d;
+      this.showEditRQM(false);
+      alert("Chỉnh sửa thành công")
+    });
+
+  }
+
+  cancelEditRQM(){
+    // @ts-ignore
+    document.getElementById("rqm").value=this.profile.requirementsForHirer
+    this.showEditRQM(false)
+  }
+  showEditRQM(check:boolean){
+    if (check){
+      // @ts-ignore
+      $('#rqm').attr('readonly',false)
+      $('#btneditT').css('display','none');
+      $('#btncancelT').css('display','block');
+      $('#btnsaveT').css('display','block');
+    }else {
+      $('#btneditT').css('display','block');
+      $('#btncancelT').css('display','none');
+      $('#btnsaveT').css('display','none');
+      // @ts-ignore
+      $('#rqm').attr('readonly',true)
+
+    }
+  }
 
 
 }
+
+
