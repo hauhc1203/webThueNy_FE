@@ -28,7 +28,6 @@ export class ShowprofileComponent implements OnInit {
       this.isYourP=this.loginS.getUserToken().id==this.id;
       this.profileService.getProfile(this.id).subscribe((data)=>{
       this.profile=data;
-      this.profileService.profile=data;
       let day=new Date(this.profile.createDate)
       let m:any=day.getMonth()+1
       if (m<10){

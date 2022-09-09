@@ -8,7 +8,7 @@ import {LoginGuard} from "../guard/login.guard";
 const routes: Routes = [
   {path:'show/:id',component:ShowprofileComponent},
   {
-    path:'edit/:id',
+    path:'edit',
     component:EditprofileComponent,
     canActivate:[LoginGuard]
   },

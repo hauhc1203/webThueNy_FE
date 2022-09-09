@@ -7,7 +7,7 @@
     <!-- Account page navigation-->
     <nav class="nav nav-borders" *ngIf="isYourP" >
       <a class="nav-link" [routerLink]="'/profile/show/'+id" >Your Profile</a>
-      <a class="nav-link" [routerLink]="'/profile/edit/'+id" >Edit Profile</a>
+      <a class="nav-link" [routerLink]="'/profile/edit'" >Edit Profile</a>
       <a class="nav-link" [routerLink]="'/profile/service'">Service</a>
       <a class="nav-link" href="" >Order</a>
       <a class="nav-link" href="" >Email&Password</a>
@@ -36,7 +36,12 @@
 
 
       <div class="card mb-4">
-        <div class="card-header">Account Details</div>
+        <div class="card-header">
+            <p>Account Details</p>
+            <p *ngIf="profile?.isConfirm==2" style="color: green">Verified</p>
+            <p *ngIf="profile?.isConfirm!=2" style="color: red">Not verified</p>
+
+        </div>
         <div class="card-body">
           <form  >
             <!-- Form Group (username)-->

@@ -7,7 +7,6 @@ import {HttpClient} from "@angular/common/http";
 })
 export class ProfileService {
   token:string =''
-  profile:any;
   constructor(private http:HttpClient) {
     // @ts-ignore
     this.token=localStorage.getItem('token')
@@ -28,6 +27,10 @@ export class ProfileService {
   }
   getCountry():Observable<any>{
     return this.http.get<any>("http://localhost:8080/country")
+  }
+
+  reqVerification(id:number){
+      return this.http.get<any>("http://localhost:8080/profile/reqVerification/"+id)
   }
   // @ts-ignore
   updateProfile(profile:any):Observable<any>{

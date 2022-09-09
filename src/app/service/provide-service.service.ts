@@ -12,10 +12,12 @@ export class ProvideServiceService {
   getAllService():Observable<any>{
     return this.http.get<any>("http://localhost:8080/service")
   }
-  getServiceByProfile(idProfile:number):Observable<any>{
-    return this.http.get<any>("http://localhost:8080/service/"+idProfile)
+  getServiceByProfile(id:number):Observable<any>{
+    return this.http.get<any>("http://localhost:8080/service/"+id)
   }
   registerService(data:any[]):Observable<any>{
     return this.http.post<any>("http://localhost:8080/service",data)
   }
+
+
 }

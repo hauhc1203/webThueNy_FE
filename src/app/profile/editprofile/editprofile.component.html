@@ -1,16 +1,13 @@
-<!--<div *ngIf="!canEdit" id="manche">-->
-<!--  <button id="editbtn" class="btn btn-primary" (click)="showEdit()">Edit Profile</button>-->
-<!--</div>-->
 
 <div class="container-xl px-4 mt-4">
   <!-- Account page navigation-->
   <nav class="nav nav-borders" >
     <a class="nav-link" [routerLink]="'/profile/show/'+id" >Your Profile</a>
 
-    <a class="nav-link" [routerLink]="'/profile/edit/'+id" >Edit Profile</a>
+    <a class="nav-link" [routerLink]="'/profile/edit'" >Edit Profile</a>
     <a class="nav-link" [routerLink]="'/profile/service'">Service</a>
-    <a class="nav-link" href="" >Order</a>
-    <a class="nav-link" href="" >Email&Password</a>
+    <a class="nav-link" href="">Order</a>
+    <a class="nav-link" href="">Email&Password</a>
 
   </nav>
   <hr class="mt-0 mb-4">
@@ -32,7 +29,13 @@
 
 
       <div class="card mb-4">
-        <div class="card-header">Account Details</div>
+        <div class="card-header">
+          <p>Account Details</p>
+          <button *ngIf="profile?.isConfirm==0" class="btn btn-primary" (click)="reqVerification()">
+            Verification request
+          </button>
+          <p *ngIf="profile?.isConfirm==1" style="color: blue;">In Process</p>
+        </div>
         <div class="card-body">
           <form [formGroup]="editForm" (ngSubmit)="editProfile()">
             <!-- Form Group (username)-->
@@ -143,21 +146,8 @@
                        (change)="upfile($event,'img3')">
               </div>
             </div>
-            <!-- Form Group (email address)-->
 
-            <!-- Form Row-->
-<!--            <div class="row gx-3 mb-3">-->
-              <!-- Form Group (phone number)-->
-              <!-- Form Group (birthday)-->
-
-<!--              <div class="mb-3">-->
-<!--                <label class="small mb-1" for="requirementsForHirer">Requirements For Hirer</label>-->
-<!--                <textarea class="form-control" id="requirementsForHirer" placeholder="Requirements For Hirer"-->
-<!--                          formControlName="requirementsForHirer" value="{{profile?.requirementsForHirer}}"></textarea>-->
-<!--              </div>-->
-<!--            </div>-->
-            <!-- Save changes button-->
-            <button class="btn btn-primary" type="submit">Save changes</button>
+            <button class="btn btn-facebook" style="margin-left: 300px;width: 120px;height: 40px" type="submit">Save changes</button>
           </form>
         </div>
       </div>

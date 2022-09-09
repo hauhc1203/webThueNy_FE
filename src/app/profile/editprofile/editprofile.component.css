@@ -13,7 +13,14 @@ body{margin-top:20px;
   box-shadow: 0 0.15rem 1.75rem 0 rgb(33 40 50 / 15%);
 
 }
-.card .card-header {
+.card-header{
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 327px 0 28px !important;
+
+}
+
+.card .card-header p {
   font-weight: 500;
 }
 .card-header:first-child {

@@ -21,7 +21,6 @@ export class LoginComponent implements OnInit {
 
   login(){
     this.loginService.login(this.loginForm.value).subscribe((data)=>{
-      console.log(data)
       // this.loginService.setToken(data.token);
       if (data==null){
         // @ts-ignore
