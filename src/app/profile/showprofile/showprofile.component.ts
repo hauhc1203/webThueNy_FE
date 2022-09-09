@@ -6,7 +6,7 @@ import * as $ from 'jquery'
 import { Router,ActivatedRoute, ParamMap} from "@angular/router";
 @Component({
   selector: 'app-showprofile',
-  templateUrl: './showprofile.component.html',
+  templateUrl: './showprofile.component.html',  
   styleUrls: ['./showprofile.component.css']
 })
 export class ShowprofileComponent implements OnInit {

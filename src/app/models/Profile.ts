@@ -55,7 +55,6 @@ export class Profile{
     this._views = views;
   }
 
-
   get id(): number {
     return this._id;
   }
