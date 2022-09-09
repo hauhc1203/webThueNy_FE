@@ -37,6 +37,6 @@ export class ProfileService {
   // @ts-ignore
   getProfileByView():Observable<Profile[]>{
     // @ts-ignore
-    return this.http.get<Profile[]>("https://localhost:8080/profile/showViews/")
+    return this.http.get<Profile[]>("http://localhost:8080/profile/showViews")
   }
 }
