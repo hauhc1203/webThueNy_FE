@@ -1,6 +1,6 @@
 import {Component, DoCheck, OnInit} from '@angular/core';
 import {LoginService} from "../service/login.service";
-
+import  * as $ from 'jquery'
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',

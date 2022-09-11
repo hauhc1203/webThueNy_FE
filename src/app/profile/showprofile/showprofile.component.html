@@ -24,11 +24,21 @@
       <!-- Profile picture card-->
       <div class="card mb-4 mb-xl-0">
         <div class="card-header">Avatar</div>
-        <div class="card-body text-center">
+        <div class="card-body text-center ">
           <!-- Profile picture image-->
+<!--          <div id="af" style="background:url({{profile?.avatar}})">-->
+<!--          </div>-->
           <img *ngIf="profile?.avatar==null" class="img-account-profile rounded-circle mb-2"  src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="">
-                                      <img *ngIf="profile?.avatar!=null" class="img-account-profile rounded-circle mb-2" id="avatar" src="{{profile?.avatar}}" alt="">
+          <img *ngIf="profile?.avatar!=null" class="img-account-profile rounded-circle mb-2" id="avatar" src="{{profile?.avatar}}" alt="">
+
 <!--          <input class="btn btn-primary" id="inputavatar" type="file" hidden (change)="upfile($event,'avatar')">-->
+        </div>
+        <div id="view-and-order">
+
+        </div>
+        <div id="chucnang" *ngIf="!isYourP&&profile?.status==5">
+
+          <button id="btnhire" (click)="showFormHire()" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Hire</button>
         </div>
       </div>
     </div>
@@ -132,22 +142,153 @@
 
               </div>
             </div>
-            <!-- Form Group (email address)-->
 
-            <!-- Form Row-->
-<!--            <div class="row gx-3 mb-3">-->
-<!--              &lt;!&ndash; Form Group (phone number)&ndash;&gt;-->
-<!--              &lt;!&ndash; Form Group (birthday)&ndash;&gt;-->
-
-<!--              <div class="mb-3" >-->
-<!--                <label class="small mb-1" for="requirementsForHirer">Requirements For Hirer</label>-->
-<!--                <p id="requirementsForHirer" >{{profile?.requirementsForHirer}}</p>-->
-<!--              </div>-->
-<!--            </div>-->
-            <!-- Save changes button-->
           </form>
         </div>
       </div>
     </div>
   </div>
+</div>
+<div class="container">
+  <!-- Trigger the modal with a button -->
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Create Order</h4>
+
+          <button style="padding-left: 400px" type="button" class="close" data-dismiss="modal">
+X            </button>
+        </div>
+        <div class="modal-body">
+          <h4 style="color: red;padding-left: 80px">*Requirement for hirer : {{profile?.requirementsForHirer}}</h4>
+          <form >
+              <table>
+                <tr>
+                  <td class="title-info">
+                      Lover:
+                  </td>
+                  <td>
+                      {{profile?.appUser.userName}}
+                  </td>
+                </tr>
+                <tr>
+                  <td class="title-info">
+                    Basic Service:
+                  </td>
+                  <td>
+                    <select id="basicS">
+                        <option *ngFor=" let b of mbasicS" value="{{b?.id}}" >{{b?.name}}</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="title-info">
+                    Advance Service:
+                  </td>
+                  <td>
+                    <div class="form-check" *ngFor="let a of madvanceS">
+                      <input class="form-check-input" type="checkbox"  value="{{a?.id}}" >
+                      <label class="form-check-label">
+                        {{a?.name}}
+                      </label>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="title-info">
+                    Date of hire:
+                  </td>
+                  <td>
+                    <input id="date-hire" type="date">
+                  </td>
+                </tr>
+                <tr>
+                  <td class="title-info">
+                    Start time:
+                  </td>
+                  <td>
+                    <select id="startTime" >
+                      <option value="7">7h</option>
+                      <option value="8">8h</option>
+                      <option value="9">9h</option>
+                      <option value="10">10h</option>
+                      <option value="11">11h</option>
+                      <option value="12">12h</option>
+                      <option value="13">13h</option>
+                      <option value="14">14h</option>
+                      <option value="15">15h</option>
+                      <option value="16">16h</option>
+                      <option value="17">17h</option>
+                      <option value="18">18h</option>
+                      <option value="19">19h</option>
+                      <option value="20">20h</option>
+                      <option value="21">21h</option>
+                      <option value="22">22h</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="title-info">
+                    Hours of hire:
+                  </td>
+                  <td>
+                   <select id="sogiothue" (change)="updateTotal()">
+                     <option value="1">1</option>
+                     <option value="2">2</option>
+                     <option value="3">3</option>
+                     <option value="8">8</option>
+
+                   </select>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="title-info">
+                    Price/h:
+                  </td>
+                  <td>
+                    {{profile?.cost}} VNĐ
+                  </td>
+                </tr>
+                <tr>
+                  <td class="title-info">
+                    Total:
+                  </td>
+                  <td>
+                    {{total}} VNĐ
+                  </td>
+                </tr>
+                <tr *ngIf="total>wallet?.amount">
+                  <td></td>
+                  <td ><p style=" color: red;margin-left: 0 !important; ">Insufficient balance</p></td>
+
+                </tr>
+                <tr>
+                  <td class="title-info">
+                    Balance
+                  </td>
+                  <td>
+                    {{wallet?.amount}} VNĐ
+                  </td>
+                </tr>
+              </table>
+              <textarea id="mfu" placeholder="Type a message"></textarea>
+            <hr>
+            <div id="btnOrder">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+              <button type="button" id="createBTN" class="btn btn-primary" (click)="create()">Create</button>
+
+            </div>
+          </form>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
 </div>

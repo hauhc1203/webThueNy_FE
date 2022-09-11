@@ -69,6 +69,7 @@
 }
 #sv{
   width: 900px;
+  min-height: 175px;
   height: max-content;
   display: flex;
   justify-content: space-between;

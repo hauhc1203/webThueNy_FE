@@ -117,8 +117,7 @@ export class ServiceComponent implements OnInit {
 
   closeForm(){
     $('#formCCDV').css('display','none');
-    console.log(this.status)
-    console.log( this.profile)
+
     if (this.status==0||this.status==1||(this.status==2&&this.profile.status==0)){
       $('#newbie-alert').css('display','block');
     }else {
@@ -127,7 +126,6 @@ export class ServiceComponent implements OnInit {
     }
   }
   showForm(){
-
      if (this.status!=1&&this.status!=0&&this.status!=3){
        $('#ccdvM').css('display','none');
        $('#newbie-alert').css('display','none');

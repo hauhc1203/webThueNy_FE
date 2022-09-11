@@ -2,12 +2,49 @@ body{margin-top:20px;
   background-color:#f2f6fc;
   color:#69707a;
 }
-.img-account-profile {
+.img-account-profile{
   height: 374px;
+  flex-shrink: 0!important;
+}
+#af{
+  width: 374px;
+  height: 374px;
+  border-radius: 50%;
+  background-size: 374px auto;
+  background-position: center;
+
+  flex-shrink: 0;
+  /*color: transparent;*/
 }
 .rounded-circle {
   border-radius: 50% !important;
 }
+#chucnang,#view-and-order  {
+  display: flex;
+  width: auto;
+  height: 100px;
+}
+#chucnang{
+  justify-content: center;
+}
+#btnhire{
+  width: 200px;
+  height: 80px;
+  font-size: 40px;
+}
+.modal-header{
+
+}
+.modal-title{
+  padding-left: 350px;
+}
+.modal-content{
+  width: 1000px!important;
+  /*background: red;*/
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 .card {
   box-shadow: 0 0.15rem 1.75rem 0 rgb(33 40 50 / 15%);
 }
@@ -83,4 +120,48 @@ body{margin-top:20px;
 }
 p ,a{
   margin-left: 10px;
+}
+table{
+  width: 800px;
+  height: max-content;
+  margin: auto;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+td {
+  text-align: left;
+  height: 50px;
+  padding: 10px;
+
+}
+.title-info{
+  width: 500px;
+}
+tr:nth-child(even){
+  background: #e0b5b5;
+}
+form{
+  width: 800px!important;
+  height: max-content;
+  margin: auto;
+}
+textarea{
+  width: 800px;
+  height: 100px;
+  margin: auto;
+  padding: 10px 20px;
+  font-size: 20px;
+}
+#btnOrder{
+  width: 440px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+
+#btnOrder button  {
+  width: 100px;
+  height: 40px;
+  font-size: 20px;
 }
