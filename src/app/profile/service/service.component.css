@@ -44,7 +44,7 @@
   /*display: flex;*/
   /*justify-content: left;*/
   width: 1272px;
-  height: max-content;
+  height: 800px;
   border: black solid 1px;
   border-radius: 10px;
 
@@ -60,14 +60,75 @@
   border-radius: 10px;
 }
 #data{
-  width: 900px;
-  height:560px;
+  width: 880px;
+  height:max-content;
   margin-top: 20px;
   margin-left: 20px;
   border: black solid 1px;
+  border-radius: 10px;
+}
+#sv{
+  width: 900px;
+  min-height: 175px;
+  height: max-content;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 30px;
+}
+.sv-item{
+  width: 300px;
+  height: max-content;
+
+}
+.form-check-label{
+  font-size: 16px;
+}
+textarea{
+  width: 600px;
+  height: 150px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  resize: none;
+  padding: 20px;
+  font-size: 20px;
+}
+
+#requipment{
+  width: 900px;
+  height: 200px;
+  margin-top: 10px;
+  padding-left: 10px;
+
+}
+
+#price-and-status{
+  width: 900px;
+  height: 150px;
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+
+}
+
+#priceS,#statusS{
+  padding-left: 10px;
+  margin-top: 10px    ;
+  width: 440px;
+  height: 120px;
+
+
+}
+
+.pas{
+  display: flex;
+  justify-content: left;
+
+}
+.priceS-item{
+  margin-left: 10px;
 }
 .item{
-  width: 290px;
+  width: 200px;
   height: 50px;
   margin-top: 20px;
   margin-left: 20px;
@@ -79,12 +140,13 @@
 
 }
 .data-item{
-  width: 800px;
-  height:500px;
-  margin-top: 20px;
+  width: 900px;
+  height:max-content;
   margin-left: 20px;
-  border: black solid 1px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
+
 #newbie{
 
   display: flex;
@@ -119,7 +181,6 @@
 
 
 
-  border: black solid 1px;
 
 }
 #newbie-alert{
@@ -127,7 +188,7 @@
 }
 #newbie-alert,#formCCDV,#ccdvM {
   width: 1272px;
-  min-height: 500px;
+  min-height:680px;
 
 
 }
@@ -138,6 +199,7 @@
 }
 .a1{
   height: 40px;
+  margin-top: 20px;
 }
 .a3{
   margin: auto;
@@ -172,6 +234,8 @@
 .formCCDV-item{
   display: flex;
   justify-content: left;
+  margin-left: 55px;
+
 }
 #cfBtn{
   width: 100px;
@@ -184,4 +248,20 @@
   height: 40px;
   margin-top: 30px;
   margin-left: 300px;
+}
+#menu{
+  height: 630px;
+}
+#btncancel,#btnsave,#btncancelT,#btnsaveT{
+  display: none;
+}
+
+#btncancelT,#btnsaveT,#btneditT{
+  width: 100px !important;
+  height: 40px !important;
+  margin-left: 10px;
+}
+#cnt{
+  display: flex;
+  justify-content: left;
 }

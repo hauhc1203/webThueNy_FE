@@ -44,226 +44,226 @@
 
       </div>
       <div class="table-responsive">
-        <table class="table table-hover table-nowrap">
-          <thead class="table-light">
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Name</th>
-            <th scope="col">Gender</th>
-            <th scope="col">Cost</th>
-            <th scope="col">Views</th>
+<!--        <table class="table table-hover table-nowrap">-->
+<!--          <thead class="table-light">-->
+<!--          <tr>-->
+<!--            <th scope="col">#</th>-->
+<!--            <th scope="col">Name</th>-->
+<!--            <th scope="col">Gender</th>-->
+<!--            <th scope="col">Cost</th>-->
+<!--            <th scope="col">Views</th>-->
 
-            <th></th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr *ngFor="let p of profiles,index as i">
-            <td >
-              <span>{{i+1}}</span>
-            </td>
-            <td >
-              <img alt="..." src="{{p.avatar}}" class="avatar avatar-sm rounded-circle me-2">
-              <a [routerLink]="'profile/show/'+p.id" class="text-heading font-semibold" href="#"> {{p.fullName}}
+<!--            <th></th>-->
+<!--          </tr>-->
+<!--          </thead>-->
+<!--          <tbody>-->
+<!--          <tr *ngFor="let p of profiles,index as i">-->
+<!--            <td >-->
+<!--              <span>{{i+1}}</span>-->
+<!--            </td>-->
+<!--            <td >-->
+<!--              <img alt="..." src="{{p.avatar}}" class="avatar avatar-sm rounded-circle me-2">-->
+<!--              <a [routerLink]="'profile/show/'+p.id" class="text-heading font-semibold" href="#"> {{p.fullName}}-->
 
-              </a>
-            </td>
-            <td >
-              <span class="text-current" >{{p.gender}}</span>
-            </td>
-            <td >
-              <span class="text-current" >{{p.cost}}</span>
-            </td>
-            <td >
-              <span class="badge bg-soft-success text-success">{{p.views}}</span>
-            </td>
-<!--            <td data-label="">-->
-<!--              <a class="text-current" href="#">Dribbble</a>-->
-<!--            </td>-->
-<!--            <td data-label="" class="text-end">-->
-<!--              <div class="dropdown">-->
-<!--                <a class="text-muted" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-<!--                  <i class="bi bi-three-dots-vertical"></i>-->
-<!--                </a>-->
-<!--                <div class="dropdown-menu dropdown-menu-end">-->
-<!--                  <a href="#!" class="dropdown-item">-->
-<!--                    Action-->
-<!--                  </a>-->
-<!--                  <a href="#!" class="dropdown-item">-->
-<!--                    Another action-->
-<!--                  </a>-->
-<!--                  <a href="#!" class="dropdown-item">-->
-<!--                    Something else here-->
-<!--                  </a>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--            </td>-->
-          </tr>
-          <tr>
-<!--            <td data-label="Job Title">-->
-<!--              <img alt="..." src="https://images.unsplash.com/photo-1610271340738-726e199f0258?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar-sm rounded-circle me-2">-->
-<!--              <a class="text-heading font-semibold" href="#">-->
-<!--                Darlene Robertson-->
 <!--              </a>-->
 <!--            </td>-->
-<!--            <td data-label="Email">-->
-<!--              <span>Developer</span>-->
+<!--            <td >-->
+<!--              <span class="text-current" >{{p.gender}}</span>-->
 <!--            </td>-->
-<!--            <td data-label="Phone">-->
-<!--              <a class="text-current" href="mailto:darlene@example.com">darlene@example.com</a>-->
+<!--            <td >-->
+<!--              <span class="text-current" >{{p.cost}}</span>-->
 <!--            </td>-->
-<!--            <td data-label="Lead Score">-->
-<!--              <a class="text-current" href="tel:224-567-2662">224-567-2662</a>-->
+<!--            <td >-->
+<!--              <span class="badge bg-soft-success text-success">{{p.views}}</span>-->
 <!--            </td>-->
-<!--            <td data-label="Company">-->
-<!--              <span class="badge bg-soft-warning text-warning">5/10</span>-->
-<!--            </td>-->
-<!--            <td data-label="">-->
-<!--              <a class="text-current" href="#">Netguru</a>-->
-<!--            </td>-->
-<!--            <td data-label="" class="text-end">-->
-<!--              <div class="dropdown">-->
-<!--                <a class="text-muted" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-<!--                  <i class="bi bi-three-dots-vertical"></i>-->
-<!--                </a>-->
-<!--                <div class="dropdown-menu dropdown-menu-end">-->
-<!--                  <a href="#!" class="dropdown-item">-->
-<!--                    Action-->
-<!--                  </a>-->
-<!--                  <a href="#!" class="dropdown-item">-->
-<!--                    Another action-->
-<!--                  </a>-->
-<!--                  <a href="#!" class="dropdown-item">-->
-<!--                    Something else here-->
-<!--                  </a>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--            </td>-->
+<!--&lt;!&ndash;            <td data-label="">&ndash;&gt;-->
+<!--&lt;!&ndash;              <a class="text-current" href="#">Dribbble</a>&ndash;&gt;-->
+<!--&lt;!&ndash;            </td>&ndash;&gt;-->
+<!--&lt;!&ndash;            <td data-label="" class="text-end">&ndash;&gt;-->
+<!--&lt;!&ndash;              <div class="dropdown">&ndash;&gt;-->
+<!--&lt;!&ndash;                <a class="text-muted" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">&ndash;&gt;-->
+<!--&lt;!&ndash;                  <i class="bi bi-three-dots-vertical"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;                </a>&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="dropdown-menu dropdown-menu-end">&ndash;&gt;-->
+<!--&lt;!&ndash;                  <a href="#!" class="dropdown-item">&ndash;&gt;-->
+<!--&lt;!&ndash;                    Action&ndash;&gt;-->
+<!--&lt;!&ndash;                  </a>&ndash;&gt;-->
+<!--&lt;!&ndash;                  <a href="#!" class="dropdown-item">&ndash;&gt;-->
+<!--&lt;!&ndash;                    Another action&ndash;&gt;-->
+<!--&lt;!&ndash;                  </a>&ndash;&gt;-->
+<!--&lt;!&ndash;                  <a href="#!" class="dropdown-item">&ndash;&gt;-->
+<!--&lt;!&ndash;                    Something else here&ndash;&gt;-->
+<!--&lt;!&ndash;                  </a>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;              </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            </td>&ndash;&gt;-->
 <!--          </tr>-->
 <!--          <tr>-->
-<!--            <td data-label="Job Title">-->
-<!--              <img alt="..." src="https://images.unsplash.com/photo-1610878722345-79c5eaf6a48c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar-sm rounded-circle me-2">-->
-<!--              <a class="text-heading font-semibold" href="#">-->
-<!--                Theresa Webb-->
-<!--              </a>-->
-<!--            </td>-->
-<!--            <td data-label="Email">-->
-<!--              <span>Marketing Specialist</span>-->
-<!--            </td>-->
-<!--            <td data-label="Phone">-->
-<!--              <a class="text-current" href="mailto:theresa.webb@example.com">theresa.webb@example.com</a>-->
-<!--            </td>-->
-<!--            <td data-label="Lead Score">-->
-<!--              <a class="text-current" href="tel:401-505-6800">401-505-6800</a>-->
-<!--            </td>-->
-<!--            <td data-label="Company">-->
-<!--              <span class="badge bg-soft-danger text-danger">2/10</span>-->
-<!--            </td>-->
-<!--            <td data-label="">-->
-<!--              <a class="text-current" href="#">Figma</a>-->
-<!--            </td>-->
-<!--            <td data-label="" class="text-end">-->
-<!--              <div class="dropdown">-->
-<!--                <a class="text-muted" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-<!--                  <i class="bi bi-three-dots-vertical"></i>-->
-<!--                </a>-->
-<!--                <div class="dropdown-menu dropdown-menu-end">-->
-<!--                  <a href="#!" class="dropdown-item">-->
-<!--                    Action-->
-<!--                  </a>-->
-<!--                  <a href="#!" class="dropdown-item">-->
-<!--                    Another action-->
-<!--                  </a>-->
-<!--                  <a href="#!" class="dropdown-item">-->
-<!--                    Something else here-->
-<!--                  </a>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--            </td>-->
-<!--          </tr>-->
-<!--          <tr>-->
-<!--            <td data-label="Job Title">-->
-<!--              <img alt="..." src="https://images.unsplash.com/photo-1612422656768-d5e4ec31fac0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar-sm rounded-circle me-2">-->
-<!--              <a class="text-heading font-semibold" href="#">-->
-<!--                Kristin Watson-->
-<!--              </a>-->
-<!--            </td>-->
-<!--            <td data-label="Email">-->
-<!--              <span>Sales Manager</span>-->
-<!--            </td>-->
-<!--            <td data-label="Phone">-->
-<!--              <a class="text-current" href="mailto:cody.fisher@example.com">cody.fisher@example.com</a>-->
-<!--            </td>-->
-<!--            <td data-label="Lead Score">-->
-<!--              <a class="text-current" href="tel:307-560-8817">307-560-8817</a>-->
-<!--            </td>-->
-<!--            <td data-label="Company">-->
-<!--              <span class="badge bg-soft-success text-success">9/10</span>-->
-<!--            </td>-->
-<!--            <td data-label="">-->
-<!--              <a class="text-current" href="#">Mailchimp</a>-->
-<!--            </td>-->
-<!--            <td data-label="" class="text-end">-->
-<!--              <div class="dropdown">-->
-<!--                <a class="text-muted" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-<!--                  <i class="bi bi-three-dots-vertical"></i>-->
-<!--                </a>-->
-<!--                <div class="dropdown-menu dropdown-menu-end">-->
-<!--                  <a href="#!" class="dropdown-item">-->
-<!--                    Action-->
-<!--                  </a>-->
-<!--                  <a href="#!" class="dropdown-item">-->
-<!--                    Another action-->
-<!--                  </a>-->
-<!--                  <a href="#!" class="dropdown-item">-->
-<!--                    Something else here-->
-<!--                  </a>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--            </td>-->
-<!--          </tr>-->
-<!--          <tr>-->
-<!--            <td data-label="Job Title">-->
-<!--              <img alt="..." src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar-sm rounded-circle me-2">-->
-<!--              <a class="text-heading font-semibold" href="#">-->
-<!--                Robert Fox-->
-<!--              </a>-->
-<!--            </td>-->
-<!--            <td data-label="Email">-->
-<!--              <span>Web Designer</span>-->
-<!--            </td>-->
-<!--            <td data-label="Phone">-->
-<!--              <a class="text-current" href="mailto:robert.fox@example.com">robert.fox@example.com</a>-->
-<!--            </td>-->
-<!--            <td data-label="Lead Score">-->
-<!--              <a class="text-current" href="tel:202-555-0152">202-555-0152</a>-->
-<!--            </td>-->
-<!--            <td data-label="Company">-->
-<!--              <span class="badge bg-soft-success text-success">7/10</span>-->
-<!--            </td>-->
-<!--            <td data-label="">-->
-<!--              <a class="text-current" href="#">Dribbble</a>-->
-<!--            </td>-->
-<!--            <td data-label="" class="text-end">-->
-<!--              <div class="dropdown">-->
-<!--                <a class="text-muted" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-<!--                  <i class="bi bi-three-dots-vertical"></i>-->
-<!--                </a>-->
-<!--                <div class="dropdown-menu dropdown-menu-end">-->
-<!--                  <a href="#!" class="dropdown-item">-->
-<!--                    Action-->
-<!--                  </a>-->
-<!--                  <a href="#!" class="dropdown-item">-->
-<!--                    Another action-->
-<!--                  </a>-->
-<!--                  <a href="#!" class="dropdown-item">-->
-<!--                    Something else here-->
-<!--                  </a>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--            </td>-->
-<!--          </tr>-->
-          </tbody>
-        </table>
+<!--&lt;!&ndash;            <td data-label="Job Title">&ndash;&gt;-->
+<!--&lt;!&ndash;              <img alt="..." src="https://images.unsplash.com/photo-1610271340738-726e199f0258?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar-sm rounded-circle me-2">&ndash;&gt;-->
+<!--&lt;!&ndash;              <a class="text-heading font-semibold" href="#">&ndash;&gt;-->
+<!--&lt;!&ndash;                Darlene Robertson&ndash;&gt;-->
+<!--&lt;!&ndash;              </a>&ndash;&gt;-->
+<!--&lt;!&ndash;            </td>&ndash;&gt;-->
+<!--&lt;!&ndash;            <td data-label="Email">&ndash;&gt;-->
+<!--&lt;!&ndash;              <span>Developer</span>&ndash;&gt;-->
+<!--&lt;!&ndash;            </td>&ndash;&gt;-->
+<!--&lt;!&ndash;            <td data-label="Phone">&ndash;&gt;-->
+<!--&lt;!&ndash;              <a class="text-current" href="mailto:darlene@example.com">darlene@example.com</a>&ndash;&gt;-->
+<!--&lt;!&ndash;            </td>&ndash;&gt;-->
+<!--&lt;!&ndash;            <td data-label="Lead Score">&ndash;&gt;-->
+<!--&lt;!&ndash;              <a class="text-current" href="tel:224-567-2662">224-567-2662</a>&ndash;&gt;-->
+<!--&lt;!&ndash;            </td>&ndash;&gt;-->
+<!--&lt;!&ndash;            <td data-label="Company">&ndash;&gt;-->
+<!--&lt;!&ndash;              <span class="badge bg-soft-warning text-warning">5/10</span>&ndash;&gt;-->
+<!--&lt;!&ndash;            </td>&ndash;&gt;-->
+<!--&lt;!&ndash;            <td data-label="">&ndash;&gt;-->
+<!--&lt;!&ndash;              <a class="text-current" href="#">Netguru</a>&ndash;&gt;-->
+<!--&lt;!&ndash;            </td>&ndash;&gt;-->
+<!--&lt;!&ndash;            <td data-label="" class="text-end">&ndash;&gt;-->
+<!--&lt;!&ndash;              <div class="dropdown">&ndash;&gt;-->
+<!--&lt;!&ndash;                <a class="text-muted" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">&ndash;&gt;-->
+<!--&lt;!&ndash;                  <i class="bi bi-three-dots-vertical"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;                </a>&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="dropdown-menu dropdown-menu-end">&ndash;&gt;-->
+<!--&lt;!&ndash;                  <a href="#!" class="dropdown-item">&ndash;&gt;-->
+<!--&lt;!&ndash;                    Action&ndash;&gt;-->
+<!--&lt;!&ndash;                  </a>&ndash;&gt;-->
+<!--&lt;!&ndash;                  <a href="#!" class="dropdown-item">&ndash;&gt;-->
+<!--&lt;!&ndash;                    Another action&ndash;&gt;-->
+<!--&lt;!&ndash;                  </a>&ndash;&gt;-->
+<!--&lt;!&ndash;                  <a href="#!" class="dropdown-item">&ndash;&gt;-->
+<!--&lt;!&ndash;                    Something else here&ndash;&gt;-->
+<!--&lt;!&ndash;                  </a>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;              </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            </td>&ndash;&gt;-->
+<!--&lt;!&ndash;          </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;          <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;            <td data-label="Job Title">&ndash;&gt;-->
+<!--&lt;!&ndash;              <img alt="..." src="https://images.unsplash.com/photo-1610878722345-79c5eaf6a48c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar-sm rounded-circle me-2">&ndash;&gt;-->
+<!--&lt;!&ndash;              <a class="text-heading font-semibold" href="#">&ndash;&gt;-->
+<!--&lt;!&ndash;                Theresa Webb&ndash;&gt;-->
+<!--&lt;!&ndash;              </a>&ndash;&gt;-->
+<!--&lt;!&ndash;            </td>&ndash;&gt;-->
+<!--&lt;!&ndash;            <td data-label="Email">&ndash;&gt;-->
+<!--&lt;!&ndash;              <span>Marketing Specialist</span>&ndash;&gt;-->
+<!--&lt;!&ndash;            </td>&ndash;&gt;-->
+<!--&lt;!&ndash;            <td data-label="Phone">&ndash;&gt;-->
+<!--&lt;!&ndash;              <a class="text-current" href="mailto:theresa.webb@example.com">theresa.webb@example.com</a>&ndash;&gt;-->
+<!--&lt;!&ndash;            </td>&ndash;&gt;-->
+<!--&lt;!&ndash;            <td data-label="Lead Score">&ndash;&gt;-->
+<!--&lt;!&ndash;              <a class="text-current" href="tel:401-505-6800">401-505-6800</a>&ndash;&gt;-->
+<!--&lt;!&ndash;            </td>&ndash;&gt;-->
+<!--&lt;!&ndash;            <td data-label="Company">&ndash;&gt;-->
+<!--&lt;!&ndash;              <span class="badge bg-soft-danger text-danger">2/10</span>&ndash;&gt;-->
+<!--&lt;!&ndash;            </td>&ndash;&gt;-->
+<!--&lt;!&ndash;            <td data-label="">&ndash;&gt;-->
+<!--&lt;!&ndash;              <a class="text-current" href="#">Figma</a>&ndash;&gt;-->
+<!--&lt;!&ndash;            </td>&ndash;&gt;-->
+<!--&lt;!&ndash;            <td data-label="" class="text-end">&ndash;&gt;-->
+<!--&lt;!&ndash;              <div class="dropdown">&ndash;&gt;-->
+<!--&lt;!&ndash;                <a class="text-muted" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">&ndash;&gt;-->
+<!--&lt;!&ndash;                  <i class="bi bi-three-dots-vertical"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;                </a>&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="dropdown-menu dropdown-menu-end">&ndash;&gt;-->
+<!--&lt;!&ndash;                  <a href="#!" class="dropdown-item">&ndash;&gt;-->
+<!--&lt;!&ndash;                    Action&ndash;&gt;-->
+<!--&lt;!&ndash;                  </a>&ndash;&gt;-->
+<!--&lt;!&ndash;                  <a href="#!" class="dropdown-item">&ndash;&gt;-->
+<!--&lt;!&ndash;                    Another action&ndash;&gt;-->
+<!--&lt;!&ndash;                  </a>&ndash;&gt;-->
+<!--&lt;!&ndash;                  <a href="#!" class="dropdown-item">&ndash;&gt;-->
+<!--&lt;!&ndash;                    Something else here&ndash;&gt;-->
+<!--&lt;!&ndash;                  </a>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;              </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            </td>&ndash;&gt;-->
+<!--&lt;!&ndash;          </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;          <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;            <td data-label="Job Title">&ndash;&gt;-->
+<!--&lt;!&ndash;              <img alt="..." src="https://images.unsplash.com/photo-1612422656768-d5e4ec31fac0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar-sm rounded-circle me-2">&ndash;&gt;-->
+<!--&lt;!&ndash;              <a class="text-heading font-semibold" href="#">&ndash;&gt;-->
+<!--&lt;!&ndash;                Kristin Watson&ndash;&gt;-->
+<!--&lt;!&ndash;              </a>&ndash;&gt;-->
+<!--&lt;!&ndash;            </td>&ndash;&gt;-->
+<!--&lt;!&ndash;            <td data-label="Email">&ndash;&gt;-->
+<!--&lt;!&ndash;              <span>Sales Manager</span>&ndash;&gt;-->
+<!--&lt;!&ndash;            </td>&ndash;&gt;-->
+<!--&lt;!&ndash;            <td data-label="Phone">&ndash;&gt;-->
+<!--&lt;!&ndash;              <a class="text-current" href="mailto:cody.fisher@example.com">cody.fisher@example.com</a>&ndash;&gt;-->
+<!--&lt;!&ndash;            </td>&ndash;&gt;-->
+<!--&lt;!&ndash;            <td data-label="Lead Score">&ndash;&gt;-->
+<!--&lt;!&ndash;              <a class="text-current" href="tel:307-560-8817">307-560-8817</a>&ndash;&gt;-->
+<!--&lt;!&ndash;            </td>&ndash;&gt;-->
+<!--&lt;!&ndash;            <td data-label="Company">&ndash;&gt;-->
+<!--&lt;!&ndash;              <span class="badge bg-soft-success text-success">9/10</span>&ndash;&gt;-->
+<!--&lt;!&ndash;            </td>&ndash;&gt;-->
+<!--&lt;!&ndash;            <td data-label="">&ndash;&gt;-->
+<!--&lt;!&ndash;              <a class="text-current" href="#">Mailchimp</a>&ndash;&gt;-->
+<!--&lt;!&ndash;            </td>&ndash;&gt;-->
+<!--&lt;!&ndash;            <td data-label="" class="text-end">&ndash;&gt;-->
+<!--&lt;!&ndash;              <div class="dropdown">&ndash;&gt;-->
+<!--&lt;!&ndash;                <a class="text-muted" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">&ndash;&gt;-->
+<!--&lt;!&ndash;                  <i class="bi bi-three-dots-vertical"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;                </a>&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="dropdown-menu dropdown-menu-end">&ndash;&gt;-->
+<!--&lt;!&ndash;                  <a href="#!" class="dropdown-item">&ndash;&gt;-->
+<!--&lt;!&ndash;                    Action&ndash;&gt;-->
+<!--&lt;!&ndash;                  </a>&ndash;&gt;-->
+<!--&lt;!&ndash;                  <a href="#!" class="dropdown-item">&ndash;&gt;-->
+<!--&lt;!&ndash;                    Another action&ndash;&gt;-->
+<!--&lt;!&ndash;                  </a>&ndash;&gt;-->
+<!--&lt;!&ndash;                  <a href="#!" class="dropdown-item">&ndash;&gt;-->
+<!--&lt;!&ndash;                    Something else here&ndash;&gt;-->
+<!--&lt;!&ndash;                  </a>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;              </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            </td>&ndash;&gt;-->
+<!--&lt;!&ndash;          </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;          <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;            <td data-label="Job Title">&ndash;&gt;-->
+<!--&lt;!&ndash;              <img alt="..." src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar-sm rounded-circle me-2">&ndash;&gt;-->
+<!--&lt;!&ndash;              <a class="text-heading font-semibold" href="#">&ndash;&gt;-->
+<!--&lt;!&ndash;                Robert Fox&ndash;&gt;-->
+<!--&lt;!&ndash;              </a>&ndash;&gt;-->
+<!--&lt;!&ndash;            </td>&ndash;&gt;-->
+<!--&lt;!&ndash;            <td data-label="Email">&ndash;&gt;-->
+<!--&lt;!&ndash;              <span>Web Designer</span>&ndash;&gt;-->
+<!--&lt;!&ndash;            </td>&ndash;&gt;-->
+<!--&lt;!&ndash;            <td data-label="Phone">&ndash;&gt;-->
+<!--&lt;!&ndash;              <a class="text-current" href="mailto:robert.fox@example.com">robert.fox@example.com</a>&ndash;&gt;-->
+<!--&lt;!&ndash;            </td>&ndash;&gt;-->
+<!--&lt;!&ndash;            <td data-label="Lead Score">&ndash;&gt;-->
+<!--&lt;!&ndash;              <a class="text-current" href="tel:202-555-0152">202-555-0152</a>&ndash;&gt;-->
+<!--&lt;!&ndash;            </td>&ndash;&gt;-->
+<!--&lt;!&ndash;            <td data-label="Company">&ndash;&gt;-->
+<!--&lt;!&ndash;              <span class="badge bg-soft-success text-success">7/10</span>&ndash;&gt;-->
+<!--&lt;!&ndash;            </td>&ndash;&gt;-->
+<!--&lt;!&ndash;            <td data-label="">&ndash;&gt;-->
+<!--&lt;!&ndash;              <a class="text-current" href="#">Dribbble</a>&ndash;&gt;-->
+<!--&lt;!&ndash;            </td>&ndash;&gt;-->
+<!--&lt;!&ndash;            <td data-label="" class="text-end">&ndash;&gt;-->
+<!--&lt;!&ndash;              <div class="dropdown">&ndash;&gt;-->
+<!--&lt;!&ndash;                <a class="text-muted" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">&ndash;&gt;-->
+<!--&lt;!&ndash;                  <i class="bi bi-three-dots-vertical"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;                </a>&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="dropdown-menu dropdown-menu-end">&ndash;&gt;-->
+<!--&lt;!&ndash;                  <a href="#!" class="dropdown-item">&ndash;&gt;-->
+<!--&lt;!&ndash;                    Action&ndash;&gt;-->
+<!--&lt;!&ndash;                  </a>&ndash;&gt;-->
+<!--&lt;!&ndash;                  <a href="#!" class="dropdown-item">&ndash;&gt;-->
+<!--&lt;!&ndash;                    Another action&ndash;&gt;-->
+<!--&lt;!&ndash;                  </a>&ndash;&gt;-->
+<!--&lt;!&ndash;                  <a href="#!" class="dropdown-item">&ndash;&gt;-->
+<!--&lt;!&ndash;                    Something else here&ndash;&gt;-->
+<!--&lt;!&ndash;                  </a>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;              </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            </td>&ndash;&gt;-->
+<!--&lt;!&ndash;          </tr>&ndash;&gt;-->
+<!--          </tbody>-->
+<!--        </table>-->
       </div>
     </div>
   </div>

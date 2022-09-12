@@ -295,18 +295,18 @@
             <ul class="list-group">
               <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg" *ngFor="let o of orders | paginate:{itemsPerPage: 1, currentPage: p} , index as i ">
                 <div class="d-flex flex-column">
-                  <h6 class="mb-3 text-sm" *ngIf="o.status==false">Status : Waiting</h6>
-                  <h6 class="mb-3 text-sm" *ngIf="o.status==true">Status : Complete</h6>
-                  <span class="mb-2 text-xs">Supplier's Name: <span class="text-dark font-weight-bold ms-sm-2">{{o.appUser.userName}}</span></span>
-                  <span class="mb-2 text-xs">Tenant's Name: <span class="text-dark ms-sm-2 font-weight-bold">{{o.profile.fullName}}</span></span>
-                  <span class="mb-2 text-xs">Total order: <span class="text-dark ms-sm-2 font-weight-bold">{{o.total}} vnd</span></span>
+                  <h6 class="mb-3 text-sm" *ngIf="o?.status==false">Status : Waiting</h6>
+                  <h6 class="mb-3 text-sm" *ngIf="o?.status==true">Status : Complete</h6>
+                  <span class="mb-2 text-xs">Supplier's Name: <span class="text-dark font-weight-bold ms-sm-2">{{o?.appUser?.userName}}</span></span>
+                  <span class="mb-2 text-xs">Tenant's Name: <span class="text-dark ms-sm-2 font-weight-bold">{{o?.profile?.fullName}}</span></span>
+                  <span class="mb-2 text-xs">Total order: <span class="text-dark ms-sm-2 font-weight-bold">{{o?.total}} vnd</span></span>
 
-                  <span class="text-xs">Single Date: <span class="text-dark ms-sm-2 font-weight-bold">{{o.datingTime}}</span></span>
+                  <span class="text-xs">Single Date: <span class="text-dark ms-sm-2 font-weight-bold">{{o?.datingTime}}</span></span>
 
 
                 </div>
                 <div class="ms-auto text-end">
-                  <a (click)="showOrderDetail(o.id)" data-toggle="modal" data-target="#myModal" class="btn btn-success">Order Detail</a>
+                  <a (click)="showOrderDetail(o?.id)" data-toggle="modal" data-target="#myModal" class="btn btn-success">Order Detail</a>
 <!--                  <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;"><i class="far fa-trash-alt me-2"></i>Delete</a>-->
 <!--                  <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>-->
                 </div>
@@ -560,14 +560,14 @@
 
       <!-- Modal body -->
       <div class="modal-body">
-        <p>Supplier's name : {{order?.profile?.fullName}}</p>
-        <p>Tenant's name   : {{order?.appUser?.userName}}</p>
-        <p>Address         : {{order?.address}}</p>
-        <p>Rental period   : {{order?.time}}h</p>
-        <p>Date            : {{order?.datingTime}}</p>
-        <p>Total order     : {{order?.total}} VND</p>
-        <p *ngIf="order?.status==false">Status          : Waiting</p>
-        <p *ngIf="order?.status==true">Status          : Complete</p>
+        <p>Supplier's name : {{order.profile.fullName}}</p>
+        <p>Tenant's name   : {{order.appUser.userName}}</p>
+        <p>Address         : {{order.address}}</p>
+        <p>Rental period   : {{order.time}}h</p>
+        <p>Date            : {{order.datingTime}}</p>
+        <p>Total order     : {{order.total}} VND</p>
+        <p *ngIf="!order.status">Status          : Waiting</p>
+        <p *ngIf="order.status">Status          : Complete</p>
       </div>
 
       <!-- Modal footer -->
