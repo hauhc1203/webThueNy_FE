@@ -4,6 +4,7 @@ import {LoginService} from "../../service/login.service";
 import {UploadIMGService} from "../../service/upload-img.service";
 import * as $ from 'jquery'
 import { Router,ActivatedRoute, ParamMap} from "@angular/router";
+import {Order} from "../../models/Order";
 import {WalletService} from "../../service/wallet.service";
 import {data} from "jquery";
 import {createLogErrorHandler} from "@angular/compiler-cli/ngcc/src/execution/tasks/completion";
@@ -14,6 +15,8 @@ import {OrderService} from "../../service/order.service";
   styleUrls: ['./showprofile.component.css']
 })
 export class ShowprofileComponent implements OnInit {
+
+  orders:Order[]=[];
   // @ts-ignore
   id:number;
   // @ts-ignore
@@ -90,6 +93,14 @@ export class ShowprofileComponent implements OnInit {
 
 
 
+  }
+
+  showOrderDetail(id:any){
+    this.profileService.getOrderByAppUser(id).subscribe((data)=>{
+      this.orders = data;
+      console.log(data)
+      console.log(id)
+    })
   }
 
 

@@ -62,7 +62,6 @@
 <!--        </a>-->
 <!--      </li>-->
 <!--      <li class="nav-item">-->
-
 <!--        <a class="nav-link " href="../pages/sign-in.html">-->
 <!--          <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">-->
 <!--            <i class="ni ni-single-copy-04 text-warning text-sm opacity-10"></i>-->
@@ -295,53 +294,31 @@
             <ul class="list-group">
               <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg" *ngFor="let o of orders | paginate:{itemsPerPage: 1, currentPage: p} , index as i ">
                 <div class="d-flex flex-column">
-                  <h6 class="mb-3 text-sm" *ngIf="o?.status==false">Status : Waiting</h6>
-                  <h6 class="mb-3 text-sm" *ngIf="o?.status==true">Status : Complete</h6>
-                  <span class="mb-2 text-xs">Supplier's Name: <span class="text-dark font-weight-bold ms-sm-2">{{o?.appUser?.userName}}</span></span>
-                  <span class="mb-2 text-xs">Tenant's Name: <span class="text-dark ms-sm-2 font-weight-bold">{{o?.profile?.fullName}}</span></span>
-                  <span class="mb-2 text-xs">Total order: <span class="text-dark ms-sm-2 font-weight-bold">{{o?.total}} vnd</span></span>
+                  <h6 class="mb-3 text-sm" *ngIf="o.status==0">Status : Waiting</h6>
+                  <h6 class="mb-3 text-sm" *ngIf="o.status==1">Status : RECEIVED</h6>
+                  <h6 class="mb-3 text-sm" *ngIf="o.status==2">Status : COMPLETE</h6>
+                  <span class="mb-2 text-xs">Supplier's Name: <span class="text-dark font-weight-bold ms-sm-2">{{o.appUser.userName}}</span></span>
+                  <span class="mb-2 text-xs">Tenant's Name: <span class="text-dark ms-sm-2 font-weight-bold">{{o.profile.fullName}}</span></span>
+                  <span class="mb-2 text-xs">Total order: <span class="text-dark ms-sm-2 font-weight-bold">{{o.total}} vnd</span></span>
 
-                  <span class="text-xs">Single Date: <span class="text-dark ms-sm-2 font-weight-bold">{{o?.datingTime}}</span></span>
+                  <span class="text-xs">Single Date: <span class="text-dark ms-sm-2 font-weight-bold">{{o.datingTime}}</span></span>
 
 
                 </div>
                 <div class="ms-auto text-end">
-                  <a (click)="showOrderDetail(o?.id)" data-toggle="modal" data-target="#myModal" class="btn btn-success">Order Detail</a>
+                  <a (click)="showOrderDetail(o.id)" data-toggle="modal" data-target="#myModal" class="btn btn-success">Order Detail</a>
 <!--                  <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;"><i class="far fa-trash-alt me-2"></i>Delete</a>-->
 <!--                  <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>-->
                 </div>
               </li>
-              <div style="display: flex;justify-content: center">
+<!--              <div style="display: flex;justify-content: center">-->
 
-                  <pagination-controls class="btn btn-sm btn-outline-primary" class="myPagination" (pageChange)="p = $event">
-                  </pagination-controls>
+<!--                -->
+<!--              </div>-->
 
-              </div>
-<!--              <li class="list-group-item border-0 d-flex p-4 mb-2 mt-3 bg-gray-100 border-radius-lg">-->
-<!--                <div class="d-flex flex-column">-->
-<!--                  <h6 class="mb-3 text-sm">Lucas Harper</h6>-->
-<!--                  <span class="mb-2 text-xs">Company Name: <span class="text-dark font-weight-bold ms-sm-2">Stone Tech Zone</span></span>-->
-<!--                  <span class="mb-2 text-xs">Email Address: <span class="text-dark ms-sm-2 font-weight-bold">lucas@stone-tech.com</span></span>-->
-<!--                  <span class="text-xs">VAT Number: <span class="text-dark ms-sm-2 font-weight-bold">FRB1235476</span></span>-->
-<!--                </div>-->
-<!--                <div class="ms-auto text-end">-->
-<!--                  <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;"><i class="far fa-trash-alt me-2"></i>Delete</a>-->
-<!--                  <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>-->
-<!--                </div>-->
-<!--              </li>-->
-<!--              <li class="list-group-item border-0 d-flex p-4 mb-2 mt-3 bg-gray-100 border-radius-lg">-->
-<!--                <div class="d-flex flex-column">-->
-<!--                  <h6 class="mb-3 text-sm">Ethan James</h6>-->
-<!--                  <span class="mb-2 text-xs">Company Name: <span class="text-dark font-weight-bold ms-sm-2">Fiber Notion</span></span>-->
-<!--                  <span class="mb-2 text-xs">Email Address: <span class="text-dark ms-sm-2 font-weight-bold">ethan@fiber.com</span></span>-->
-<!--                  <span class="text-xs">VAT Number: <span class="text-dark ms-sm-2 font-weight-bold">FRB1235476</span></span>-->
-<!--                </div>-->
-<!--                <div class="ms-auto text-end">-->
-<!--                  <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;"><i class="far fa-trash-alt me-2"></i>Delete</a>-->
-<!--                  <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>-->
-<!--                </div>-->
-<!--              </li>-->
             </ul>
+            <pagination-controls class="btn btn-sm btn-outline-primary" class="myPagination" (pageChange)="p = $event">
+            </pagination-controls>
           </div>
         </div>
       </div>
@@ -554,20 +531,21 @@
 
       <!-- Modal Header -->
       <div class="modal-header" >
-        <h4 class="modal-title">Chi tiết hóa đơn</h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Order Detail</h4>
+<!--        <button type="button" class="close" data-dismiss="modal">&times;</button>-->
       </div>
 
       <!-- Modal body -->
       <div class="modal-body">
-        <p>Supplier's name : {{order.profile.fullName}}</p>
-        <p>Tenant's name   : {{order.appUser.userName}}</p>
-        <p>Address         : {{order.address}}</p>
-        <p>Rental period   : {{order.time}}h</p>
-        <p>Date            : {{order.datingTime}}</p>
-        <p>Total order     : {{order.total}} VND</p>
-        <p *ngIf="!order.status">Status          : Waiting</p>
-        <p *ngIf="order.status">Status          : Complete</p>
+        <p>Supplier's name : {{order?.profile?.fullName}}</p>
+        <p>Tenant's name   : {{order?.appUser?.userName}}</p>
+        <p>Address         : {{order?.address}}</p>
+        <p>Rental period   : {{order?.time}}h</p>
+        <p>Date            : {{order?.datingTime}}</p>
+        <p>Total order     : {{order?.total}} VND</p>
+        <p *ngIf="order?.status==0">Status          : WAITING</p>
+        <p *ngIf="order?.status==1">Status          : RECEIVED</p>
+        <p *ngIf="order?.status==2">Status          : COMPLETE</p>
       </div>
 
       <!-- Modal footer -->

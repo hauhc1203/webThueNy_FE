@@ -15,10 +15,10 @@ export class Order{
   private _doneFromCCDV:boolean;
   private _messFromCCDV:string;
   private _total:number;
-  private _status:boolean;
+  private _status:number;
 
 
-  constructor(id: number, time: number, startTime: number, address: string, datingTime: Date, profile: Profile, appUser: AppUser, doneFromUser: boolean, messFromUser: string, doneFromCCDV: boolean, messFromCCDV: string, total: number, status: boolean) {
+  constructor(id: number, time: number, startTime: number, address: string, datingTime: Date, profile: Profile, appUser: AppUser, doneFromUser: boolean, messFromUser: string, doneFromCCDV: boolean, messFromCCDV: string, total: number, status: number) {
     this._id = id;
     this._time = time;
     this._startTime = startTime;
@@ -131,11 +131,11 @@ export class Order{
     this._total = value;
   }
 
-  get status(): boolean {
+  get status(): number {
     return this._status;
   }
 
-  set status(value: boolean) {
+  set status(value: number) {
     this._status = value;
   }
 }

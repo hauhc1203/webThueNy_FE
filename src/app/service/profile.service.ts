@@ -7,6 +7,7 @@ import {HttpClient} from "@angular/common/http";
 })
 export class ProfileService {
   token:string =''
+  profile:any;
   constructor(private http:HttpClient) {
     // @ts-ignore
     this.token=localStorage.getItem('token')
@@ -36,6 +37,10 @@ export class ProfileService {
   updateProfile(profile:any):Observable<any>{
     // @ts-ignore
     return this.http.post<any>("http://localhost:8080/profile/edit/",profile)
+  }
+
+  getOrderByAppUser(id:any):Observable<any>{
+    return this.http.get(`http://localhost:8080/profile/orderByUser/${id}`)
   }
   editPrice(profile:any):Observable<any>{
     return this.http.post<any>("http://localhost:8080/profile/editprice",profile)
