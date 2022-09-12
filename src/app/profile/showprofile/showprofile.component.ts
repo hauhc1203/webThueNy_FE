@@ -10,7 +10,7 @@ import {createLogErrorHandler} from "@angular/compiler-cli/ngcc/src/execution/ta
 import {OrderService} from "../../service/order.service";
 @Component({
   selector: 'app-showprofile',
-  templateUrl: './showprofile.component.html',  
+  templateUrl: './showprofile.component.html',
   styleUrls: ['./showprofile.component.css']
 })
 export class ShowprofileComponent implements OnInit {
@@ -33,25 +33,24 @@ export class ShowprofileComponent implements OnInit {
 
   // @ts-ignore
   total:number;
+  // @ts-ignore
+  islogin:boolean;
 
-
-  constructor(private orderS:OrderService,private walletS:WalletService,private profileService:ProfileService,private uploadFile:UploadIMGService,private route:ActivatedRoute,private loginS:LoginService) {
-
-  }
-  ngOnInit(): void {
-
-
-    let userid=this.loginS.getUserToken().id;
-    this.walletS.getWallet().subscribe((data)=>{
-      this.wallet=data;
-    })
+  constructor(private orderS:OrderService,private walletS:WalletService,private profileService:ProfileService,private uploadFile:UploadIMGService,private route:ActivatedRoute,private loginS:LoginService,private router:Router) {
+    let ut=this.loginS.getUserToken();
+    this.islogin=ut!=null
+    if (this.islogin){
+      this.walletS.getWallet().subscribe((data)=>{
+        this.wallet=data;
+      })
+    }
     this.route.paramMap.subscribe(paramMap => {
       // @ts-ignore
       this.id = paramMap.get('id');
-      this.isYourP=userid==this.id;
+      this.isYourP=ut?.id==this.id;
       this.profileService.getProfile(this.id).subscribe((data)=>{
-      this.profile=data;
-      let svList=data.serviceList;
+        this.profile=data;
+        let svList=data.serviceList;
         this.mfreeS=new Array();
         // @ts-ignore
         this.mbasicS=new Array();
@@ -73,18 +72,22 @@ export class ShowprofileComponent implements OnInit {
               break
           }
         }
-      let day=new Date(this.profile.createDate)
-      let m:any=day.getMonth()+1
-      if (m<10){
-        m="0"+m;
-      }
-      let date:any=day.getDate()
-      if (date<10){
-        date="0"+date;
-      }
-      this.createDate=date+"-"+m+"-"+day.getFullYear()
+        let day=new Date(this.profile.createDate)
+        let m:any=day.getMonth()+1
+        if (m<10){
+          m="0"+m;
+        }
+        let date:any=day.getDate()
+        if (date<10){
+          date="0"+date;
+        }
+        this.createDate=date+"-"+m+"-"+day.getFullYear()
+      });
     });
-    });
+
+  }
+  ngOnInit(): void {
+
 
 
   }
@@ -97,21 +100,24 @@ export class ShowprofileComponent implements OnInit {
     // $j('#date-hire').datepicker({
     //   dateFormat:'dd-mm-yy'
     // });
-
-    let sv=document.querySelectorAll('.form-check-input')
-    // @ts-ignore
-    for (let s of sv) {
-      s.addEventListener('click', ()=>{
-        this.updateTotal();
-      })
+    if (this.islogin){
+      let sv=document.querySelectorAll('.form-check-input')
+      // @ts-ignore
+      for (let s of sv) {
+        s.addEventListener('click', ()=>{
+          this.updateTotal();
+        })
+      }
+      this.updateTotal();
+    }else {
+      this.router.navigate(["login"]);
     }
-    this.updateTotal();
+
   }
 
   getAService():any{
     let aS=new Array();
     let sv=document.querySelectorAll('.form-check-input')
-
     // @ts-ignore
     for (let s of sv) {
       // @ts-ignore
@@ -128,11 +134,10 @@ export class ShowprofileComponent implements OnInit {
     let price=this.profile.cost;
     let soAS=this.getAService().length
     this.total=sogiothue*price +soAS*150000
-    if (this.total>this.wallet.amount){
+    if (this.total>this.wallet?.amount){
       // @ts-ignore
       $('#createBTN').attr("disabled", true);
     }
-
   }
 
 
@@ -142,7 +147,6 @@ export class ShowprofileComponent implements OnInit {
     let bS=document.getElementById("basicS").value;
     if (bS){
       aS.push(bS)
-
     }
     // @ts-ignore
     let dh=document.getElementById("date-hire").value
@@ -168,7 +172,6 @@ export class ShowprofileComponent implements OnInit {
 
 
     }
-    console.log(aS)
     this.orderS.createOrder(order,aS).subscribe(()=>{
       alert("Create order successfull")
     })

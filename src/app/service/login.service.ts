@@ -57,15 +57,12 @@ export class LoginService {
     this.router.navigate(["/login"])
   }
   containsRole(role:string,userToken:any):boolean{
-    console.log(role,userToken.roles)
     let size=userToken.roles.length
     for (let i = 0; i <size ; i++) {
         if (role==userToken.roles[i]?.name){
-          console.log(1)
           return true;
         }
     }
-    console.log(2)
     return false;
 
   }

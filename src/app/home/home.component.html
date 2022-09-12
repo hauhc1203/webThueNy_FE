@@ -35,340 +35,97 @@
 <a href="https://webpixels.io/components?ref=codepen" class="btn w-full btn-primary text-truncate rounded-0 py-2 border-0 position-relative" style="z-index: 1000;">
 <!--  <strong>Crafted with Webpixels CSS:</strong> The design system for Bootstrap 5. Browse all components &rarr;-->
 </a>
-
-<div class="p-10 bg-surface-secondary">
+<section class="online-member new-block pdt-100">
   <div class="container">
-    <div class="card">
-      <div class="card-header">
-        <h6>ViewRank</h6>
-
-      </div>
-      <div class="table-responsive">
-<!--        <table class="table table-hover table-nowrap">-->
-<!--          <thead class="table-light">-->
-<!--          <tr>-->
-<!--            <th scope="col">#</th>-->
-<!--            <th scope="col">Name</th>-->
-<!--            <th scope="col">Gender</th>-->
-<!--            <th scope="col">Cost</th>-->
-<!--            <th scope="col">Views</th>-->
-
-<!--            <th></th>-->
-<!--          </tr>-->
-<!--          </thead>-->
-<!--          <tbody>-->
-<!--          <tr *ngFor="let p of profiles,index as i">-->
-<!--            <td >-->
-<!--              <span>{{i+1}}</span>-->
-<!--            </td>-->
-<!--            <td >-->
-<!--              <img alt="..." src="{{p.avatar}}" class="avatar avatar-sm rounded-circle me-2">-->
-<!--              <a [routerLink]="'profile/show/'+p.id" class="text-heading font-semibold" href="#"> {{p.fullName}}-->
-
-<!--              </a>-->
-<!--            </td>-->
-<!--            <td >-->
-<!--              <span class="text-current" >{{p.gender}}</span>-->
-<!--            </td>-->
-<!--            <td >-->
-<!--              <span class="text-current" >{{p.cost}}</span>-->
-<!--            </td>-->
-<!--            <td >-->
-<!--              <span class="badge bg-soft-success text-success">{{p.views}}</span>-->
-<!--            </td>-->
-<!--&lt;!&ndash;            <td data-label="">&ndash;&gt;-->
-<!--&lt;!&ndash;              <a class="text-current" href="#">Dribbble</a>&ndash;&gt;-->
-<!--&lt;!&ndash;            </td>&ndash;&gt;-->
-<!--&lt;!&ndash;            <td data-label="" class="text-end">&ndash;&gt;-->
-<!--&lt;!&ndash;              <div class="dropdown">&ndash;&gt;-->
-<!--&lt;!&ndash;                <a class="text-muted" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">&ndash;&gt;-->
-<!--&lt;!&ndash;                  <i class="bi bi-three-dots-vertical"></i>&ndash;&gt;-->
-<!--&lt;!&ndash;                </a>&ndash;&gt;-->
-<!--&lt;!&ndash;                <div class="dropdown-menu dropdown-menu-end">&ndash;&gt;-->
-<!--&lt;!&ndash;                  <a href="#!" class="dropdown-item">&ndash;&gt;-->
-<!--&lt;!&ndash;                    Action&ndash;&gt;-->
-<!--&lt;!&ndash;                  </a>&ndash;&gt;-->
-<!--&lt;!&ndash;                  <a href="#!" class="dropdown-item">&ndash;&gt;-->
-<!--&lt;!&ndash;                    Another action&ndash;&gt;-->
-<!--&lt;!&ndash;                  </a>&ndash;&gt;-->
-<!--&lt;!&ndash;                  <a href="#!" class="dropdown-item">&ndash;&gt;-->
-<!--&lt;!&ndash;                    Something else here&ndash;&gt;-->
-<!--&lt;!&ndash;                  </a>&ndash;&gt;-->
-<!--&lt;!&ndash;                </div>&ndash;&gt;-->
-<!--&lt;!&ndash;              </div>&ndash;&gt;-->
-<!--&lt;!&ndash;            </td>&ndash;&gt;-->
-<!--          </tr>-->
-<!--          <tr>-->
-<!--&lt;!&ndash;            <td data-label="Job Title">&ndash;&gt;-->
-<!--&lt;!&ndash;              <img alt="..." src="https://images.unsplash.com/photo-1610271340738-726e199f0258?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar-sm rounded-circle me-2">&ndash;&gt;-->
-<!--&lt;!&ndash;              <a class="text-heading font-semibold" href="#">&ndash;&gt;-->
-<!--&lt;!&ndash;                Darlene Robertson&ndash;&gt;-->
-<!--&lt;!&ndash;              </a>&ndash;&gt;-->
-<!--&lt;!&ndash;            </td>&ndash;&gt;-->
-<!--&lt;!&ndash;            <td data-label="Email">&ndash;&gt;-->
-<!--&lt;!&ndash;              <span>Developer</span>&ndash;&gt;-->
-<!--&lt;!&ndash;            </td>&ndash;&gt;-->
-<!--&lt;!&ndash;            <td data-label="Phone">&ndash;&gt;-->
-<!--&lt;!&ndash;              <a class="text-current" href="mailto:darlene@example.com">darlene@example.com</a>&ndash;&gt;-->
-<!--&lt;!&ndash;            </td>&ndash;&gt;-->
-<!--&lt;!&ndash;            <td data-label="Lead Score">&ndash;&gt;-->
-<!--&lt;!&ndash;              <a class="text-current" href="tel:224-567-2662">224-567-2662</a>&ndash;&gt;-->
-<!--&lt;!&ndash;            </td>&ndash;&gt;-->
-<!--&lt;!&ndash;            <td data-label="Company">&ndash;&gt;-->
-<!--&lt;!&ndash;              <span class="badge bg-soft-warning text-warning">5/10</span>&ndash;&gt;-->
-<!--&lt;!&ndash;            </td>&ndash;&gt;-->
-<!--&lt;!&ndash;            <td data-label="">&ndash;&gt;-->
-<!--&lt;!&ndash;              <a class="text-current" href="#">Netguru</a>&ndash;&gt;-->
-<!--&lt;!&ndash;            </td>&ndash;&gt;-->
-<!--&lt;!&ndash;            <td data-label="" class="text-end">&ndash;&gt;-->
-<!--&lt;!&ndash;              <div class="dropdown">&ndash;&gt;-->
-<!--&lt;!&ndash;                <a class="text-muted" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">&ndash;&gt;-->
-<!--&lt;!&ndash;                  <i class="bi bi-three-dots-vertical"></i>&ndash;&gt;-->
-<!--&lt;!&ndash;                </a>&ndash;&gt;-->
-<!--&lt;!&ndash;                <div class="dropdown-menu dropdown-menu-end">&ndash;&gt;-->
-<!--&lt;!&ndash;                  <a href="#!" class="dropdown-item">&ndash;&gt;-->
-<!--&lt;!&ndash;                    Action&ndash;&gt;-->
-<!--&lt;!&ndash;                  </a>&ndash;&gt;-->
-<!--&lt;!&ndash;                  <a href="#!" class="dropdown-item">&ndash;&gt;-->
-<!--&lt;!&ndash;                    Another action&ndash;&gt;-->
-<!--&lt;!&ndash;                  </a>&ndash;&gt;-->
-<!--&lt;!&ndash;                  <a href="#!" class="dropdown-item">&ndash;&gt;-->
-<!--&lt;!&ndash;                    Something else here&ndash;&gt;-->
-<!--&lt;!&ndash;                  </a>&ndash;&gt;-->
-<!--&lt;!&ndash;                </div>&ndash;&gt;-->
-<!--&lt;!&ndash;              </div>&ndash;&gt;-->
-<!--&lt;!&ndash;            </td>&ndash;&gt;-->
-<!--&lt;!&ndash;          </tr>&ndash;&gt;-->
-<!--&lt;!&ndash;          <tr>&ndash;&gt;-->
-<!--&lt;!&ndash;            <td data-label="Job Title">&ndash;&gt;-->
-<!--&lt;!&ndash;              <img alt="..." src="https://images.unsplash.com/photo-1610878722345-79c5eaf6a48c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar-sm rounded-circle me-2">&ndash;&gt;-->
-<!--&lt;!&ndash;              <a class="text-heading font-semibold" href="#">&ndash;&gt;-->
-<!--&lt;!&ndash;                Theresa Webb&ndash;&gt;-->
-<!--&lt;!&ndash;              </a>&ndash;&gt;-->
-<!--&lt;!&ndash;            </td>&ndash;&gt;-->
-<!--&lt;!&ndash;            <td data-label="Email">&ndash;&gt;-->
-<!--&lt;!&ndash;              <span>Marketing Specialist</span>&ndash;&gt;-->
-<!--&lt;!&ndash;            </td>&ndash;&gt;-->
-<!--&lt;!&ndash;            <td data-label="Phone">&ndash;&gt;-->
-<!--&lt;!&ndash;              <a class="text-current" href="mailto:theresa.webb@example.com">theresa.webb@example.com</a>&ndash;&gt;-->
-<!--&lt;!&ndash;            </td>&ndash;&gt;-->
-<!--&lt;!&ndash;            <td data-label="Lead Score">&ndash;&gt;-->
-<!--&lt;!&ndash;              <a class="text-current" href="tel:401-505-6800">401-505-6800</a>&ndash;&gt;-->
-<!--&lt;!&ndash;            </td>&ndash;&gt;-->
-<!--&lt;!&ndash;            <td data-label="Company">&ndash;&gt;-->
-<!--&lt;!&ndash;              <span class="badge bg-soft-danger text-danger">2/10</span>&ndash;&gt;-->
-<!--&lt;!&ndash;            </td>&ndash;&gt;-->
-<!--&lt;!&ndash;            <td data-label="">&ndash;&gt;-->
-<!--&lt;!&ndash;              <a class="text-current" href="#">Figma</a>&ndash;&gt;-->
-<!--&lt;!&ndash;            </td>&ndash;&gt;-->
-<!--&lt;!&ndash;            <td data-label="" class="text-end">&ndash;&gt;-->
-<!--&lt;!&ndash;              <div class="dropdown">&ndash;&gt;-->
-<!--&lt;!&ndash;                <a class="text-muted" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">&ndash;&gt;-->
-<!--&lt;!&ndash;                  <i class="bi bi-three-dots-vertical"></i>&ndash;&gt;-->
-<!--&lt;!&ndash;                </a>&ndash;&gt;-->
-<!--&lt;!&ndash;                <div class="dropdown-menu dropdown-menu-end">&ndash;&gt;-->
-<!--&lt;!&ndash;                  <a href="#!" class="dropdown-item">&ndash;&gt;-->
-<!--&lt;!&ndash;                    Action&ndash;&gt;-->
-<!--&lt;!&ndash;                  </a>&ndash;&gt;-->
-<!--&lt;!&ndash;                  <a href="#!" class="dropdown-item">&ndash;&gt;-->
-<!--&lt;!&ndash;                    Another action&ndash;&gt;-->
-<!--&lt;!&ndash;                  </a>&ndash;&gt;-->
-<!--&lt;!&ndash;                  <a href="#!" class="dropdown-item">&ndash;&gt;-->
-<!--&lt;!&ndash;                    Something else here&ndash;&gt;-->
-<!--&lt;!&ndash;                  </a>&ndash;&gt;-->
-<!--&lt;!&ndash;                </div>&ndash;&gt;-->
-<!--&lt;!&ndash;              </div>&ndash;&gt;-->
-<!--&lt;!&ndash;            </td>&ndash;&gt;-->
-<!--&lt;!&ndash;          </tr>&ndash;&gt;-->
-<!--&lt;!&ndash;          <tr>&ndash;&gt;-->
-<!--&lt;!&ndash;            <td data-label="Job Title">&ndash;&gt;-->
-<!--&lt;!&ndash;              <img alt="..." src="https://images.unsplash.com/photo-1612422656768-d5e4ec31fac0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar-sm rounded-circle me-2">&ndash;&gt;-->
-<!--&lt;!&ndash;              <a class="text-heading font-semibold" href="#">&ndash;&gt;-->
-<!--&lt;!&ndash;                Kristin Watson&ndash;&gt;-->
-<!--&lt;!&ndash;              </a>&ndash;&gt;-->
-<!--&lt;!&ndash;            </td>&ndash;&gt;-->
-<!--&lt;!&ndash;            <td data-label="Email">&ndash;&gt;-->
-<!--&lt;!&ndash;              <span>Sales Manager</span>&ndash;&gt;-->
-<!--&lt;!&ndash;            </td>&ndash;&gt;-->
-<!--&lt;!&ndash;            <td data-label="Phone">&ndash;&gt;-->
-<!--&lt;!&ndash;              <a class="text-current" href="mailto:cody.fisher@example.com">cody.fisher@example.com</a>&ndash;&gt;-->
-<!--&lt;!&ndash;            </td>&ndash;&gt;-->
-<!--&lt;!&ndash;            <td data-label="Lead Score">&ndash;&gt;-->
-<!--&lt;!&ndash;              <a class="text-current" href="tel:307-560-8817">307-560-8817</a>&ndash;&gt;-->
-<!--&lt;!&ndash;            </td>&ndash;&gt;-->
-<!--&lt;!&ndash;            <td data-label="Company">&ndash;&gt;-->
-<!--&lt;!&ndash;              <span class="badge bg-soft-success text-success">9/10</span>&ndash;&gt;-->
-<!--&lt;!&ndash;            </td>&ndash;&gt;-->
-<!--&lt;!&ndash;            <td data-label="">&ndash;&gt;-->
-<!--&lt;!&ndash;              <a class="text-current" href="#">Mailchimp</a>&ndash;&gt;-->
-<!--&lt;!&ndash;            </td>&ndash;&gt;-->
-<!--&lt;!&ndash;            <td data-label="" class="text-end">&ndash;&gt;-->
-<!--&lt;!&ndash;              <div class="dropdown">&ndash;&gt;-->
-<!--&lt;!&ndash;                <a class="text-muted" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">&ndash;&gt;-->
-<!--&lt;!&ndash;                  <i class="bi bi-three-dots-vertical"></i>&ndash;&gt;-->
-<!--&lt;!&ndash;                </a>&ndash;&gt;-->
-<!--&lt;!&ndash;                <div class="dropdown-menu dropdown-menu-end">&ndash;&gt;-->
-<!--&lt;!&ndash;                  <a href="#!" class="dropdown-item">&ndash;&gt;-->
-<!--&lt;!&ndash;                    Action&ndash;&gt;-->
-<!--&lt;!&ndash;                  </a>&ndash;&gt;-->
-<!--&lt;!&ndash;                  <a href="#!" class="dropdown-item">&ndash;&gt;-->
-<!--&lt;!&ndash;                    Another action&ndash;&gt;-->
-<!--&lt;!&ndash;                  </a>&ndash;&gt;-->
-<!--&lt;!&ndash;                  <a href="#!" class="dropdown-item">&ndash;&gt;-->
-<!--&lt;!&ndash;                    Something else here&ndash;&gt;-->
-<!--&lt;!&ndash;                  </a>&ndash;&gt;-->
-<!--&lt;!&ndash;                </div>&ndash;&gt;-->
-<!--&lt;!&ndash;              </div>&ndash;&gt;-->
-<!--&lt;!&ndash;            </td>&ndash;&gt;-->
-<!--&lt;!&ndash;          </tr>&ndash;&gt;-->
-<!--&lt;!&ndash;          <tr>&ndash;&gt;-->
-<!--&lt;!&ndash;            <td data-label="Job Title">&ndash;&gt;-->
-<!--&lt;!&ndash;              <img alt="..." src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar-sm rounded-circle me-2">&ndash;&gt;-->
-<!--&lt;!&ndash;              <a class="text-heading font-semibold" href="#">&ndash;&gt;-->
-<!--&lt;!&ndash;                Robert Fox&ndash;&gt;-->
-<!--&lt;!&ndash;              </a>&ndash;&gt;-->
-<!--&lt;!&ndash;            </td>&ndash;&gt;-->
-<!--&lt;!&ndash;            <td data-label="Email">&ndash;&gt;-->
-<!--&lt;!&ndash;              <span>Web Designer</span>&ndash;&gt;-->
-<!--&lt;!&ndash;            </td>&ndash;&gt;-->
-<!--&lt;!&ndash;            <td data-label="Phone">&ndash;&gt;-->
-<!--&lt;!&ndash;              <a class="text-current" href="mailto:robert.fox@example.com">robert.fox@example.com</a>&ndash;&gt;-->
-<!--&lt;!&ndash;            </td>&ndash;&gt;-->
-<!--&lt;!&ndash;            <td data-label="Lead Score">&ndash;&gt;-->
-<!--&lt;!&ndash;              <a class="text-current" href="tel:202-555-0152">202-555-0152</a>&ndash;&gt;-->
-<!--&lt;!&ndash;            </td>&ndash;&gt;-->
-<!--&lt;!&ndash;            <td data-label="Company">&ndash;&gt;-->
-<!--&lt;!&ndash;              <span class="badge bg-soft-success text-success">7/10</span>&ndash;&gt;-->
-<!--&lt;!&ndash;            </td>&ndash;&gt;-->
-<!--&lt;!&ndash;            <td data-label="">&ndash;&gt;-->
-<!--&lt;!&ndash;              <a class="text-current" href="#">Dribbble</a>&ndash;&gt;-->
-<!--&lt;!&ndash;            </td>&ndash;&gt;-->
-<!--&lt;!&ndash;            <td data-label="" class="text-end">&ndash;&gt;-->
-<!--&lt;!&ndash;              <div class="dropdown">&ndash;&gt;-->
-<!--&lt;!&ndash;                <a class="text-muted" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">&ndash;&gt;-->
-<!--&lt;!&ndash;                  <i class="bi bi-three-dots-vertical"></i>&ndash;&gt;-->
-<!--&lt;!&ndash;                </a>&ndash;&gt;-->
-<!--&lt;!&ndash;                <div class="dropdown-menu dropdown-menu-end">&ndash;&gt;-->
-<!--&lt;!&ndash;                  <a href="#!" class="dropdown-item">&ndash;&gt;-->
-<!--&lt;!&ndash;                    Action&ndash;&gt;-->
-<!--&lt;!&ndash;                  </a>&ndash;&gt;-->
-<!--&lt;!&ndash;                  <a href="#!" class="dropdown-item">&ndash;&gt;-->
-<!--&lt;!&ndash;                    Another action&ndash;&gt;-->
-<!--&lt;!&ndash;                  </a>&ndash;&gt;-->
-<!--&lt;!&ndash;                  <a href="#!" class="dropdown-item">&ndash;&gt;-->
-<!--&lt;!&ndash;                    Something else here&ndash;&gt;-->
-<!--&lt;!&ndash;                  </a>&ndash;&gt;-->
-<!--&lt;!&ndash;                </div>&ndash;&gt;-->
-<!--&lt;!&ndash;              </div>&ndash;&gt;-->
-<!--&lt;!&ndash;            </td>&ndash;&gt;-->
-<!--&lt;!&ndash;          </tr>&ndash;&gt;-->
-<!--          </tbody>-->
-<!--        </table>-->
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="title2"><h2 class="fz35">Vip members</h2>
+          <div class="clearfix"></div>
+        </div>
       </div>
     </div>
   </div>
-</div>
+  <div class="clearfix"></div>
+  <div class="filter-area new-block" style="display: block;">
+    <div class="container">
+      <div class="row" id="MixItUp2" >
+        <div *ngFor="let vipccdv of vipccdvs " [routerLink]="'/profile/show/'+vipccdv?.appUser?.id" class="mix category-1 col-lg-3 col-md-4 col-sm-6 col-xs-12"  style="display: block;">
+          <div class="block-stl2">
+            <div class="img-holder"><img src="{{vipccdv?.avatar}}" alt="" class="img-responsive"></div>
+            <div class="txt-block"><a href="#"><h3 class="fz22">{{vipccdv?.fullName}}</h3>
+              <p>{{vipccdv?.city?.name}}-{{vipccdv?.country?.name}}</p></a>
+            </div>
+            <div class="txt-block">
+              <h3 class="fz22">Price/h: {{vipccdv?.cost}}</h3>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section><!-- online-member -->
+
 
 <section class="online-member new-block pdt-100">
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
-        <div class="title2"><h2 class="fz35">Members Online Now</h2>
+        <div class="title2"><h2 class="fz35">New members</h2>
           <div class="clearfix"></div>
         </div>
       </div>
-
     </div>
   </div>
   <div class="clearfix"></div>
   <div class="filter-area new-block" style="display: block;">
     <div class="container">
       <div class="row" id="MixItUp1" >
-        <div class="mix category-1 col-lg-3 col-md-4 col-sm-6 col-xs-12"  style="display: block;">
+        <div *ngFor="let newccdv of newccdvs " [routerLink]="'/profile/show/'+newccdv?.appUser?.id" class="mix category-1 col-lg-3 col-md-4 col-sm-6 col-xs-12"  style="display: block;">
           <div class="block-stl2">
-            <div class="img-holder"><img src="/assets/images/img1.jpg" alt="" class="img-responsive"></div>
-            <div class="txt-block"><a href="#"><h3 class="fz22">Tenma Shyna</h3>
-              <p>22 / F / Philippines</p></a></div>
+            <div class="img-holder"><img src="{{newccdv?.avatar}}" alt="" class="img-responsive"></div>
+            <div class="txt-block"><a href="#"><h3 class="fz22">{{newccdv?.fullName}}</h3>
+              <p>{{newccdv?.city?.name}}-{{newccdv?.country?.name}}</p></a>
+            </div>
+            <div class="txt-block">
+              <h3 class="fz22">Price/h: {{newccdv?.cost}}</h3>
+            </div>
           </div>
-        </div>
-        <div class="mix category-2 col-lg-3 col-md-4 col-sm-6 col-xs-12" style="display: block;">
-          <div class="block-stl2">
-            <div class="img-holder"><img src="/assets/images/img2.jpg" alt="" class="img-responsive"></div>
-            <div class="txt-block"><a href="#"><h3 class="fz22">Tenma Shyna</h3>
-              <p>22 / M / Philippines</p></a></div>
-          </div>
-        </div>
-        <div class="mix category-1 col-lg-3 col-md-4 col-sm-6 col-xs-12" style="display: block;">
-          <div class="block-stl2">
-            <div class="img-holder"><img src="/assets/images/img3.jpg" alt="" class="img-responsive"></div>
-            <div class="txt-block"><a href="#"><h3 class="fz22">Tenma Shyna</h3>
-              <p>22 / F / Philippines</p></a></div>
-          </div>
-        </div>
-        <div class="mix category-1 col-lg-3 col-md-4 col-sm-6 col-xs-12" style="display: block;">
-          <div class="block-stl2">
-            <div class="img-holder"><img src="/assets/images/img4.jpg" alt="" class="img-responsive"></div>
-            <div class="txt-block"><a href="#"><h3 class="fz22">Tenma Shyna</h3>
-              <p>22 / F / Philippines</p></a></div>
-          </div>
-        </div>
-        <div class="mix category-1 col-lg-3 col-md-4 col-sm-6 col-xs-12" style="display: block;">
-          <div class="block-stl2">
-            <div class="img-holder"><img src="/assets/images/img5.jpg" alt="" class="img-responsive"></div>
-            <div class="txt-block"><a href="#"><h3 class="fz22">Tenma Shyna</h3>
-              <p>22 / F / Philippines</p></a></div>
-          </div>
-        </div>
-        <div class="mix category-1 col-lg-3 col-md-4 col-sm-6 col-xs-12"  style="display: block;">
-          <div class="block-stl2">
-            <div class="img-holder"><img src="/assets/images/img1.jpg" alt="" class="img-responsive"></div>
-            <div class="txt-block"><a href="#"><h3 class="fz22">Tenma Shyna</h3>
-              <p>22 / F / Philippines</p></a></div>
-          </div>
-        </div>
-        <div class="mix category-2 col-lg-3 col-md-4 col-sm-6 col-xs-12" style="display: block;">
-          <div class="block-stl2">
-            <div class="img-holder"><img src="/assets/images/img2.jpg" alt="" class="img-responsive"></div>
-            <div class="txt-block"><a href="#"><h3 class="fz22">Tenma Shyna</h3>
-              <p>22 / M / Philippines</p></a></div>
-          </div>
-        </div>
-        <div class="mix category-1 col-lg-3 col-md-4 col-sm-6 col-xs-12" style="display: block;">
-          <div class="block-stl2">
-            <div class="img-holder"><img src="/assets/images/img3.jpg" alt="" class="img-responsive"></div>
-            <div class="txt-block"><a href="#"><h3 class="fz22">Tenma Shyna</h3>
-              <p>22 / F / Philippines</p></a></div>
-          </div>
+
         </div>
 
-        <div class="mix category-1 col-lg-3 col-md-4 col-sm-6 col-xs-12" style="display: block;">
-          <div class="block-stl2">
-            <div class="img-holder"><img src="/assets/images/img5.jpg" alt="" class="img-responsive"></div>
-            <div class="txt-block"><a href="#"><h3 class="fz22">Tenma Shyna</h3>
-              <p>22 / F / Philippines</p></a></div>
-          </div>
+      </div>
+    </div>
+  </div>
+</section><!-- online-member -->
+<section class="online-member new-block pdt-100" *ngIf="isLogin">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="title2"><h2 class="fz35">Near you</h2>
+          <div class="clearfix"></div>
         </div>
-        <div class="mix category-1 col-lg-3 col-md-4 col-sm-6 col-xs-12" style="display: block;">
+      </div>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+  <div class="filter-area new-block" style="display: block;">
+    <div class="container">
+      <div class="row" id="MixItUp3" >
+        <div *ngFor="let near of nearvvdvs " [routerLink]="'/profile/show/'+near?.appUser?.id" class="mix category-1 col-lg-3 col-md-4 col-sm-6 col-xs-12"  style="display: block;">
           <div class="block-stl2">
-            <div class="img-holder"><img src="/assets/images/img6.jpg" alt="" class="img-responsive"></div>
-            <div class="txt-block"><a href="#"><h3 class="fz22">Tenma Shyna</h3>
-              <p>22 / F / Philippines</p></a></div>
+            <div class="img-holder"><img src="{{near?.avatar}}" alt="" class="img-responsive"></div>
+            <div class="txt-block"><a href="#"><h3 class="fz22">{{near?.fullName}}</h3>
+              <p>{{near?.city?.name}}-{{near?.country?.name}}</p></a>
+            </div>
+            <div class="txt-block">
+              <h3 class="fz22">Price/h: {{near?.cost}}</h3>
+            </div>
           </div>
+
         </div>
-        <div class="mix category-2 col-lg-3 col-md-4 col-sm-6 col-xs-12" style="display: block;">
-          <div class="block-stl2">
-            <div class="img-holder"><img src="/assets/images/img7.jpg" alt="" class="img-responsive"></div>
-            <div class="txt-block"><a href="#"><h3 class="fz22">Tenma Shyna</h3>
-              <p>22 / M / Philippines</p></a></div>
-          </div>
-        </div>
-        <div class="mix category-1 col-lg-3 col-md-4 col-sm-6 col-xs-12" style="display: block;">
-          <div class="block-stl2">
-            <div class="img-holder"><img src="/assets/images/img8.jpg" alt="" class="img-responsive"></div>
-            <div class="txt-block"><a href="#"><h3 class="fz22">Tenma Shyna</h3>
-              <p>22 / F / Philippines</p></a></div>
-          </div>
-        </div>
+
       </div>
     </div>
   </div>
