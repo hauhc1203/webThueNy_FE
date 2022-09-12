@@ -18,6 +18,8 @@ export class HomeComponent implements OnInit,DoCheck {
   // @ts-ignore
   nearvvdvs:any[];
   // @ts-ignore
+  byGender:any[];
+  // @ts-ignore
   isLogin:boolean;
   ut:any;
 
@@ -28,17 +30,23 @@ export class HomeComponent implements OnInit,DoCheck {
       homeS.vipCCDV().subscribe((data)=>{
         this.vipccdvs=data
       })
+
     this.ut=loginService.getUserToken();
     this.isLogin=this.ut!=null;
     if (this.isLogin){
       this.getNear(0);
-
+      this.getProfileByGender(0)
     }
   }
 
   getNear(page:number){
     this.homeS.near(page).subscribe((data)=>{
       this.nearvvdvs=data.content
+    })
+  }
+  getProfileByGender(page:number){
+    this.homeS.getProfileByGender(page).subscribe((data)=>{
+      this.byGender=data.content
     })
   }
 

@@ -19,5 +19,9 @@ export class HomeService {
   near(page:number):Observable<any>{
     return this.http.get(`http://localhost:8080/profile/nearccdv?page=`+page)
   }
+  getProfileByGender(page:number):Observable<any>{
+    return this.http.get(`http://localhost:8080/profile/showbygender?page=`+page)
+  }
+
 
 }
