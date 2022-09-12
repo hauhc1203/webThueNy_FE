@@ -294,8 +294,9 @@
             <ul class="list-group">
               <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg" *ngFor="let o of orders | paginate:{itemsPerPage: 1, currentPage: p} , index as i ">
                 <div class="d-flex flex-column">
-                  <h6 class="mb-3 text-sm" *ngIf="o.status==false">Status : Waiting</h6>
-                  <h6 class="mb-3 text-sm" *ngIf="o.status==true">Status : Complete</h6>
+                  <h6 class="mb-3 text-sm" *ngIf="o.status==0">Status : Waiting</h6>
+                  <h6 class="mb-3 text-sm" *ngIf="o.status==1">Status : RECEIVED</h6>
+                  <h6 class="mb-3 text-sm" *ngIf="o.status==2">Status : COMPLETE</h6>
                   <span class="mb-2 text-xs">Supplier's Name: <span class="text-dark font-weight-bold ms-sm-2">{{o.appUser.userName}}</span></span>
                   <span class="mb-2 text-xs">Tenant's Name: <span class="text-dark ms-sm-2 font-weight-bold">{{o.profile.fullName}}</span></span>
                   <span class="mb-2 text-xs">Total order: <span class="text-dark ms-sm-2 font-weight-bold">{{o.total}} vnd</span></span>
@@ -553,8 +554,8 @@
 
       <!-- Modal Header -->
       <div class="modal-header" >
-        <h4 class="modal-title">Chi tiết hóa đơn</h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Order Detail</h4>
+<!--        <button type="button" class="close" data-dismiss="modal">&times;</button>-->
       </div>
 
       <!-- Modal body -->
@@ -564,9 +565,10 @@
         <p>Address         : {{order?.address}}</p>
         <p>Rental period   : {{order?.time}}h</p>
         <p>Date            : {{order?.datingTime}}</p>
-        <p>Total order     : {{order?.total}} VND</p>
-        <p *ngIf="order?.status==false">Status          : Waiting</p>
-        <p *ngIf="order?.status==true">Status          : Complete</p>
+        <p>Total order     : {{order.total}} VND</p>
+        <p *ngIf="order?.status==0">Status          : WAITING</p>
+        <p *ngIf="order?.status==1">Status          : RECEIVED</p>
+        <p *ngIf="order?.status==2">Status          : COMPLETE</p>
       </div>
 
       <!-- Modal footer -->

@@ -4,12 +4,15 @@ import {LoginService} from "../../service/login.service";
 import {UploadIMGService} from "../../service/upload-img.service";
 import * as $ from 'jquery'
 import { Router,ActivatedRoute, ParamMap} from "@angular/router";
+import {Order} from "../../models/Order";
 @Component({
   selector: 'app-showprofile',
   templateUrl: './showprofile.component.html',
   styleUrls: ['./showprofile.component.css']
 })
 export class ShowprofileComponent implements OnInit {
+
+  orders:Order[]=[];
   // @ts-ignore
   id:number;
   // @ts-ignore
@@ -43,6 +46,14 @@ export class ShowprofileComponent implements OnInit {
     });
 
 
+  }
+
+  showOrderDetail(id:any){
+    this.profileService.getOrderByAppUser(id).subscribe((data)=>{
+      this.orders = data;
+      console.log(data)
+      console.log(id)
+    })
   }
 
 

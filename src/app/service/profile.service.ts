@@ -34,4 +34,8 @@ export class ProfileService {
     // @ts-ignore
     return this.http.post<any>("http://localhost:8080/profile/edit/",profile)
   }
+
+  getOrderByAppUser(id:any):Observable<any>{
+    return this.http.get(`http://localhost:8080/profile/orderByUser/${id}`)
+  }
 }

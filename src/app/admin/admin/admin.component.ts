@@ -26,9 +26,6 @@ export class AdminComponent implements OnInit {
   ngOnInit(): void {
     this.adminService.showUser().subscribe((data)=>{
       this.appUsers=data;
-    });
-    this.adminService.showOrder().subscribe((dataOrder)=>{
-      this.orders=dataOrder;
     })
   }
 
@@ -76,13 +73,6 @@ export class AdminComponent implements OnInit {
     })
   }
 
-  showOrderDetail(id:any){
-    this.adminService.showOrderDetail(id).subscribe((data)=>{
-      this.order=data;
-      console.log(data);
-      console.log(id);
-    })
-  }
 
 
 
