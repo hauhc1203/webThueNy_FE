@@ -29,6 +29,10 @@ export class ProfileService {
   getCountry():Observable<any>{
     return this.http.get<any>("http://localhost:8080/country")
   }
+
+  reqVerification(id:number){
+      return this.http.get<any>("http://localhost:8080/profile/reqVerification/"+id)
+  }
   // @ts-ignore
   updateProfile(profile:any):Observable<any>{
     // @ts-ignore
@@ -37,5 +41,11 @@ export class ProfileService {
 
   getOrderByAppUser(id:any):Observable<any>{
     return this.http.get(`http://localhost:8080/profile/orderByUser/${id}`)
+  }
+  editPrice(profile:any):Observable<any>{
+    return this.http.post<any>("http://localhost:8080/profile/editprice",profile)
+  }
+  editRQM(profile:any):Observable<any>{
+    return this.http.post<any>("http://localhost:8080/profile/editrqm",profile)
   }
 }

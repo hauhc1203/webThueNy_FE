@@ -9,7 +9,7 @@ import {ShowOrderByAppUserComponent} from "./show-order-by-app-user/show-order-b
 const routes: Routes = [
   {path:'show/:id',component:ShowprofileComponent},
   {
-    path:'edit/:id',
+    path:'edit',
     component:EditprofileComponent,
     canActivate:[LoginGuard]
   },

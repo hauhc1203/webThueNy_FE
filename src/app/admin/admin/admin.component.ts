@@ -16,8 +16,15 @@ import {Profile} from "../../models/Profile";
 export class AdminComponent implements OnInit {
   appUsers : AppUser[] = [];
   date: Date =new Date();
+  profiles : Profile[]=[];
+  createDate : any;
+  profile !:Profile;
+  // @ts-ignore
+  idR:number;
+  // @ts-ignore
+  mess:string;
 
-  orders:Order[]=[];
+
   order !: Order ;
   constructor(private adminService:AdminService,private http:HttpClient,private route:ActivatedRoute,private  router:Router) { }
 
@@ -27,7 +34,12 @@ export class AdminComponent implements OnInit {
     this.adminService.showUser().subscribe((data)=>{
       this.appUsers=data;
     })
+    this.adminService.getProfile().subscribe((data)=>{
+      this.profiles=data;
+    })
   }
+
+
 
   ban(id:any, i:any){
     this.appUsers[i].status =2;
@@ -72,6 +84,35 @@ export class AdminComponent implements OnInit {
       console.log(id)
     })
   }
+
+  userValidation(id:any){
+
+    this.adminService.userValidation(id).subscribe(()=>{
+      this.adminService.getProfile().subscribe((data)=>{
+        console.log(data)
+        this.profiles=data;
+
+      })
+    })
+  }
+  getID(id:number){
+    this.idR=id;
+  }
+  refuse(){
+    // @ts-ignore
+    this.mess=document.getElementById("mess").value
+    console.log(this.mess)
+    this.adminService.refuse(this.idR,this.mess).subscribe(()=>{
+
+      this.adminService.getProfile().subscribe((data)=>{
+        this.profiles=data;
+      })
+      // @ts-ignore
+      document.getElementById("mess").value = "";
+    })
+  }
+
+
 
 
 

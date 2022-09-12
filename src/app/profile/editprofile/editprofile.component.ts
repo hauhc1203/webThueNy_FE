@@ -40,13 +40,11 @@ export class EditprofileComponent implements OnInit {
 
   // @ts-ignore
   constructor(private profileService: ProfileService, private uploadFile: UploadIMGService, private route: ActivatedRoute, private loginS:LoginService) {
-    this.route.paramMap.subscribe(paramMap => {
-      // @ts-ignore
-      this.id = paramMap.get('id');
-      let yourID=this.loginS.getUserToken().id;
-      if (this.id!=yourID){
-        this.id=yourID;
-      }
+
+
+
+      this.id= this.loginS.getUserToken().id;
+
       this.profileService.getCountry().subscribe((d) => {
         this.countrys = d;
       });
@@ -70,10 +68,8 @@ export class EditprofileComponent implements OnInit {
           gender: new FormControl(data.gender),
           birthDay: new FormControl(data.birthDay),
         });
-        console.log("form value", this.editForm.value)
       });
 
-    });
   }
 
   ngOnInit(): void {
@@ -90,7 +86,6 @@ export class EditprofileComponent implements OnInit {
   choosefile(filename: any, to: string) {
     let id = '#' + to;
     let id2 = 'input' + to;
-    console.log(id2)
     let link = document.getElementById(id2)
     let reader = new FileReader();
     reader.onload = function (e) {
@@ -101,7 +96,11 @@ export class EditprofileComponent implements OnInit {
     reader.readAsDataURL(link.files[0])
 
   }
-
+  reqVerification(){
+    this.profileService.reqVerification(this.id).subscribe((data)=>{
+      alert("Send request verification successfull !")
+    })
+  }
   editProfile() {
     let edit = {
       id: this.profile.id,
@@ -123,10 +122,11 @@ export class EditprofileComponent implements OnInit {
       gender: this.editForm.value.gender,
       birthDay: this.editForm.value.birthDay,
     }
-    console.log('data edited', this.editForm.value)
-    console.log(' edited', edit)
+
     // @ts-ignore
-    this.profileService.updateProfile(edit).subscribe();
+    this.profileService.updateProfile(edit).subscribe(()=>{
+      alert("Chỉnh sửa thông tin thành công")
+    });
     // this.router.navigate(["/profile/show"])
   }
 

@@ -23,13 +23,13 @@ export class Profile{
   private _status:number;
   private _requirementsForHirer:string;
   private _createDate:Date;
-  private _isConfirm:boolean;
+  private _isConfirm:number;
   private _serviceList:Provide;
   private _appUser:AppUser;
   private _views:number;
 
 
-  constructor(id: number, fullName: string, birthDay: Date, city: City, country: Country, avatar: string, img1: string, img2: string, img3: string, high: number, weight: number, hobby: string, introduction: string, facebookLink: string, cost: number, gender: boolean, status: number, requirementsForHirer: string, createDate: Date, isConfirm: boolean, serviceList: Provide, appUser: AppUser, views: number) {
+  constructor(id: number, fullName: string, birthDay: Date, city: City, country: Country, avatar: string, img1: string, img2: string, img3: string, high: number, weight: number, hobby: string, introduction: string, facebookLink: string, cost: number, gender: boolean, status: number, requirementsForHirer: string, createDate: Date, isConfirm: number, serviceList: Provide, appUser: AppUser, views: number) {
     this._id = id;
     this._fullName = fullName;
     this._birthDay = birthDay;
@@ -54,7 +54,6 @@ export class Profile{
     this._appUser = appUser;
     this._views = views;
   }
-
 
   get id(): number {
     return this._id;
@@ -208,11 +207,11 @@ export class Profile{
     this._createDate = value;
   }
 
-  get isConfirm(): boolean {
+  get isConfirm(): number {
     return this._isConfirm;
   }
 
-  set isConfirm(value: boolean) {
+  set isConfirm(value: number) {
     this._isConfirm = value;
   }
 
