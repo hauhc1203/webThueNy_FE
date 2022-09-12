@@ -34,6 +34,23 @@ export class AdminService {
     return this.http.get<any>(`http://localhost:8080/admin/showOrder`)
   }
 
+  showOrderDetail(id:number):Observable<any>{
+    return this.http.get<any>(`http://localhost:8080/admin/showOder/${id}`)
+  }
+
+  userValidation(id:number):Observable<any>{
+    return this.http.get<any>(`http://localhost:8080/admin/uservalidation/${id}`)
+  }
+
+  refuse(id:number,mess:string):Observable<any>{
+    return this.http.post<any>(`http://localhost:8080/admin/refuse/${id}`,mess)
+  }
+
+  getProfile():Observable<any>{
+    return this.http.get(`http://localhost:8080/admin/profile`)
+  }
+
+
 
 
 }

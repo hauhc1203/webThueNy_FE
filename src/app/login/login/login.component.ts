@@ -21,12 +21,11 @@ export class LoginComponent implements OnInit {
 
   login(){
     this.loginService.login(this.loginForm.value).subscribe((data)=>{
-      console.log(data)
-      // this.loginService.setToken(data.token);
+      this.loginService.setUserToken(data)
+
       if (data==null){
         // @ts-ignore
         document.getElementById("checkLogin").style.display="flex";
-
       } else {
         if (data.userName != null){
           this.loginService.setToken(data.token);

@@ -1,9 +1,10 @@
 import {Component, DoCheck, OnInit} from '@angular/core';
 import {LoginService} from "../service/login.service";
-import {ProfileService} from "../service/profile.service";
+import  * as $ from 'jquery'
+import {HomeService} from "../service/home.service";
 import {data} from "jquery";
 import {Profile} from "../models/Profile";
-
+import {ProfileService} from "../service/profile.service";
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -11,12 +12,38 @@ import {Profile} from "../models/Profile";
 })
 export class HomeComponent implements OnInit,DoCheck {
   profiles!:Profile[]
-
+  profiless!:Profile[]
   token:string='';
-  constructor(private loginService:LoginService,private profileService:ProfileService) {
+  // @ts-ignore
+  newccdvs:any[];
+  // @ts-ignore
+  vipccdvs:any[];
+  // @ts-ignore
+  nearvvdvs:any[];
+  // @ts-ignore
+  isLogin:boolean;
+  ut:any;
 
+  constructor(private loginService:LoginService,private homeS:HomeService,private profileService:ProfileService) {
+      homeS.newCCDV().subscribe((data)=>{
+        this.newccdvs=data;
+      })
+      homeS.vipCCDV().subscribe((data)=>{
+        this.vipccdvs=data
+      })
+    this.ut=loginService.getUserToken();
+    this.isLogin=this.ut!=null;
+    if (this.isLogin){
+      this.getNear(0);
+
+    }
   }
 
+  getNear(page:number){
+    this.homeS.near(page).subscribe((data)=>{
+      this.nearvvdvs=data.content
+    })
+  }
 
   ngDoCheck(){
     // @ts-ignore
@@ -24,15 +51,13 @@ export class HomeComponent implements OnInit,DoCheck {
   }
 
   ngOnInit(): void {
-    this.profileService.getProfileByView().subscribe((data)=>{
-      this.profiles=data
-      console.log(this.profiles)
-    })
+    // @ts-ignore
+    this.profileService.showUserBoy().subscribe((data)=>{
+      this.profiles=data})
 
+    this.profileService.showUserGirl().subscribe((data)=>{
+      this.profiless=data})
 
   }
-
-
-
 
 }
