@@ -10,7 +10,7 @@ import {Profile} from "../models/Profile";
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit,DoCheck {
-  profiles:Profile[] =[]
+  profiles!:Profile[]
 
   token:string='';
   constructor(private loginService:LoginService,private profileService:ProfileService) {
@@ -26,9 +26,12 @@ export class HomeComponent implements OnInit,DoCheck {
   ngOnInit(): void {
     this.profileService.getProfileByView().subscribe((data)=>{
       this.profiles=data
-
+      console.log(this.profiles)
     })
+
+
   }
+
 
 
 
