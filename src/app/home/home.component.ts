@@ -19,7 +19,6 @@ export class HomeComponent implements OnInit,DoCheck {
   nearvvdvs:any[];
   // @ts-ignore
   isLogin:boolean;
-
   ut:any;
 
   constructor(private loginService:LoginService,private homeS:HomeService) {
