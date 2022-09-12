@@ -32,6 +32,7 @@ export class HomeComponent implements OnInit,DoCheck {
     this.isLogin=this.ut!=null;
     if (this.isLogin){
       this.getNear(0);
+
     }
   }
 
