@@ -58,14 +58,14 @@ export class EditprofileComponent implements OnInit {
         // @ts-ignore
         this.editForm = new FormGroup({
           id: new FormControl(data?.id),
-          fullName: new FormControl(data.fullName,[Validators.required,Validators.min(5)]),
+          fullName: new FormControl(data.fullName,[Validators.required,Validators.minLength(5)]),
           high: new FormControl(data.high,[Validators.min(150),Validators.max(250),Validators.required]),
           weight: new FormControl(data.weight,[Validators.min(30),Validators.max(200),Validators.required]),
-          hobby: new FormControl(data.hobby,[Validators.required,Validators.min(10)]),
+          hobby: new FormControl(data.hobby,[Validators.required,Validators.minLength(10)]),
           country: new FormControl(data.country?.id,Validators.required),
           city: new FormControl(data.city?.id,Validators.required),
           introduction: new FormControl(data.introduction,[Validators.minLength(10),Validators.required]),
-          facebookLink: new FormControl(data.facebookLink,Validators.required),
+          facebookLink: new FormControl(data.facebookLink,[Validators.required,Validators.pattern('(?:(?:http|https):\\/\\/)?(?:www.|m.)?facebook.com\\/(?!home.php)(?:(?:\\w)*#!\\/)?(?:pages\\/)?(?:[?\\w\\-]*\\/)?(?:profile.php\\?id=(?=\\d.*))?([\\w\\.-]+)')]),
           gender: new FormControl(data.gender,Validators.required),
           birthDay: new FormControl(data.birthDay,Validators.required),
         });
