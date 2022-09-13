@@ -4,8 +4,9 @@ import {UploadIMGService} from "../../service/upload-img.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import * as $ from "jquery";
 import {data} from "jquery";
-import {FormControl, FormGroup} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {LoginService} from "../../service/login.service";
+import {min} from "rxjs";
 
 @Component({
   selector: 'app-editprofile',
@@ -57,16 +58,16 @@ export class EditprofileComponent implements OnInit {
         // @ts-ignore
         this.editForm = new FormGroup({
           id: new FormControl(data?.id),
-          fullName: new FormControl(data.fullName),
-          high: new FormControl(data.high),
-          weight: new FormControl(data.weight),
-          hobby: new FormControl(data.hobby),
-          country: new FormControl(data.country?.id),
-          city: new FormControl(data.city?.id),
-          introduction: new FormControl(data.introduction),
-          facebookLink: new FormControl(data.facebookLink),
-          gender: new FormControl(data.gender),
-          birthDay: new FormControl(data.birthDay),
+          fullName: new FormControl(data.fullName,[Validators.required,Validators.min(5)]),
+          high: new FormControl(data.high,[Validators.min(150),Validators.max(250),Validators.required]),
+          weight: new FormControl(data.weight,[Validators.min(30),Validators.max(200),Validators.required]),
+          hobby: new FormControl(data.hobby,[Validators.required,Validators.min(10)]),
+          country: new FormControl(data.country?.id,Validators.required),
+          city: new FormControl(data.city?.id,Validators.required),
+          introduction: new FormControl(data.introduction,[Validators.minLength(10),Validators.required]),
+          facebookLink: new FormControl(data.facebookLink,Validators.required),
+          gender: new FormControl(data.gender,Validators.required),
+          birthDay: new FormControl(data.birthDay,Validators.required),
         });
       });
 
