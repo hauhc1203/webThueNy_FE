@@ -64,4 +64,5 @@ export class ProfileService {
   showUserGirl(): Observable<Profile[]> {
     return this.http.get<Profile[]>("http://localhost:8080/profile/showUserGirl")
   }
+
 }

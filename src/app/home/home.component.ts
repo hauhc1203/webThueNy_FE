@@ -13,6 +13,8 @@ import {ProfileService} from "../service/profile.service";
 export class HomeComponent implements OnInit,DoCheck {
   profiles!:Profile[]
   profiless!:Profile[]
+
+
   token:string='';
   // @ts-ignore
   newccdvs:any[];
@@ -57,6 +59,7 @@ export class HomeComponent implements OnInit,DoCheck {
 
     this.profileService.showUserGirl().subscribe((data)=>{
       this.profiless=data})
+
 
   }
 
