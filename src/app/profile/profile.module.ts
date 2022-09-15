@@ -4,13 +4,13 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 import { ProfileRoutingModule } from './profile-routing.module';
 import { ServiceComponent } from './service/service.component';
-import { ShowOrderByAppUserComponent } from './show-order-by-app-user/show-order-by-app-user.component';
+import { OrderComponent } from './order/order.component';
 
 
 @NgModule({
   declarations: [
     ServiceComponent,
-    ShowOrderByAppUserComponent,
+    OrderComponent,
 
   ],
   imports: [

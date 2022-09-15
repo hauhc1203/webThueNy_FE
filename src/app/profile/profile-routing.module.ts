@@ -4,7 +4,7 @@ import {ShowprofileComponent} from "./showprofile/showprofile.component";
 import {EditprofileComponent} from "./editprofile/editprofile.component";
 import {ServiceComponent} from "./service/service.component";
 import {LoginGuard} from "../guard/login.guard";
-import {ShowOrderByAppUserComponent} from "./show-order-by-app-user/show-order-by-app-user.component";
+import {OrderComponent} from "./order/order.component";
 
 const routes: Routes = [
   {path:'show/:id',component:ShowprofileComponent},
@@ -16,8 +16,8 @@ const routes: Routes = [
   {path:'service',component:ServiceComponent,
     canActivate:[LoginGuard]
   },
-  {
-    path:'showOrderByAppUser',component:ShowOrderByAppUserComponent
+  {path:'order',component:OrderComponent,
+    canActivate:[LoginGuard]
   }
 
 ];
