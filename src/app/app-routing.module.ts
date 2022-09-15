@@ -7,6 +7,7 @@ import {PageErorComponent} from "./page-eror/page-eror.component";
 import {HomeComponent} from "./home/home.component";
 
 
+
 const routes: Routes = [
   {
     path:'profile',
@@ -28,7 +29,8 @@ const routes: Routes = [
     path:'pageEror',component:PageErorComponent},
   {
     path:'',component:HomeComponent
-  }
+  },
+
 ];
 
 @NgModule({

@@ -4,3 +4,35 @@
 
 @import url(https://unpkg.com/@webpixels/css/dist/index.css);
 
+.form-group{
+  margin-left: -60px!important;
+  width: 1280px!important;
+  height: max-content;
+  display: flex;
+  justify-content: left;
+  gap:10px;
+  flex-shrink: 0;
+  /*flex-wrap: wrap;*/
+}
+
+select{
+  width: 120px;
+  height: 30px;
+  background: gray;
+  margin-right: 18px;
+  border-radius: 5px;
+}
+.form-control{
+  padding: 0 0 0 20px!important;
+
+}
+.form-group{
+
+}
+.form-control{
+  width: 180px;
+}
+.sarch-member-btn{
+  position: relative;
+  background: rebeccapurple;
+}

@@ -3,12 +3,17 @@ import {LoginService} from "../service/login.service";
 import  * as $ from 'jquery'
 import {HomeService} from "../service/home.service";
 import {data} from "jquery";
+import {ProfileService} from "../service/profile.service";
+import {Profile} from "../models/Profile";
+import {FormControl, FormGroup} from "@angular/forms";
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit,DoCheck {
+
+  profiles :Profile[]=[];
 
   token:string='';
   // @ts-ignore
@@ -22,8 +27,9 @@ export class HomeComponent implements OnInit,DoCheck {
   // @ts-ignore
   isLogin:boolean;
   ut:any;
+  citys:any
 
-  constructor(private loginService:LoginService,private homeS:HomeService) {
+  constructor(private loginService:LoginService,private homeS:HomeService,private profileService:ProfileService ) {
       homeS.newCCDV().subscribe((data)=>{
         this.newccdvs=data;
       })
@@ -53,10 +59,48 @@ export class HomeComponent implements OnInit,DoCheck {
   ngDoCheck(){
     // @ts-ignore
     this.token=this.loginService.getToke()
+
   }
 
   ngOnInit(): void {
+    this.profileService.getALl().subscribe((data)=>{
+      this.profiles=data
+    });
+    this.profileService.getCity(1).subscribe((d) => {
+      this.citys = d;
+    });
+
   }
+
+  searchForm:any = new FormGroup({
+      address:new FormControl(),
+      gender:new FormControl(),
+      birthyear:new FormControl(),
+      fullName:new FormControl(),
+      views:new FormControl(),
+      hireTimes:new FormControl(),
+  })
+  p: any;
+
+
+  search(){
+    console.log(this.searchForm.value)
+
+    let search = {
+      idCity:this.searchForm.value.address,
+      gender : this.searchForm.value.gender,
+      minAgeAndMaxAge : this.searchForm.value.birthyear,
+      fullName : this.searchForm.value.fullName,
+      views : this.searchForm.value.views,
+      hireTimes : this.searchForm.value.hireTimes
+
+    }
+    this.profileService.search(search).subscribe((data)=>{
+      this.profiles=data;
+      console.log(data)
+    })
+  }
+
 
 
 

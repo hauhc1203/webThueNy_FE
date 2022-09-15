@@ -23,6 +23,7 @@ import {NgxPaginationModule} from "ngx-pagination";
 import { ShowOrderDetailComponent } from './admin/show-order-detail/show-order-detail.component';
 import {ShowOrderByAppUserComponent} from "./profile/show-order-by-app-user/show-order-by-app-user.component";
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,6 +35,7 @@ import {ShowOrderByAppUserComponent} from "./profile/show-order-by-app-user/show
     ShowprofileComponent,
     EditprofileComponent,
     ShowOrderDetailComponent,
+
     // ShowOrderByAppUserComponent
   ],
     imports: [

@@ -48,4 +48,11 @@ export class ProfileService {
   editRQM(profile:any):Observable<any>{
     return this.http.post<any>("http://localhost:8080/profile/editrqm",profile)
   }
+  search(profile:any):Observable<any>{
+    return this.http.post<any>("http://localhost:8080/profile/search",profile)
+  }
+  getALl():Observable<any>{
+    return this.http.get<any>(`http://localhost:8080/profile`)
+  }
+
 }
