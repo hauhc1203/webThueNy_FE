@@ -241,21 +241,13 @@
                     <span *ngIf="a.status==0" class="badge badge-sm bg-gradient-success">Offline</span>
                     <span *ngIf="a.status==2" class="badge badge-sm bg-gradient-secondary">Baned</span>
                   </td>
-<!--                  <td class="align-middle text-center">-->
-<!--                    <span class="text-secondary text-xs font-weight-bold">23/04/18</span>-->
-<!--                  </td>-->
                   <td class="align-middle">
                     <a *ngIf="a?.status==0" type="button" class="btn btn-warning" (click)="ban(a.id, i)" style="padding: 1px;margin-top: 15px;font-size: 12px">BAN</a>
-
                     <a *ngIf="a?.status==2" type="button" class="btn btn-primary" (click)="offline(a.id, i)" style="padding: 1px;margin-top: 15px;font-size: 12px">UNBAN</a>
-<!--
-    <a type="button" class="btn btn-warning" ng-model="ban"(click)="ban(a.id)" style="padding: 1px;margin-top: 15px;font-size: 12px">BAN</a>-->
                   </td>
                   <td>
                     <a *ngIf="a?.vip==true" type="button" class="btn btn-primary" (click)="unvip(a.id, i)" style="padding: 1px;margin-top: 15px;font-size: 12px">UNVIP</a>
                     <a *ngIf="a?.vip==false" type="button" class="btn btn-primary" (click)="vipp(a.id, i)" style="padding: 1px;margin-top: 15px;font-size: 12px">VIP</a>
-
-
                   </td>
                 </tr>
                 <tr>
@@ -264,7 +256,6 @@
                       </pagination-controls>
                     </td>
                 </tr>
-
                 </tbody>
               </table>
             </div>

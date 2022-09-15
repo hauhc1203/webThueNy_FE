@@ -27,9 +27,10 @@ export class Profile{
   private _serviceList:Provide;
   private _appUser:AppUser;
   private _views:number;
+  private _hireTimes:number
 
 
-  constructor(id: number, fullName: string, birthDay: Date, city: City, country: Country, avatar: string, img1: string, img2: string, img3: string, high: number, weight: number, hobby: string, introduction: string, facebookLink: string, cost: number, gender: boolean, status: number, requirementsForHirer: string, createDate: Date, isConfirm: number, serviceList: Provide, appUser: AppUser, views: number) {
+  constructor(id: number, fullName: string, birthDay: Date, city: City, country: Country, avatar: string, img1: string, img2: string, img3: string, high: number, weight: number, hobby: string, introduction: string, facebookLink: string, cost: number, gender: boolean, status: number, requirementsForHirer: string, createDate: Date, isConfirm: number, serviceList: Provide, appUser: AppUser, views: number, hireTimes: number) {
     this._id = id;
     this._fullName = fullName;
     this._birthDay = birthDay;
@@ -53,6 +54,8 @@ export class Profile{
     this._serviceList = serviceList;
     this._appUser = appUser;
     this._views = views;
+    this._hireTimes = hireTimes;
+
   }
 
   get id(): number {
@@ -237,5 +240,14 @@ export class Profile{
 
   set views(value: number) {
     this._views = value;
+  }
+
+
+  get hireTimes(): number {
+    return this._hireTimes;
+  }
+
+  set hireTimes(value: number) {
+    this._hireTimes = value;
   }
 }
