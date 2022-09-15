@@ -5,6 +5,7 @@ import {EditprofileComponent} from "./editprofile/editprofile.component";
 import {ServiceComponent} from "./service/service.component";
 import {LoginGuard} from "../guard/login.guard";
 import {ShowOrderByAppUserComponent} from "./show-order-by-app-user/show-order-by-app-user.component";
+import {WalletComponent} from "./wallet/wallet.component";
 
 const routes: Routes = [
   {path:'show/:id',component:ShowprofileComponent},
@@ -18,6 +19,9 @@ const routes: Routes = [
   },
   {
     path:'showOrderByAppUser',component:ShowOrderByAppUserComponent
+  },
+  {
+    path:'wallet',component:WalletComponent
   }
 
 ];

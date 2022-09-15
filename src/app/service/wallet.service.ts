@@ -12,4 +12,7 @@ export class WalletService {
   getWallet():Observable<any>{
     return this.http.get<any>("http://localhost:8080/wallet")
   }
+  recharge(wallet:any):Observable<any>{
+    return this.http.post<any>("http://localhost:8080/wallet",wallet)
+  }
 }
