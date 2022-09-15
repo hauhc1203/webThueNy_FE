@@ -221,6 +221,7 @@ export class OrderComponent implements OnInit {
      {
        this.getPFB(d);
        alert("Feedback successfull")
+
      })
     // @ts-ignore
 
