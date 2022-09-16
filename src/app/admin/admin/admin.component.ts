@@ -73,7 +73,6 @@ export class AdminComponent implements OnInit {
   vipp(id:any, indexxx:any){
     this.appUsers[indexxx].vip = true;
     this.adminService.vip(id).subscribe(()=>{
-      console.log(id)
     })
   }
 

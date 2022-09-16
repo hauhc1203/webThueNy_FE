@@ -227,7 +227,7 @@
               <hr>
               <div class="info-item">
                 <div class="info-item-tit">Message from hirer : </div>
-                <div class="info-item-data">{{hiredOrder?.messFromUser}}h</div>
+                <div class="info-item-data">{{hiredOrder?.messFromUser}}</div>
               </div>
               <hr>
               <div class="info-item">
@@ -258,10 +258,10 @@
               </div>
               <hr *ngIf="myFB?.confirm&&hiredOrder?.status==4">
               <div class="info-item">
-                <button style="width: 100px;height: 40px;margin: auto" *ngIf="hiredOrder?.status==4&&myFB==null" class="btn btn-danger" (click)="getIdAorD(hiredOrder?.id)" data-toggle="modal" data-target="#myModalF">Feedback</button>
+                <button style="width: 100px;height: 40px;margin: auto" *ngIf="hiredOrder?.status==3&&yreport==null" class="btn btn-danger" (click)="getIdAorD(hiredOrder?.id)" data-toggle="modal" data-target="#myModalR">Report</button>
+                <button style="width: 100px;height: 40px;margin: auto" *ngIf="hiredOrder?.status==4&&myFB==null" class="btn btn-primary" (click)="getIdAorD(hiredOrder?.id)" data-toggle="modal" data-target="#myModalF">Feedback</button>
                 <button style="width: 100px;height: 40px;margin: auto" class="btn btn-primary" *ngIf="(hiredOrder?.status==1||hiredOrder?.status==3)&&!hiredOrder?.doneFromCCDV" data-dismiss="modal" (click)="dFc()">Done</button>
-
-                <button style="width: 100px;height: 40px;margin: auto" class="btn btn-danger" data-dismiss="modal">Close</button>
+                <button style="width: 100px;height: 40px;margin: auto" class="btn btn-dark" data-dismiss="modal">Close</button>
               </div>
 
             </div>
@@ -359,10 +359,11 @@
             </div>
             <hr *ngIf="myFB?.confirm&&hiredOrder?.status==4">
             <div class="info-item button-frame">
+              <button style="width: 100px;height: 40px;margin: auto" *ngIf="hiredOrder?.status==3&&yreport==null" class="btn btn-danger" (click)="getIdAorD(hiredOrder?.id)" data-toggle="modal" data-target="#myModalR">Report</button>
               <button  style="width: 120px;height: 40px;margin: auto" *ngIf="hiredOrder?.status==0" class="btn btn-danger cancel-order"  data-dismiss="modal" (click)="cancelOrder()">Cancel order</button>
               <button  style="width: 100px;height: 40px;margin: auto" *ngIf="hiredOrder?.status==4&&myFB==null" class="btn btn-primary cancel-order" data-toggle="modal" data-target="#myModalF" >Feedback</button>
-              <button style="width: 100px;height: 40px;margin: auto" class="btn btn-dark" data-dismiss="modal">Close</button>
               <button style="width: 100px;height: 40px;margin: auto" class="btn btn-primary" *ngIf="(hiredOrder?.status==3||hiredOrder?.status==1)&&!hiredOrder?.doneFromUser" data-dismiss="modal" (click)="dFu()">Done</button>
+              <button style="width: 100px;height: 40px;margin: auto" class="btn btn-dark" data-dismiss="modal">Close</button>
 
             </div>
 
@@ -458,3 +459,33 @@
     </div>
   </div>
 </div>
+<div class="container">
+
+  <div class="modal fade" id="myModalR" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content"style="width: 630px!important" >
+        <div class="modal-header">
+          <h4 class="modal-title">Report</h4>
+        </div>
+        <div class="modal-body" style="width: 600px!important;height: 400px;margin-bottom: 10px">
+          <div style="width: auto;height: 160px;" >
+            <h5>Problem :</h5>
+            <p style=" color: red;font-size: 16px">*not be empty</p>
+            <input id="problemTit" style="width: 560px;height: 50px;padding:5px;border-radius: 10px">
+
+          </div>
+          <div style="width: auto;height: 200px;">
+            <h5>More detail :</h5>
+            <textarea id="problemDes" placeholder="Describe your problem" style="width: 560px;height: 180px;margin: auto;padding:30px 30px;font-size: 20px;resize: none;border-radius: 10px"></textarea>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger"  data-dismiss="modal" (click)="createRp()">Confirm</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

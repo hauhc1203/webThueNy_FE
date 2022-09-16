@@ -92,7 +92,6 @@ export class HomeComponent implements OnInit,DoCheck {
 
 
   search(){
-    console.log(this.searchForm.value)
 
     let search = {
       idCity:this.searchForm.value.address,
@@ -105,7 +104,6 @@ export class HomeComponent implements OnInit,DoCheck {
     }
     this.profileService.search(search).subscribe((data)=>{
       this.profiles=data;
-      console.log(data)
     })
   }
 

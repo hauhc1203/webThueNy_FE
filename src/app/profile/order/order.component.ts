@@ -3,6 +3,7 @@ import {LoginService} from "../../service/login.service";
 import {ProfileService} from "../../service/profile.service";
 import {OrderService} from "../../service/order.service";
 import {FeedbackService} from "../../service/feedback.service";
+import {ReportService} from "../../service/report.service";
 
 @Component({
   selector: 'app-order',
@@ -45,9 +46,11 @@ export class OrderComponent implements OnInit {
 
   aOrdID:any;
 
+  yreport:any;
   // @ts-ignore
   isnullFB:boolean=false;
-  constructor(private loginS:LoginService,private  orderS:OrderService,private feedbackS:FeedbackService) {
+  constructor(private loginS:LoginService,private  orderS:OrderService,private feedbackS:FeedbackService,
+              private rpS:ReportService) {
 
   }
 
@@ -66,7 +69,6 @@ export class OrderComponent implements OnInit {
       this.pages=data;
       this.isF=data.first;
       this.isL=data.last;
-      console.log(data.content)
       this.yourOrdersNull=this.yourOrders?.length==0
       this.showYOS();
     })
@@ -77,7 +79,6 @@ export class OrderComponent implements OnInit {
     this.orderS.getByP(page).subscribe((data)=>{
       this.hiredOrders=data.content
       this.pages1=data;
-      console.log(data.content)
 
       this.hiredOrdersNull=this.hiredOrders.length==0;
     })
@@ -85,7 +86,6 @@ export class OrderComponent implements OnInit {
 
 
   showYOS(){
-    // console.log( $('.cancel-order'))
 
     $('#yo').css('font-weight','bold')
     $('#yro').css('font-weight','normal')
@@ -149,7 +149,6 @@ export class OrderComponent implements OnInit {
     if (cf){
       this.orderS.cancelOrder(this.aOrdID).subscribe((data)=>{
         this.replaceOrder(data,this.yourOrders)
-        console.log(this.yourOrders)
       })
     }
   }
@@ -158,7 +157,6 @@ export class OrderComponent implements OnInit {
         this.partnerFB=feedback;
       }else {
         this.myFB=feedback;
-        console.log(this.myFB)
       }
   }
   orderDetail(id:any){
@@ -169,10 +167,21 @@ export class OrderComponent implements OnInit {
       })
       this.feedbackS.findbyOrder(id).subscribe((d)=>{
         this.feedback=d;
-        for (let f of d){
-          this.getPFB(f);
+        if (d.length!=0){
+          for (let f of d){
+            this.getPFB(f);
+          }
+        }else {
+          this.myFB=undefined;
+          this.partnerFB=undefined;
         }
-      })
+
+      }
+      )
+    this.rpS.findByO(id).subscribe((d)=>{
+      this.yreport=d;
+      console.log(d)
+    })
   }
   dFu(){
     let cf=confirm("Are you sure?")
@@ -187,7 +196,6 @@ export class OrderComponent implements OnInit {
     if (cf){
       this.orderS.doneFC(this.aOrdID).subscribe((d)=>{
         this.replaceOrder(d,this.hiredOrders)
-        console.log(d)
       })
     }
   }
@@ -202,34 +210,62 @@ export class OrderComponent implements OnInit {
       }else {
         abc=0
       }
-
     // @ts-ignore
     let fb=document.getElementById("fba")
     // @ts-ignore
     let ct=fb.value
     // @ts-ignore
      let feedback={
-
        order: {
          id:this.aOrdID
        },
        content:ct,
        isGoodFeedBack:abc,
-
      }
      this.feedbackS.createF(feedback).subscribe((d)=>
      {
-       this.getPFB(d);
-       alert("Feedback successfull")
+
+         this.getPFB(d);
+         alert("Feedback successfull")
+
 
      })
     // @ts-ignore
-
-
-
     fb.value=""
 
 
   }
+  createRp(){
+    // @ts-ignore
+    let tit=document.getElementById("problemTit")
+    let des=document.getElementById("problemDes")
+    // @ts-ignore
+
+    let problem1=tit.value;
+    if (problem1==""){
+      alert("Report failed!!!")
+    }else {
+     // @ts-ignore
+      let desP=des.value;
+      let rp={
+        about: {
+          id:this.aOrdID
+        },
+        problem:problem1,
+        reason:desP
+
+      }
+      this.rpS.createRP(rp).subscribe((d)=>{
+        this.yreport=d;
+        alert("Report successfull!!!")
+      })
+    }
+
+
+
+
+
+  }
+
 
 }
