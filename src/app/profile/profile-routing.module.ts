@@ -8,7 +8,9 @@ import {LoginGuard} from "../guard/login.guard";
 import {OrderComponent} from "./order/order.component";
 import {WalletComponent} from "./wallet/wallet.component";
 const routes: Routes = [
-  {path:'show/:id',component:ShowprofileComponent},
+  {
+    path:'show/:id',component:ShowprofileComponent
+  },
   {
     path:'edit',
     component:EditprofileComponent,
@@ -23,7 +25,8 @@ const routes: Routes = [
 
   },
   {
-    path: 'wallet', component: WalletComponent
+    path: 'wallet', component: WalletComponent,
+    canActivate:[LoginGuard]
   }
 ];
 

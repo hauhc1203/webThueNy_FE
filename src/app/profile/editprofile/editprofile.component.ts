@@ -111,8 +111,7 @@ export class EditprofileComponent implements OnInit {
       },
       city: {
         id: this.editForm.value.city,
-        // name: this.profile.city.name,
-        // country: this.profile.country
+
       },
       fullName: this.editForm.value.fullName,
       high: this.editForm.value.high,
@@ -128,7 +127,7 @@ export class EditprofileComponent implements OnInit {
     this.profileService.updateProfile(edit).subscribe(()=>{
       alert("Chỉnh sửa thông tin thành công")
     });
-    // this.router.navigate(["/profile/show"])
+
   }
 
 
