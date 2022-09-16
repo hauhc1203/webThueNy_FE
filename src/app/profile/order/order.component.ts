@@ -260,11 +260,6 @@ export class OrderComponent implements OnInit {
         alert("Report successfull!!!")
       })
     }
-
-
-
-
-
   }
 
 
