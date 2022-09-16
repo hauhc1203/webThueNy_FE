@@ -4,9 +4,9 @@
   <nav class="nav nav-borders" >
     <a class="nav-link" [routerLink]="'/profile/show/'+id" >Your Profile</a>
 
-    <a class="nav-link" [routerLink]="'/profile/edit'" >Edit Profile</a>
+    <a class="nav-link" [routerLink]="'/profile/edit'" ><h4>Edit Profile</h4></a>
     <a class="nav-link" [routerLink]="'/profile/service'">Service</a>
-    <a class="nav-link" href="">Order</a>
+    <a class="nav-link" [routerLink]="'/profile/order'" >Order</a>
     <a class="nav-link" href="">Email&Password</a>
 
   </nav>
@@ -44,28 +44,33 @@
 
               <div class="col-md-6">
                 <label class="small mb-1" for="inputUsername">Full Name </label>
-                <input id="inputUsername" type="text" class="form-control" placeholder="full Name"
+                <input  id="inputUsername" type="text" class="form-control" placeholder="full Name"
                        formControlName="fullName" value="">
+                <p style="color: red" *ngIf="!editForm.get('fullName')?.valid && editForm.get('fullName')?.touched ">Nhập tối thiểu 5 ký tự</p>
+
               </div>
               <div class="col-md-6">
                 <label class="small mb-1" for="inputBirthday">Birthday</label>
                 <input class="form-control" id="inputBirthday" type="date" placeholder="Enter your birthday"
                        formControlName="birthDay" value="">
+                <p style="color: red" *ngIf="!editForm.get('birthDay')?.valid && editForm.get('birthDay')?.touched ">Bạn không được để trống</p>
               </div>
             </div>
             <!-- Form Row-->
             <div class="row gx-3 mb-3">
               <!-- Form Group (first name)-->
               <div class="col-md-6">
-                <label class="small mb-1" for="inputHight">Hight (nhập từ 50 - 250. Đơn vị Cm)</label>
+                <label class="small mb-1" for="inputHight">Hight (nhập từ 150 - 250. Đơn vị Cm)</label>
                 <input class="form-control" id="inputHight" type="number" placeholder="Enter your hight"
                        formControlName="high" value="">
+                <p style="color: red" *ngIf="!editForm.get('high')?.valid && editForm.get('high')?.touched ">Bạn nhập sai rồi</p>
               </div>
               <!-- Form Group (last name)-->
               <div class="col-md-6">
                 <label class="small mb-1" for="inputWeight">Weight (nhập từ 30 - 200. Đơn vị Kg)</label>
                 <input class="form-control" id="inputWeight" type="number" placeholder="Enter your hight"
                        formControlName="weight"  value="">
+                <p style="color: red" *ngIf="!editForm.get('weight')?.valid && editForm.get('weight')?.touched">Bạn nhập sai rồi</p>
               </div>
             </div>
             <!-- Form Row        -->
@@ -77,6 +82,7 @@
                 <select class="form-control" id="inputCountry" formControlName="country">
                   <option *ngFor="let country of countrys" [defaultSelected]="profile?.country?.id==country.id" value="{{country?.id}}">{{country?.name}}</option>
                 </select>
+                <p style="color: red" *ngIf="!editForm.get('country')?.valid">Bạn không được để trống</p>
               </div>
               <div class="col-md-6">
 
@@ -85,12 +91,14 @@
                   <option value="{{profile?.city?.id}}" selected>{{profile?.city?.name}}</option>
                   <option *ngFor="let c of citys" [defaultSelected]="profile?.city?.id==c.id" value="{{c?.id}}">{{c?.name}}</option>
                 </select>
+                <p style="color: red" *ngIf="!editForm.get('city')?.valid">Bạn không được để trống</p>
               </div>
               <!-- Form Group (location)-->
               <div class="col-md-6">
                 <label class="small mb-1" for="inputHobby">Hobby</label>
                 <input class="form-control" id="inputHobby" type="text" placeholder="Enter your hobby"
                        formControlName="hobby" value="">
+                <p style="color: red" *ngIf="!editForm.get('hobby')?.valid &&  editForm.get('hobby')?.touched">Nhập ít nhất 10 ký tự</p>
 
               </div>
 
@@ -98,12 +106,17 @@
                 <label class="small mb-1" for="inputIntroduction">Introduction</label>
                 <input class="form-control" id="inputIntroduction" type="text" placeholder="Enter your Introduction"
                        formControlName="introduction" value="" >
+                <p style="color: red" *ngIf="!editForm.get('introduction')?.valid &&  editForm.get('introduction')?.touched">Nhập tối đa 10 ký tự</p>
 
               </div>
-              <div class="col-md-6">
+              <div  class="col-md-6">
                 <label class="small mb-1" for="inputFacebookLink">FacebookLink</label>
+
                 <input class="form-control" id="inputFacebookLink" type="text" placeholder="Enter your FacebookLink"
                        formControlName="facebookLink" value="">
+                <p style="color: red" *ngIf="!editForm.get('facebookLink')?.valid &&  editForm.get('facebookLink')?.touched">Bạn nhập sai rồi</p>
+
+
               </div>
 
               <div class="col-md-6">
@@ -113,6 +126,7 @@
                   <option [defaultSelected]="!profile?.gender" value=false selected>Nữ</option>
 
                 </select>
+                <p style="color: red" *ngIf="!editForm.get('gender')?.valid ">Bạn không được để trống</p>
               </div>
 
 

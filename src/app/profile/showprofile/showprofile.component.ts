@@ -98,8 +98,7 @@ export class ShowprofileComponent implements OnInit {
   showOrderDetail(id:any){
     this.profileService.getOrderByAppUser(id).subscribe((data)=>{
       this.orders = data;
-      console.log(data)
-      console.log(id)
+
     })
   }
 

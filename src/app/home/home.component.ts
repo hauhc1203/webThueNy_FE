@@ -3,15 +3,17 @@ import {LoginService} from "../service/login.service";
 import  * as $ from 'jquery'
 import {HomeService} from "../service/home.service";
 import {data} from "jquery";
-import {ProfileService} from "../service/profile.service";
 import {Profile} from "../models/Profile";
 import {FormControl, FormGroup} from "@angular/forms";
+import {ProfileService} from "../service/profile.service";
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit,DoCheck {
+  profiless!:Profile[]
+
 
   profiles :Profile[]=[];
 
@@ -29,7 +31,7 @@ export class HomeComponent implements OnInit,DoCheck {
   ut:any;
   citys:any
 
-  constructor(private loginService:LoginService,private homeS:HomeService,private profileService:ProfileService ) {
+  constructor(private loginService:LoginService,private homeS:HomeService,private profileService:ProfileService) {
       homeS.newCCDV().subscribe((data)=>{
         this.newccdvs=data;
       })
@@ -63,6 +65,12 @@ export class HomeComponent implements OnInit,DoCheck {
   }
 
   ngOnInit(): void {
+    // @ts-ignore
+    this.profileService.showUserBoy().subscribe((data)=>{
+      this.profiles=data})
+
+    this.profileService.showUserGirl().subscribe((data)=>{
+      this.profiless=data})
     this.profileService.getALl().subscribe((data)=>{
       this.profiles=data
     });
@@ -73,12 +81,12 @@ export class HomeComponent implements OnInit,DoCheck {
   }
 
   searchForm:any = new FormGroup({
-      address:new FormControl(),
-      gender:new FormControl(),
-      birthyear:new FormControl(),
-      fullName:new FormControl(),
-      views:new FormControl(),
-      hireTimes:new FormControl(),
+    address:new FormControl(),
+    gender:new FormControl(),
+    birthyear:new FormControl(),
+    fullName:new FormControl(),
+    views:new FormControl(),
+    hireTimes:new FormControl(),
   })
   p: any;
 
@@ -100,7 +108,6 @@ export class HomeComponent implements OnInit,DoCheck {
       console.log(data)
     })
   }
-
 
 
 
