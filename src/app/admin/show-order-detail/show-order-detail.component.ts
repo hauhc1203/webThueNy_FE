@@ -25,8 +25,7 @@ export class ShowOrderDetailComponent implements OnInit {
   showOrderDetail(id:any){
     this.adminService.showOrderDetail(id).subscribe((data)=>{
       this.order=data;
-      console.log(data);
-      console.log(id);
+
     })
   }
 

@@ -27,7 +27,6 @@ export class RegisterComponent implements OnInit {
 
   register(){
     this.registerService.register(this.registerForm.value).subscribe((data)=>{
-      console.log(data)
       this.checkDuplicateUsername=data[0];
       this.checkDuplicateMail=data[1];
       if (data[0]&&data[1]){

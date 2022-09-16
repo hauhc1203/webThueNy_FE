@@ -24,11 +24,8 @@
               <nav class="nav">
                 <ul class="list-unstyled">
                   <li class="active drop"><a routerLink="">Home</a></li>
-                  <li><a routerLink="" >Girls</a></li>
-                  <li><a routerLink="" >Boys</a></li>
-                  <li><a routerLink="" >Online Users</a></li>
-                  <li><a  routerLink="">Countries</a></li>
-                  <li><a routerLink="">Filter Profile</a></li>
+                  <li><a  routerLink="login" *ngIf="token==null">Login</a></li>
+                  <li><a routerLink="register" *ngIf="token==null">Sign up</a></li>
                   <li *ngIf="token!=null"><a [routerLink]="'profile/show/'+idAppuser">{{userName}}</a></li>
                   <li *ngIf="token!=null"><a (click)="logout()" routerLink="">Logout</a></li>
                 </ul>

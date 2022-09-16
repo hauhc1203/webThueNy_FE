@@ -2,13 +2,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {LoginComponent} from "./login/login/login.component";
 import {RegisterComponent} from "./login/register/register.component";
-import {AdminComponent} from "./admin/admin/admin.component";
 import {AdminGuard} from "./admin/admin.guard";
 import {PageErorComponent} from "./page-eror/page-eror.component";
 import {HomeComponent} from "./home/home.component";
-import {ShowprofileComponent} from "./profile/showprofile/showprofile.component";
-import {EditprofileComponent} from "./profile/editprofile/editprofile.component";
-import {WebsocketComponent} from "./websocket/websocket.component";
+
+
 
 const routes: Routes = [
   {
@@ -32,9 +30,7 @@ const routes: Routes = [
   {
     path:'',component:HomeComponent
   },
-  {
-    path:'websocket',component: WebsocketComponent
-  }
+
 ];
 
 @NgModule({

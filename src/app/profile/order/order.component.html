@@ -1,0 +1,491 @@
+<div id="khungtren" style=" min-height: 100px;margin-top: 10px">
+  <!-- Account page navigation-->
+  <nav class="nav nav-borders"  >
+    <a class="nav-link" [routerLink]="'/profile/show/'+id" >Your Profile</a>
+    <a class="nav-link" [routerLink]="'/profile/edit'" >Edit Profile</a>
+    <a class="nav-link" [routerLink]="'/profile/service'">Service</a>
+    <a class="nav-link" [routerLink]="'/profile/order'" ><h4>Order</h4></a>
+    <a class="nav-link" href="" >Email&Password</a>
+  </nav>
+
+</div>
+<div id="frame" >
+  <nav class="navbar navbar-expand-sm bg-light" style="margin-left: 15px">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" id="yo" (click)="showYOS()" >Your order</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"  id="yro" (click)="showYROS()">Your rental order</a>
+      </li>
+
+    </ul>
+  </nav>
+
+  <div class="container-fluid py-4"  id="yo1">
+<!--    <h5 >Your order</h5>-->
+    <div class="row">
+      <div class="col-12">
+        <div class="card mb-4">
+          <div class="card-header pb-0">
+          </div>
+          <div class="card-body px-0 pt-0 pb-2">
+            <h3 style="margin: auto;margin-top: 15px;width: 200px;height: 50px" *ngIf="yourOrdersNull">No data</h3>
+
+            <div class="table-responsive p-0" *ngIf="!yourOrdersNull">
+              <table class="table align-items-center mb-0" >
+                <thead>
+                <tr>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">#</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Hired person</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Time(h)</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Date</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Total</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">View</th>
+
+
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let mw of yourOrders; let i = index">
+                  <td>{{i+1}}</td>
+                  <td class="left-content"><h6>{{mw?.profile?.fullName}}</h6></td>
+                  <td>
+                   {{mw?.time}}
+                  </td>
+                  <td>
+                    {{mw?.datingTime}}
+                  </td>
+                  <td class="left-content" >
+                    {{mw?.total}}
+                  </td>
+                  <td class="left-content">
+                    <p *ngIf="mw?.status==0" class="wait">Waitting</p>
+
+                    <p *ngIf="mw?.status==1" class="accept">Accepted</p>
+                    <p *ngIf="mw?.status==2" class="refuse">Refused</p>
+                    <p *ngIf="mw?.status==3" style="color: #000;">Wait Done</p>
+
+                    <p *ngIf="mw?.status==4" class="done">Done</p>
+                    <p *ngIf="mw?.status==5" class="cancel">Cancel</p>
+
+                  </td>
+                  <td>
+                    <button class="btn btn-behance" data-toggle="modal" data-target="#myModal1" (click)="orderDetail(mw?.id)">View</button>
+                  </td>
+
+                </tr>
+                </tbody>
+              </table>
+              <div style="display: flex ;
+                          justify-content: space-between;
+                          width:100px;
+                              margin: auto">
+                <button class="btn btn-dark" *ngIf="!isF" (click)="getBA(pages?.number-1)" >Previous</button>
+
+                <button class="btn btn-behance" *ngIf="!isL"  (click)="getBA(pages?.number+1)" >Next</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="container-fluid py-4" *ngIf="isCCDV"  id="yro1">
+<!--    <h5 >Your rental order</h5>-->
+    <div class="row">
+      <div class="col-12">
+        <div class="card mb-4">
+          <div class="card-header pb-0">
+          </div>
+          <div class="card-body px-0 pt-0 pb-2">
+            <h3 style="margin: auto;width: 200px;margin-top: 15px;height: 50px" *ngIf="hiredOrdersNull">No data</h3>
+
+            <div class="table-responsive p-0" *ngIf="!hiredOrdersNull">
+              <table class="table align-items-center mb-0" >
+                <thead>
+                <tr>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">#</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Hirer Name</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Time(h)</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Date</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Total</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">View</th>
+
+                  <th colspan="2"   class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let yw of hiredOrders; let i = index" >
+                  <td>{{i+1}}</td>
+                  <td class="left-content" ><h6>{{yw?.appUser?.userName}}</h6></td>
+                  <td>
+                    {{yw?.time}}
+                  </td>
+                  <td>
+                    {{yw?.datingTime}}
+                  </td>
+                  <td class="left-content" >
+                    {{yw?.total}}
+                  </td>
+                  <td class="left-content">
+                    <p *ngIf="yw?.status==0" class="wait">Waitting</p>
+                    <p *ngIf="yw?.status==1" class="accept">Accepted</p>
+                    <p *ngIf="yw?.status==2" class="refuse">Refused</p>
+                    <p *ngIf="yw?.status==3" style="color: #000;">Wait Done</p>
+
+                    <p *ngIf="yw?.status==4" class="done">Done</p>
+                    <p *ngIf="yw?.status==5" class="cancel">Cancel</p>
+
+                  </td>
+                  <td>
+                    <button class="btn btn-behance" data-toggle="modal" data-target="#myModal" (click)="orderDetail(yw?.id)">View</button>
+                  </td>
+                  <td *ngIf="yw?.status==0">
+                    <button class="btn btn-primary" (click)="getIdAorD(yw?.id)" data-toggle="modal" data-target="#myModalA">Accept</button>
+                  </td>
+                  <td *ngIf="yw?.status==0">
+                    <button class="btn btn-danger" (click)="getIdAorD(yw?.id)" data-toggle="modal" data-target="#myModalD">Decline</button>
+                  </td>
+
+                </tr>
+                </tbody>
+              </table>
+              <div style="display: flex ;
+                          justify-content: space-between;
+                          width:100px;
+                              margin: auto">
+                <button class="btn btn-dark" *ngIf="!pages1?.first" (click)="getBP(pages1?.number-1)" >Previous</button>
+
+                <button class="btn btn-behance" *ngIf="!pages1?.last"  (click)="getBP(pages1?.number+1)" >Next</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+</div>
+<div class="container">
+  <!-- Trigger the modal with a button -->
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header-abc">
+          <h4 class="modal-title-abc">Order Detail</h4>
+          <button type="button" class="close" data-dismiss="modal">X</button>
+        </div>
+        <div class="modal-body">
+
+            <div class="info">
+              <div class="info-item">
+                <div class="info-item-tit">Hirer's name :</div>
+                <div class="info-item-data">{{hiredOrder?.appUser?.userName}}</div>
+              </div>
+              <hr>
+
+              <div class="info-item">
+                <div class="info-item-tit">Address :</div>
+                <div class="info-item-data">{{hiredOrder?.address}}</div>
+              </div>
+              <hr>
+
+              <div class="info-item">
+                <div class="info-item-tit">Begin date :</div>
+                <div class="info-item-data">{{hiredOrder?.datingTime}}</div>
+              </div>
+              <hr>
+
+              <div class="info-item">
+                <div class="info-item-tit">Start time :</div>
+                <div class="info-item-data">{{hiredOrder?.startTime}}h</div>
+              </div>
+              <hr>
+
+              <div class="info-item">
+                <div class="info-item-tit">During : </div>
+                <div class="info-item-data">{{hiredOrder?.time}}h</div>
+              </div>
+              <hr>
+
+              <div class="info-item">
+                <div class="info-item-tit">Service :</div>
+                <div class="info-item-data">
+                  <p  class="servicesss" *ngFor="let s of services">{{s?.name}}</p></div>
+              </div>
+              <hr>
+              <div class="info-item">
+                <div class="info-item-tit">Message from hirer : </div>
+                <div class="info-item-data">{{hiredOrder?.messFromUser}}</div>
+              </div>
+              <hr>
+              <div class="info-item">
+                <div class="info-item-tit">Total :</div>
+                <div class="info-item-data">{{hiredOrder?.total}} VNĐ</div>
+              </div>
+              <hr>
+              <div class="info-item">
+                <div class="info-item-tit">Status :</div>
+                <div class="info-item-data">
+                                  <p *ngIf="hiredOrder?.status==0" class="wait">Waitting</p>
+                                  <p *ngIf="hiredOrder?.status==1" class="accept">Accepted</p>
+                                  <p *ngIf="hiredOrder?.status==2" class="refuse">Refused</p>
+                                   <p *ngIf="hiredOrder?.status==3" style="color: #000;">Wait Done</p>
+                                  <p *ngIf="hiredOrder?.status==4" class="done">Done</p>
+                                  <p *ngIf="hiredOrder?.status==5" class="cancel">Cancel</p>
+                </div>
+              </div>
+              <hr>
+              <div class="info-item" *ngIf="partnerFB?.confirm&&hiredOrder?.status==4">
+                <div class="info-item-tit">Feedback from partners :</div>
+                <div class="info-item-data" >{{partnerFB.content}}</div>
+              </div>
+              <hr *ngIf="partnerFB?.confirm&&hiredOrder?.status==4">
+              <div class="info-item" *ngIf="myFB?.confirm&&hiredOrder?.status==4">
+                <div class="info-item-tit">Your feedback :</div>
+                <div class="info-item-data" >{{myFB.content}}</div>
+              </div>
+              <hr *ngIf="myFB?.confirm&&hiredOrder?.status==4">
+              <div class="info-item">
+                <button style="width: 100px;height: 40px;margin: auto" *ngIf="hiredOrder?.status==3&&yreport==null" class="btn btn-danger" (click)="getIdAorD(hiredOrder?.id)" data-toggle="modal" data-target="#myModalR">Report</button>
+                <button style="width: 100px;height: 40px;margin: auto" *ngIf="hiredOrder?.status==4&&myFB==null" class="btn btn-primary" (click)="getIdAorD(hiredOrder?.id)" data-toggle="modal" data-target="#myModalF">Feedback</button>
+                <button style="width: 100px;height: 40px;margin: auto" class="btn btn-primary" *ngIf="(hiredOrder?.status==1||hiredOrder?.status==3)&&!hiredOrder?.doneFromCCDV" data-dismiss="modal" (click)="dFc()">Done</button>
+                <button style="width: 100px;height: 40px;margin: auto" class="btn btn-dark" data-dismiss="modal">Close</button>
+              </div>
+
+            </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+<div class="container">
+  <!-- Trigger the modal with a button -->
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal1" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header-abc">
+          <h4 class="modal-title-abc">Order Detail</h4>
+          <button type="button" class="close" data-dismiss="modal">X</button>
+        </div>
+        <div class="modal-body">
+
+          <div class="info">
+            <div class="info-item">
+              <div class="info-item-tit">Full name :</div>
+              <div class="info-item-data">{{hiredOrder?.profile?.fullName}}</div>
+            </div>
+            <hr>
+
+            <div class="info-item">
+              <div class="info-item-tit">Address :</div>
+              <div class="info-item-data">{{hiredOrder?.address}}</div>
+            </div>
+            <hr>
+
+            <div class="info-item">
+              <div class="info-item-tit">Begin date :</div>
+              <div class="info-item-data">{{hiredOrder?.datingTime}}</div>
+            </div>
+            <hr>
+
+            <div class="info-item">
+              <div class="info-item-tit">Start time :</div>
+              <div class="info-item-data">{{hiredOrder?.startTime}}h</div>
+            </div>
+            <hr>
+
+            <div class="info-item">
+              <div class="info-item-tit">During : </div>
+              <div class="info-item-data">{{hiredOrder?.time}}h</div>
+            </div>
+            <hr>
+
+            <div class="info-item">
+              <div class="info-item-tit">Service :</div>
+              <div class="info-item-data">
+                <p  class="servicesss" *ngFor="let s of services">{{s?.name}}</p></div>
+            </div>
+            <hr>
+            <div class="info-item">
+              <div class="info-item-tit">Message from patner : </div>
+              <div class="info-item-data">{{hiredOrder?.messFromCCDV}}</div>
+            </div>
+            <hr>
+            <div class="info-item">
+              <div class="info-item-tit">Total :</div>
+              <div class="info-item-data">{{hiredOrder?.total}} VNĐ</div>
+            </div>
+            <hr>
+            <div class="info-item">
+              <div class="info-item-tit">Status :</div>
+              <div class="info-item-data">
+                <p *ngIf="hiredOrder?.status==0" class="wait">Waitting</p>
+                <p *ngIf="hiredOrder?.status==1" class="accept">Accepted</p>
+                <p *ngIf="hiredOrder?.status==2" class="refuse">Refused</p>
+                <p *ngIf="hiredOrder?.status==3" style="color: #000;">Wait Done</p>
+
+                <p *ngIf="hiredOrder?.status==4" class="done">Done</p>
+                <p *ngIf="hiredOrder?.status==5" class="cancel">Cancel</p>
+              </div>
+            </div>
+            <hr>
+            <div class="info-item" *ngIf="partnerFB?.confirm&&hiredOrder?.status==4">
+              <div class="info-item-tit">Feedback from partners :</div>
+              <div class="info-item-data" >{{partnerFB?.content}}</div>
+            </div>
+            <hr *ngIf="partnerFB?.confirm&&hiredOrder?.status==4">
+            <div class="info-item" *ngIf="myFB?.confirm&&hiredOrder?.status==4">
+              <div class="info-item-tit">Your feedback :</div>
+              <div class="info-item-data" >{{myFB.content}}</div>
+            </div>
+            <hr *ngIf="myFB?.confirm&&hiredOrder?.status==4">
+            <div class="info-item button-frame">
+              <button style="width: 100px;height: 40px;margin: auto" *ngIf="hiredOrder?.status==3&&yreport==null" class="btn btn-danger" (click)="getIdAorD(hiredOrder?.id)" data-toggle="modal" data-target="#myModalR">Report</button>
+              <button  style="width: 120px;height: 40px;margin: auto" *ngIf="hiredOrder?.status==0" class="btn btn-danger cancel-order"  data-dismiss="modal" (click)="cancelOrder()">Cancel order</button>
+              <button  style="width: 100px;height: 40px;margin: auto" *ngIf="hiredOrder?.status==4&&myFB==null" class="btn btn-primary cancel-order" data-toggle="modal" data-target="#myModalF" >Feedback</button>
+              <button style="width: 100px;height: 40px;margin: auto" class="btn btn-primary" *ngIf="(hiredOrder?.status==3||hiredOrder?.status==1)&&!hiredOrder?.doneFromUser" data-dismiss="modal" (click)="dFu()">Done</button>
+              <button style="width: 100px;height: 40px;margin: auto" class="btn btn-dark" data-dismiss="modal">Close</button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<div class="container">
+
+  <div class="modal fade" id="myModalA" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content" style="width: 540px!important;">
+        <div class="modal-header">
+<!--          <button type="button" class="close" data-dismiss="modal">&times;</button>-->
+          <h4 class="modal-title">Accept Order</h4>
+        </div>
+        <div class="modal-body" style="width: 540px!important;">
+          <textarea id="messA" placeholder="Leave a message" style="width: 450px;height: 200px;resize: none;margin-left: 30px;padding: 30px 30px;font-size: 25px"></textarea>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="acceptOrder()">Confirm</button>
+
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="container">
+
+  <div class="modal fade" id="myModalD" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content" style="width: 540px!important;">
+        <div class="modal-header">
+          <!--          <button type="button" class="close" data-dismiss="modal">&times;</button>-->
+          <h4 class="modal-title">Decline Order</h4>
+        </div>
+        <div class="modal-body" style="width: 540px!important;">
+          <textarea id="messD" placeholder="Leave a message"  style="width: 450px;height: 200px;resize: none;margin-left: 30px;padding: 30px 30px;font-size: 25px"></textarea>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="declineOrder()">Confirm</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="container">
+
+  <div class="modal fade" id="myModalF" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content"style="width: 630px!important" >
+        <div class="modal-header">
+          <h4 class="modal-title">Feedback</h4>
+        </div>
+        <div class="modal-body" style="width: 600px!important;height: 400px;margin-bottom: 10px">
+               <div style="width: auto;height: 100px;" >
+                 <h5>Service quality</h5>
+                   <label >
+                     <input type="radio"  class="isgoodService" checked name="isgoodService" value=true style="margin-left: 30px;margin-top: -3px"><p style="font-size: 20px;display: inline-block;margin-top:10px;margin-left: 10px;margin-bottom: 0">Good service</p>
+                   </label>
+                   <label >
+                     <input type="radio" class="isgoodService" name="isgoodService" value=false  style="margin-left: 30px;margin-top: -3px"> <p style="font-size: 20px;display: inline-block;margin-top:10px;margin-left: 10px;margin-bottom: 0">Bad service</p>
+                   </label>
+
+               </div>
+                <div style="width: auto;height: 200px;">
+                  <h5>Your feedback:</h5>
+                      <p *ngIf="isnullFB" style="color: red;font-size: 16px;margin-left: 30px">*Cannot be left blank</p>
+                      <textarea id="fba" placeholder="Enter your feedback" style="width: 560px;height: 180px;margin: auto;padding:30px 30px;font-size: 20px;resize: none;border-radius: 10px"></textarea>
+                </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger"  data-dismiss="modal" (click)="createFB()">Confirm</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+
+  <div class="modal fade" id="myModalR" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content"style="width: 630px!important" >
+        <div class="modal-header">
+          <h4 class="modal-title">Report</h4>
+        </div>
+        <div class="modal-body" style="width: 600px!important;height: 400px;margin-bottom: 10px">
+          <div style="width: auto;height: 160px;" >
+            <h5>Problem :</h5>
+            <p style=" color: red;font-size: 16px">*not be empty</p>
+            <input id="problemTit" style="width: 560px;height: 50px;padding:5px;border-radius: 10px">
+
+          </div>
+          <div style="width: auto;height: 200px;">
+            <h5>More detail :</h5>
+            <textarea id="problemDes" placeholder="Describe your problem" style="width: 560px;height: 180px;margin: auto;padding:30px 30px;font-size: 20px;resize: none;border-radius: 10px"></textarea>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger"  data-dismiss="modal" (click)="createRp()">Confirm</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

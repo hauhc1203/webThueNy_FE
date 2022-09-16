@@ -4,9 +4,9 @@
   <nav class="nav nav-borders" >
     <a class="nav-link" [routerLink]="'/profile/show/'+id" >Your Profile</a>
 
-    <a class="nav-link" [routerLink]="'/profile/edit'" >Edit Profile</a>
+    <a class="nav-link" [routerLink]="'/profile/edit'" ><h4>Edit Profile</h4></a>
     <a class="nav-link" [routerLink]="'/profile/service'">Service</a>
-    <a class="nav-link" href="">Order</a>
+    <a class="nav-link" [routerLink]="'/profile/order'" >Order</a>
     <a class="nav-link" href="">Email&Password</a>
 
   </nav>
@@ -112,7 +112,7 @@
               <div  class="col-md-6">
                 <label class="small mb-1" for="inputFacebookLink">FacebookLink</label>
 
-                <input  class="form-control" id="inputFacebookLink" type="text" placeholder="Enter your FacebookLink"
+                <input class="form-control" id="inputFacebookLink" type="text" placeholder="Enter your FacebookLink"
                        formControlName="facebookLink" value="">
                 <p style="color: red" *ngIf="!editForm.get('facebookLink')?.valid &&  editForm.get('facebookLink')?.touched">Bạn nhập sai rồi</p>
 
