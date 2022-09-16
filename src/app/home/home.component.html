@@ -53,24 +53,24 @@
 
               <div class="form-control select">
                 <select formControlName="address" id="address">
-                    <option value="" selected>- Address -</option>
-                  <option *ngFor="let c of citys" value="{{c?.id}}">{{c?.name}}</option>
+                    <option style="color: white" value="" selected>- Address -</option>
+                  <option style="color: white" *ngFor="let c of citys" value="{{c?.id}}">{{c?.name}}</option>
                 </select>
               </div>
               <div class="form-control select">
                 <select formControlName="gender" id="gender">
-                  <option value="" selected>-Gender-</option>
-                  <option value=true>Male</option>
-                  <option value=false>Female</option>
+                  <option style="color: white" value="" selected>-Gender-</option>
+                  <option style="color: white" value=true>Male</option>
+                  <option style="color: white" value=false>Female</option>
                 </select>
               </div>
               <div class="form-control select">
                 <select formControlName="birthyear" id="birthyear">
-                  <option value="" selected>-Birth Year-</option>
-                  <option value="18-22">18-22</option>
-                  <option value="23-27">23-27</option>
-                  <option value="28-34">28-34</option>
-                  <option value="35-40">35-40</option>
+                  <option style="color: white" value="" selected>-Birth Year-</option>
+                  <option style="color: white" value="18-22">18-22</option>
+                  <option style="color: white" value="23-27">23-27</option>
+                  <option style="color: white" value="28-34">28-34</option>
+                  <option style="color: white" value="35-40">35-40</option>
                 </select>
               </div>
               <input type="text" class="form-control input" placeholder="Search by Name" id="fullName" formControlName="fullName"><a
@@ -100,7 +100,7 @@
         <div class="col-lg-2 col-md-3 col-sm-4  col-xs-6" *ngFor="let p of profiles | paginate:{itemsPerPage: 12, currentPage: p}" [routerLink]="'/profile/show/'+p?.appUser?.id">
           <div class="block-stl2">
             <div class="img-holder"><img src="{{p.avatar}}" alt="" class="img-responsive"></div>
-            <div class="txt-block"><a href="#"><h3 class="fz22">{{p.fullName}}</h3>
+            <div class="txt-block"><a><h3 class="fz22">{{p.fullName}}</h3>
               <p>{{p.views}} views - {{p.hireTimes}} hires</p>
               <p>Price/h : {{p.cost}} VND</p>
             </a></div>
