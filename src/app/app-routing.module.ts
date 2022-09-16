@@ -8,6 +8,7 @@ import {PageErorComponent} from "./page-eror/page-eror.component";
 import {HomeComponent} from "./home/home.component";
 import {ShowprofileComponent} from "./profile/showprofile/showprofile.component";
 import {EditprofileComponent} from "./profile/editprofile/editprofile.component";
+import {WebsocketComponent} from "./websocket/websocket.component";
 
 const routes: Routes = [
   {
@@ -30,6 +31,9 @@ const routes: Routes = [
     path:'pageEror',component:PageErorComponent},
   {
     path:'',component:HomeComponent
+  },
+  {
+    path:'websocket',component: WebsocketComponent
   }
 ];
 

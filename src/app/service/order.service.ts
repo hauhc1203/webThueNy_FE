@@ -12,4 +12,7 @@ export class OrderService {
     // @ts-ignore
     return this.http.post<any>("http://localhost:8080/order/"+sv,order)
   }
+  showBadOrder():Observable<any>{
+    return this.http.get<any>("http://localhost:8080/order/showBadOrder")
+  }
 }

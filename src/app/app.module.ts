@@ -22,6 +22,7 @@ import {LoginGuard} from "./guard/login.guard";
 import {NgxPaginationModule} from "ngx-pagination";
 import { ShowOrderDetailComponent } from './admin/show-order-detail/show-order-detail.component';
 import {ShowOrderByAppUserComponent} from "./profile/show-order-by-app-user/show-order-by-app-user.component";
+import { WebsocketComponent } from './websocket/websocket.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import {ShowOrderByAppUserComponent} from "./profile/show-order-by-app-user/show
     ShowprofileComponent,
     EditprofileComponent,
     ShowOrderDetailComponent,
+    WebsocketComponent,
     // ShowOrderByAppUserComponent
   ],
     imports: [

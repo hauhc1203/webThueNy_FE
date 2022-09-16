@@ -7,6 +7,7 @@ import {data} from "jquery";
 import {Order} from "../../models/Order";
 import {DatePipe} from "@angular/common";
 import {Profile} from "../../models/Profile";
+import {OrderService} from "../../service/order.service";
 
 @Component({
   selector: 'app-admin',
@@ -19,6 +20,7 @@ export class AdminComponent implements OnInit {
   profiles : Profile[]=[];
   createDate : any;
   profile !:Profile;
+  order1 !: Order[];
   // @ts-ignore
   idR:number;
   // @ts-ignore
@@ -26,7 +28,7 @@ export class AdminComponent implements OnInit {
 
 
   order !: Order ;
-  constructor(private adminService:AdminService,private http:HttpClient,private route:ActivatedRoute,private  router:Router) { }
+  constructor(private adminService:AdminService,private http:HttpClient,private route:ActivatedRoute,private  router:Router,private orderService:OrderService) { }
 
   message:string = "ban thanh cong";
   p: any;
@@ -36,6 +38,9 @@ export class AdminComponent implements OnInit {
     })
     this.adminService.getProfile().subscribe((data)=>{
       this.profiles=data;
+    })
+    this.orderService.showBadOrder().subscribe((data)=>{
+      this.order1 = data;
     })
   }
 
