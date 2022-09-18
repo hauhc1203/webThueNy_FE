@@ -14,6 +14,7 @@ export class WalletComponent implements OnInit {
   depositAmount:any;
   // @ts-ignore
   id:number;
+  numberMoney!:number
   constructor(private walletService:WalletService, private  router: Router,private loginS:LoginService) { }
 
   ngOnInit(): void {
@@ -27,17 +28,27 @@ export class WalletComponent implements OnInit {
   recharge(){
     // @ts-ignore
     let numberMoney =document.getElementById("pwd").value;
-
     let waletUser = {
       id:this.wallet.id,
       numberMoney: numberMoney
     }
-
-    // @ts-ignore
-
-    this.walletService.recharge(waletUser).subscribe((data)=>{
+    if (numberMoney<50000){
+      console.log("nhap sai roi")
+      // @ts-ignore
+      document.getElementById("recharge").style.display="flex";
+      // @ts-ignore
+      document.getElementById("rechargesuccess").style.display="none";
+    } else {
+      // @ts-ignore
+      document.getElementById("rechargesuccess").style.display="flex";
+      // @ts-ignore
+      document.getElementById("recharge").style.display="none";
+      this.walletService.recharge(waletUser).subscribe((data)=>{
         this.wallet=data
-    })
+      })
+    }
+
+
 
   }
 

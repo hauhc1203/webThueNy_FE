@@ -158,6 +158,7 @@ export class ShowprofileComponent implements OnInit {
     if (bS){
       aS.push(bS)
     }
+
     // @ts-ignore
     let dh=document.getElementById("date-hire").value
 

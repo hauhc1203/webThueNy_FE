@@ -58,12 +58,14 @@
       <div class="modal-body">
           <div class="form-group">
             <label for="pwd">Deposit Amount:</label>
-            <input type="text" class="form-control" id="pwd">
+            <input type="number" class="form-control" id="pwd">
+            <p id="recharge" style="color: red ; display: none">The Deposit Amount Must Be Greater Than 50.000 vnd</p>
+            <p id="rechargesuccess" style="color: green ; display: none">Successful Recharge</p>
           </div>
       </div>
       <!-- Modal footer -->
       <div class="modal-footer">
-        <button type="submit"   class="btn btn-primary" data-dismiss="modal" (click)="recharge()">+</button>
+        <button type="submit"   class="btn btn-primary" (click)="recharge()">+</button>
         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
       </div>
       </form>
