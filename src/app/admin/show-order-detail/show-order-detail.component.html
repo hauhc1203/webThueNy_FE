@@ -317,8 +317,43 @@
 <!--              </div>-->
 
             </ul>
-            <pagination-controls class="btn btn-sm btn-outline-primary" class="myPagination" (pageChange)="p = $event">
+            <pagination-controls  class="btn btn-sm btn-outline-primary" class="myPagination" (pageChange)="p = $event">
             </pagination-controls>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-7 mt-4">
+        <div class="card">
+          <div class="card-header pb-0 px-3">
+            <h6 class="mb-0">List Order Bad</h6>
+          </div>
+          <div class="card-body pt-4 p-3">
+            <ul class="list-group">
+              <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg" *ngFor="let o of orderBad , index as i ">
+                <div class="d-flex flex-column">
+                  <h6 class="mb-3 text-sm" *ngIf="o.status==0">Status : Waiting</h6>
+                  <h6 class="mb-3 text-sm" *ngIf="o.status==1">Status : RECEIVED</h6>
+                  <h6 class="mb-3 text-sm" *ngIf="o.status==2">Status : COMPLETE</h6>
+                  <span class="mb-2 text-xs">Supplier's Name: <span class="text-dark font-weight-bold ms-sm-2">{{o.appUser.userName}}</span></span>
+                  <span class="mb-2 text-xs">Tenant's Name: <span class="text-dark ms-sm-2 font-weight-bold">{{o.profile.fullName}}</span></span>
+                  <span class="mb-2 text-xs">Total order: <span class="text-dark ms-sm-2 font-weight-bold">{{o.total}} vnd</span></span>
+
+                  <span class="text-xs">Single Date: <span class="text-dark ms-sm-2 font-weight-bold">{{o.datingTime}}</span></span>
+
+
+                </div>
+                <div class="ms-auto text-end">
+                  <a (click)="showReportSingle(o.id)" data-toggle="modal" data-target="#myModalReport" class="btn btn-success">Report Detail</a>
+                  <!--                  <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;"><i class="far fa-trash-alt me-2"></i>Delete</a>-->
+                  <!--                  <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>-->
+                </div>
+              </li>
+              <!--              <div style="display: flex;justify-content: center">-->
+
+              <!--                -->
+              <!--              </div>-->
+
+            </ul>
           </div>
         </div>
       </div>
@@ -546,6 +581,32 @@
         <p *ngIf="order?.status==0">Status          : WAITING</p>
         <p *ngIf="order?.status==1">Status          : RECEIVED</p>
         <p *ngIf="order?.status==2">Status          : COMPLETE</p>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="myModalReport">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header" >
+        <h4 class="modal-title">Report Detail</h4>
+        <!--        <button type="button" class="close" data-dismiss="modal">&times;</button>-->
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body" *ngFor="let r of report">
+        <p>Reason Report : {{r?.reason}}</p>
+        <p>Problem Report : {{r?.problem}}</p>
+        <p>User reports : {{r?.from?.userName}}</p>
       </div>
 
       <!-- Modal footer -->
