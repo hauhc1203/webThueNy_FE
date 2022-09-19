@@ -21,11 +21,12 @@ export class DetailReportComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    let id: any;
+
     this.adminService.showOrderBad().subscribe((data) => {
       this.detailOrder = data;
       console.log(data)
     })
+
     // this.reportService.detailReport(this.detailOrder.id).subscribe((data)=>{
     //   this.detailReport= data;
     //   console.log("data")
