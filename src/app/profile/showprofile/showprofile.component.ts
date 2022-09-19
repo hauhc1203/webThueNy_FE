@@ -152,6 +152,10 @@ export class ShowprofileComponent implements OnInit {
     if (this.total>this.wallet?.amount){
       // @ts-ignore
       $('#createBTN').attr("disabled", true);
+    }else {
+      // @ts-ignore
+
+      $('#createBTN').attr("disabled", false);
     }
   }
 

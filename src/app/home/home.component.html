@@ -20,8 +20,9 @@
           <form class="form-group" [formGroup]="searchForm" (ngSubmit)="search()">
               <div class="form-control select">
                 <select formControlName="address" id="address">
-                  <option style="color: white" *ngFor="let c of citys" value="{{c?.id}}">{{c?.name}}</option>
                   <option style="color: white" value="" [defaultSelected]="true">-Address-</option>
+
+                  <option style="color: white" *ngFor="let c of citys" value="{{c?.id}}">{{c?.name}}</option>
                 </select>
               </div>
               <div class="form-control select">

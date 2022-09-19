@@ -24,13 +24,14 @@ export class AppComponent {
   profile:any;
   listRoomChat:any[]=[];
   friendsChat:Profile[]=[];
-
+  isAdmin:boolean=false;
 
   constructor(private loginService:LoginService,private  profileS:ProfileService,private messageS:MessageService)  {
     // @ts-ignore
     this.profileS.getProfile(this.loginService.getUserToken()?.id).subscribe((d)=>{
       this.loginService.setProfile(d);
     })
+
     this.messageS.connectTo(this.loginService.getroomsChat())
     // let thisismyredirect = true;
     //   window.onbeforeunload=function(ev:any) {
@@ -43,6 +44,7 @@ export class AppComponent {
 
   }
   ngDoCheck(){
+    this.isAdmin=this.loginService.containsRole('ROLE_ADMIN',this.loginService.getUserToken())
 
     let userToken=this.loginService.getUserToken();
     this.ut=userToken;

@@ -15,6 +15,7 @@
               <nav class="nav">
                 <ul class="list-unstyled">
                   <li class="active drop"><a routerLink="">Home</a></li>
+                  <li *ngIf="isAdmin" ><a routerLink="admin">Admin page</a></li>
                   <li><a  routerLink="login" *ngIf="token==null">Login</a></li>
                   <li><a routerLink="register" *ngIf="token==null">Sign up</a></li>
                   <li id="user-info-nav" *ngIf="token!=null">

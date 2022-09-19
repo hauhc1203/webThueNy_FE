@@ -193,7 +193,7 @@
             <div class="info">
               <div class="info-item">
                 <div class="info-item-tit">Hirer's name :</div>
-                <div class="info-item-data">{{hiredOrder?.appUser?.userName}}</div>
+                <div class="info-item-data" [routerLink]="'/profile/show/'+hiredOrder?.appUser?.id" data-dismiss="modal" >{{hiredOrder?.appUser?.userName}}</div>
               </div>
               <hr>
 
