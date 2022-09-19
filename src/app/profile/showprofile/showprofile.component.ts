@@ -9,6 +9,7 @@ import {WalletService} from "../../service/wallet.service";
 import {data} from "jquery";
 import {createLogErrorHandler} from "@angular/compiler-cli/ngcc/src/execution/tasks/completion";
 import {OrderService} from "../../service/order.service";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 @Component({
   selector: 'app-showprofile',
   templateUrl: './showprofile.component.html',
@@ -39,7 +40,16 @@ export class ShowprofileComponent implements OnInit {
   // @ts-ignore
   islogin:boolean;
 
+  showForm= new FormGroup({
+    city: new FormControl()
+  })
+
+
+
   constructor(private orderS:OrderService,private walletS:WalletService,private profileService:ProfileService,private uploadFile:UploadIMGService,private route:ActivatedRoute,private loginS:LoginService,private router:Router) {
+    this.showForm = new FormGroup({
+      city: new FormControl(Validators.required)
+    })
     let ut=this.loginS.getUserToken();
     this.islogin=ut!=null
     if (this.islogin){
@@ -186,4 +196,8 @@ export class ShowprofileComponent implements OnInit {
       alert("Create order successfull")
     })
   }
+
+
+
+
 }

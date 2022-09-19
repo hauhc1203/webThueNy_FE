@@ -49,8 +49,13 @@ export class AdminService {
   getProfile():Observable<any>{
     return this.http.get(`http://localhost:8080/admin/profile`)
   }
+  orderBad():Observable<any>{
+    return this.http.get(`http://localhost:8080/admin/orderbad`)
+  }
 
-
+  showOrderBad():Observable<any>{
+    return this.http.get<any>(`http://localhost:8080/admin/showOderBad`)
+  }
 
 
 }

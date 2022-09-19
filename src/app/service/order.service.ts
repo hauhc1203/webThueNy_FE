@@ -46,5 +46,9 @@ export class OrderService {
     // @ts-ignore
     return this.http.get<any>("http://localhost:8080/order/cancel/"+id)
   }
+  // orderDetail(idUser:any, idOrder:any):Observable<any>{
+  //   return this.http.get<any>("http://localhost:8080/order/orderDetail/"+idUser+"/"+idOrder)
+  // }
+
 
 }

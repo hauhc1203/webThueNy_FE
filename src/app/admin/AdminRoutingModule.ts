@@ -5,10 +5,14 @@ import {AdminComponent} from "./admin/admin.component";
 import {AdminGuard} from "./admin.guard";
 import {ShowprofileComponent} from "../profile/showprofile/showprofile.component";
 import {ShowOrderDetailComponent} from "./show-order-detail/show-order-detail.component";
+import {DetailReportComponent} from "./detail-report/detail-report.component";
 
 
 const routes: Routes = [{
     path:'',component:AdminComponent
+  },
+  {
+    path:"detailReport",component:DetailReportComponent
   },
   {
     path:'showOrder', component: ShowOrderDetailComponent

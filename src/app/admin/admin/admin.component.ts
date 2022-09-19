@@ -9,6 +9,10 @@ import {DatePipe} from "@angular/common";
 import {Profile} from "../../models/Profile";
 import {OrderService} from "../../service/order.service";
 
+import {FeedbackService} from "../../service/feedback.service";
+import {Report} from "../../models/Report";
+import {ReportService} from "../../service/report.service";
+
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -25,10 +29,16 @@ export class AdminComponent implements OnInit {
   idR:number;
   // @ts-ignore
   mess:string;
+  report!:Report[];
+  report1!:Report[];
+  detailReport!: Report;
 
 
-  order !: Order ;
-  constructor(private adminService:AdminService,private http:HttpClient,private route:ActivatedRoute,private  router:Router,private orderService:OrderService) { }
+
+
+
+  order!: Order ;
+  constructor(private adminService:AdminService,private http:HttpClient,private route:ActivatedRoute,private  router:Router,private orderService:OrderService,private reportService:ReportService) { }
 
   message:string = "ban thanh cong";
   p: any;
@@ -39,8 +49,23 @@ export class AdminComponent implements OnInit {
     this.adminService.getProfile().subscribe((data)=>{
       this.profiles=data;
     })
+   this.reportService.reportNConfirm().subscribe((data)=>{
+      this.report = data;
+    })
+    this.reportService.reportConfirm().subscribe((data)=>{
+      this.report1 = data;
+    })
+
 
   }
+  reportDetal(id:any){
+    this.reportService.detailReport(id).subscribe((data)=>{
+      this.detailReport= data;
+    })
+  }
+
+
+
 
 
 

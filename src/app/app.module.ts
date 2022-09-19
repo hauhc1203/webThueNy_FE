@@ -21,6 +21,7 @@ import {AdminComponent} from "./admin/admin/admin.component";
 import {LoginGuard} from "./guard/login.guard";
 import {NgxPaginationModule} from "ngx-pagination";
 import { ShowOrderDetailComponent } from './admin/show-order-detail/show-order-detail.component';
+import { DetailReportComponent } from './admin/detail-report/detail-report.component';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { ShowOrderDetailComponent } from './admin/show-order-detail/show-order-d
     ShowprofileComponent,
     EditprofileComponent,
     ShowOrderDetailComponent,
+    DetailReportComponent,
   ],
     imports: [
         BrowserModule,

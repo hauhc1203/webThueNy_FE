@@ -164,7 +164,7 @@ X            </button>
         </div>
         <div class="modal-body">
           <h4 style="color: red;padding-left: 80px">*Requirement for hirer : {{profile?.requirementsForHirer}}</h4>
-          <form >
+          <form [formGroup]="showForm" >
               <table>
                 <tr>
                   <td class="title-info">
@@ -201,8 +201,18 @@ X            </button>
                   <td class="title-info">
                     Date of hire:
                   </td>
-                  <td>
-                    <input id="date-hire" type="date">
+                  <td [formGroup]="showForm">
+                    <input id="date" type="date" value="" formControlName="date">
+                  </td>
+                  <p style="color: red" *ngIf="!showForm.get('date')?.valid && showForm.get('date')?.touched ">Bạn không được để trống</p>
+
+                </tr>
+                <tr>
+                  <td class="title -info">
+                    Address:
+                  </td>
+                  <td  class="title -info">
+                    <input value="{{profile?.city?.name}}" id="city" formControlName="city">
                   </td>
                 </tr>
                 <tr>

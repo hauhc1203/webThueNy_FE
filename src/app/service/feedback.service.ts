@@ -17,4 +17,5 @@ export class FeedbackService {
     // @ts-ignore
     return this.http.get<any>("http://localhost:8080/feedback/"+id);
   }
+
 }

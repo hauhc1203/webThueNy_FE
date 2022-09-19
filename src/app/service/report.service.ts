@@ -20,4 +20,14 @@ export class ReportService {
     // @ts-ignore
     return this.http.get<any>("http://localhost:8080/report/"+ido)
   }
+  reportNConfirm():Observable<any>{
+    return this.http.get<any>("http://localhost:8080/report/reportNotConfirm")
+  }
+  reportConfirm():Observable<any>{
+    return this.http.get<any>("http://localhost:8080/report/reportConfirm")
+  }
+  detailReport(id:any):Observable<any>{
+    return this.http.get<any>("http://localhost:8080/report/detailReport/"+id)
+  }
+
 }
