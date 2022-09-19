@@ -1,0 +1,50 @@
+<a routerLink="/admin" type="button" class="btn btn-warning" style="    margin-left: 1100px;
+    margin-top: 15px;">Back</a>
+
+
+<form [formGroup]="dateForm" (ngSubmit)="findByDate()">
+  <div style="width: 800px;height: 380px;border: black solid 1px;border-radius: 10px;display: flex;margin: auto;margin-top: -30px;margin-bottom: 60px">
+
+    <div style="margin-left: 50px;">
+      <h3 style="margin-left: 285px;
+    margin-top: 25px;">Doanh thu</h3>
+      <h5 style="margin-top: 54px;
+    margin-left: 136px;">Tổng doanh thu : {{total}} vnd</h5>
+    </div>
+
+    <div style="    margin-right: -700px;
+    margin-top: 172px;">
+
+      <label>
+        Enter year :
+      </label>
+      <br>
+      <input type="number" placeholder="Enter year" formControlName="year">
+      <p style="color: red" *ngIf="!dateForm.get('year')?.valid && dateForm.get('year')?.touched ">wrong format input </p>
+
+    </div>
+
+    <div style="    margin-top: 172px;
+    margin-left: 277px;">
+
+      <label>
+        Enter month :
+      </label>
+      <br>
+      <input type="number" placeholder="Enter month" formControlName="month">
+      <p style="color: red" *ngIf="!dateForm.get('month')?.valid && dateForm.get('month')?.touched ">wrong format input </p>
+      <h5 style="    margin-left: -160px;
+    margin-top: -30px;">Find By Date : </h5>
+    </div>
+    <button style="margin-top: 258px;
+    height: fit-content;
+    margin-left: -63px;" class="btn btn-facebook">Find</button>
+
+
+    <h5 style="    margin-top: 300px;
+    margin-left: -240px;">Revenue by Date : {{totalBydate}} vnd</h5>
+
+
+  </div>
+</form>
+

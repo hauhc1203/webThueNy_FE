@@ -58,6 +58,14 @@ export class AdminService {
     return this.http.get<any>(`http://localhost:8080/admin/orderbad/${id}`)
   }
 
+  totalOrder():Observable<any>{
+    return this.http.get<any>(`http://localhost:8080/admin/totalOrder`)
+  }
+
+  findTotalBtDate(date:any):Observable<any>{
+    return this.http.post<any>(`http://localhost:8080/admin/monthlyrevenue`,date)
+  }
+
 
 
 

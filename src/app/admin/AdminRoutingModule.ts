@@ -5,6 +5,7 @@ import {AdminComponent} from "./admin/admin.component";
 import {AdminGuard} from "./admin.guard";
 import {ShowprofileComponent} from "../profile/showprofile/showprofile.component";
 import {ShowOrderDetailComponent} from "./show-order-detail/show-order-detail.component";
+import {TurnoverComponent} from "./turnover/turnover.component";
 
 
 const routes: Routes = [{
@@ -12,6 +13,9 @@ const routes: Routes = [{
   },
   {
     path:'showOrder', component: ShowOrderDetailComponent
+  },
+  {
+    path:'showTurnover',component:TurnoverComponent
   }
 ];
 
