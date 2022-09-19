@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {LoginService} from "../../service/login.service";
+import {ProfileService} from "../../service/profile.service";
+import {MessageService} from "../../service/message/message.service";
 
 @Component({
   selector: 'app-login',
@@ -9,7 +11,7 @@ import {LoginService} from "../../service/login.service";
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private loginService:LoginService) { }
+  constructor(private loginService:LoginService,private profileS:ProfileService,private messS:MessageService) { }
 
   ngOnInit(): void {
   }
@@ -31,12 +33,22 @@ export class LoginComponent implements OnInit {
           this.loginService.setToken(data.token);
           this.loginService.setUserToken(data);
           this.loginService.checkrole();
-          // @ts-ignore
-          document.getElementById("checkLogin").style.display="none";
+          this.profileS.getProfile(data.id).subscribe((d)=>{
+            this.loginService.setProfile(d);
+          })
+
+          this.messS.getAllRoom().subscribe((d)=>{
+            this.loginService.setroomsChat(d);
+            this.loginService.getProfiles(this.loginService.getListIdUser(d))
+            this.messS.connectTo(d);
+          })
+
         } else {
             alert("tk da bi Ban")
         }
       }
     })
   }
+
+
 }

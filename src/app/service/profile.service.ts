@@ -71,5 +71,7 @@ export class ProfileService {
   showUserGirl(): Observable<Profile[]> {
     return this.http.get<Profile[]>("http://localhost:8080/profile/showUserGirl")
   }
-
+  getListP(list:any): Observable<Profile[]> {
+    return this.http.post<Profile[]>("http://localhost:8080/profile/getlistp",list)
+  }
 }

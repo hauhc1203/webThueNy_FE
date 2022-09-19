@@ -97,9 +97,11 @@ export class EditprofileComponent implements OnInit {
     reader.readAsDataURL(link.files[0])
 
   }
+  isSendRQ:boolean=false;
   reqVerification(){
     this.profileService.reqVerification(this.id).subscribe((data)=>{
       alert("Send request verification successfull !")
+      this.isSendRQ=true;
     })
   }
   editProfile() {

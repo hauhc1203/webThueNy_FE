@@ -1,83 +1,50 @@
 
-<!--<div class="slider-block new-block">-->
-<!--  <div class="fixed-bg" style="background: url('/assets/images/slide_img1.jpg');"></div>-->
-<!--  <div class="overlay"></div>-->
-<!--  <div class="container">-->
-<!--    <div class="row">-->
-<!--      <div class="col-lg-7 col-md-7">-->
-<!--        <div class="slider-txt">-->
-<!--          <div class="new-block cover-block"><h1 class="" data-animation-in="fadeInUp"-->
-<!--                                                 data-animation-out="animate-out fadeOutRight">-->
-<!--            <span>100% Free</span>Online Dating</h1></div>&lt;!&ndash; cover-block &ndash;&gt;-->
-<!--          <div class="new-block cover-block"><p data-animation-in="fadeInDown"-->
-<!--                                                data-animation-out="animate-out fadeOutRight">-->
-<!--            Connecting singles across the world to their ideal partner</p></div>-->
-<!--          &lt;!&ndash; cover-block &ndash;&gt;-->
-<!--          <div class="new-block cover-block" *ngIf="token==null">-->
-<!--            <div class="btn-cover"><a routerLink='login' class="c-btn btn1"-->
-<!--                                      data-animation-in="fadeInLeft"-->
-<!--                                      data-animation-out="animate-out fadeOutRight">Login</a></div>-->
-<!--            <div class="btn-cover"><a routerLink="register" class="c-btn btn2"-->
-<!--                                      data-animation-in="fadeInLeft"-->
-<!--                                      data-animation-out="animate-out fadeOutRight">Register</a>-->
-<!--            </div>-->
-<!--          </div>&lt;!&ndash; cover-block &ndash;&gt;</div>-->
-<!--      </div>-->
-<!--      <div class="col-lg-5 col-md-5">&lt;!&ndash; logo-block &ndash;&gt;</div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
-<link rel="shortcut icon" href="assets/images/fav.png" type="image/x-icon">
-<link rel="icon" href="assets/images/fav.png" type="image/x-icon"><!-- font-awesome -->
-<link href="/assets/css/font-awesome.css" rel="stylesheet"><!-- include the site stylesheet -->
-<link rel="stylesheet" href="/assets/css/bootstrap.min.css"><!-- main stylesheet -->
-<link rel="stylesheet" href="/assets/css/style.css"><!-- responsive css -->
-<link rel="stylesheet" href="/assets/css/responsive.css"><!-- color css -->
-<link rel="stylesheet" href="/assets/css/colors.css">
-<div id="wrapper">
+<!--<link rel="shortcut icon" href="assets/images/fav.png" type="image/x-icon">-->
+<!--<link rel="icon" href="assets/images/fav.png" type="image/x-icon">&lt;!&ndash; font-awesome &ndash;&gt;-->
+<!--<link href="/assets/css/font-awesome.css" rel="stylesheet">&lt;!&ndash; include the site stylesheet &ndash;&gt;-->
+<!--<link rel="stylesheet" href="/assets/css/bootstrap.min.css">&lt;!&ndash; main stylesheet &ndash;&gt;-->
+<!--<link rel="stylesheet" href="/assets/css/style.css">&lt;!&ndash; responsive css &ndash;&gt;-->
+<!--<link rel="stylesheet" href="/assets/css/responsive.css">&lt;!&ndash; color css &ndash;&gt;-->
+<!--<link rel="stylesheet" href="/assets/css/colors.css">-->
+<div id="wrapper" style="margin-top: 100px;">
   <section class="page-info new-block">
     <div class="fixed-bg" ></div>
     <div class="overlay"></div>
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
-          <div class="inner-wrapper"><h2 class="clr1">Search Girls For Dating</h2>
+          <div class="inner-wrapper"><h2 class="clr1">Search  For Dating</h2>
             <div class="clearfix"></div>
-            <ul class="list-unstyled">
-              <li><a href="#">Home</a></li>
-              <li><a href="#">- </a></li>
-              <li><a href="#">Girls</a></li>
-            </ul>
+
           </div>
           <form class="form-group" [formGroup]="searchForm" (ngSubmit)="search()">
-
               <div class="form-control select">
                 <select formControlName="address" id="address">
-                    <option style="color: white" value="" selected>- Address -</option>
                   <option style="color: white" *ngFor="let c of citys" value="{{c?.id}}">{{c?.name}}</option>
+                  <option style="color: white" value="" [defaultSelected]="true">-Address-</option>
                 </select>
               </div>
               <div class="form-control select">
                 <select formControlName="gender" id="gender">
-                  <option style="color: white" value="" selected>-Gender-</option>
+                  <option style="color: white" value="" [selected]="true">-Gender-</option>
                   <option style="color: white" value=true>Male</option>
                   <option style="color: white" value=false>Female</option>
                 </select>
               </div>
               <div class="form-control select">
                 <select formControlName="birthyear" id="birthyear">
-                  <option style="color: white" value="" selected>-Birth Year-</option>
+                  <option style="color: white" value="" [selected]="true">-Age-</option>
                   <option style="color: white" value="18-22">18-22</option>
                   <option style="color: white" value="23-27">23-27</option>
                   <option style="color: white" value="28-34">28-34</option>
                   <option style="color: white" value="35-40">35-40</option>
                 </select>
               </div>
-              <input type="text" class="form-control input" placeholder="Search by Name" id="fullName" formControlName="fullName"><a
+              <input type="text" class="form-control input" placeholder="Name" id="fullName" formControlName="fullName"><a
               href="#" class="sarch-member-btn" ></a>
-              <input type="text" class="form-control input" placeholder="Search by views" formControlName="views" id="views"><a
+              <input type="text" class="form-control input" placeholder="Views" formControlName="views" id="views"><a
               href="#" class="sarch-member-btn"></a>
-              <input type="text" class="form-control input" placeholder="Search by Hire Times" formControlName="hireTimes" id="hireTimes"><a
+              <input type="text" class="form-control input" placeholder="Hire Times" formControlName="hireTimes" id="hireTimes"><a
               href="#"></a>
 
               <button type="submit" class="sarch-member-btn"> <i class="flaticon-search"></i></button>
@@ -92,9 +59,7 @@
       <div class="row">
         <div class="col-lg-12">
           <div class="title2"><h2 class="fz35">Search Result : {{profiles.length}}</h2>
-            <div class="clearfix"></div>
-            <p class="fz20">Aliquam a neque tortor. Donec iaculis auctor turpis. Eporttitor<br>mattis
-              ullamcorper urna. Cras quis elementum</p></div>
+          </div>
         </div>
         <p *ngIf="profiles.length==0" style="margin-left: 533px;" class="fz20">No Data</p>
         <div class="col-lg-2 col-md-3 col-sm-4  col-xs-6" *ngFor="let p of profiles | paginate:{itemsPerPage: 12, currentPage: p}" [routerLink]="'/profile/show/'+p?.appUser?.id">
@@ -363,3 +328,4 @@
     </div>
   </div>
 </div>
+</section>

@@ -1,13 +1,4 @@
 
-<div class="loader_wrapper stl2" id="page-preloader">
-  <div class="loader-center">
-    <div class="spinner">
-      <div class="heart heart1"></div>
-      <div class="heart heart2"></div>
-      <div class="heart heart3"></div>
-    </div>
-  </div>
-</div>
 <div id="wrapper">
   <header class="new-block header">
 
@@ -18,15 +9,23 @@
           <div class="col-lg-12" style="display: flex ;justify-content: space-between">
             <div class="logo">
               <a href="">
-                <img src="../assets/images/logo2.png" alt="logo" class="img-responsive"></a></div>
-            <a href="#" class="nav-opener"><i class="fa fa-bars"></i></a>
+                <img style="flex-shrink: 0" src="../assets/images/logo2.png" alt="logo" class="img-responsive"></a>
+            </div>
             <div class="nav-block">
               <nav class="nav">
                 <ul class="list-unstyled">
                   <li class="active drop"><a routerLink="">Home</a></li>
                   <li><a  routerLink="login" *ngIf="token==null">Login</a></li>
                   <li><a routerLink="register" *ngIf="token==null">Sign up</a></li>
-                  <li *ngIf="token!=null"><a [routerLink]="'profile/show/'+idAppuser">{{userName}}</a></li>
+                  <li id="user-info-nav" *ngIf="token!=null">
+                    <div *ngIf="token!=null">
+                      <img *ngIf="token!=null" id="user-info-nav-ava" src="{{profile?.avatar}}">
+                    </div>
+                    <a [routerLink]="'profile/show/'+idAppuser">{{userName}}</a>
+                  </li>
+                  <li id="manage-chat" *ngIf="token!=null">
+                      <ion-icon *ngIf="token!=null" name="chatbubble-ellipses-outline" (click)="openListChat()" style="color: black;font-size: 40px"></ion-icon>
+                  </li>
                   <li *ngIf="token!=null"><a (click)="logout()" routerLink="">Logout</a></li>
                 </ul>
               </nav>
@@ -38,6 +37,9 @@
   </header><!-- header -->
 
 <router-outlet></router-outlet>
+
+
+
   <footer class="r-footer new-block pdtb-100">
     <div class="container">
       <div class="row">
@@ -77,6 +79,33 @@
       </div>
     </div>
   </div>
-
   <span id="go_to_top" class="go-to-top"><i class="fa fa-long-arrow-up"></i></span>
 </div>
+
+<div id="list-chat">
+
+  <div *ngFor="let f of friendsChat" class="list-chat-item" (click)="openWindowchat(f.appUser.id)">
+    <div class="mess-user-info">
+      <div class="mess-user-avatar">
+        <img src="{{f?.avatar}}">
+      </div>
+      <div class="mess-user-nameandm">
+        <div class="mess-user-names">
+          <h4>{{f?.fullName}}</h4>
+        </div>
+        <div class="last-mess">
+          <p>Đang hoạt động</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+
+<div id="chat-frame">
+
+
+</div>
+

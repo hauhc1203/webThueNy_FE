@@ -1,7 +1,7 @@
 
 <div class="container-xl px-4 mt-4">
   <!-- Account page navigation-->
-  <nav class="nav nav-borders" >
+  <nav class="nav nav-borders" style=" min-height: 100px;margin-top: 100px">
     <a class="nav-link" [routerLink]="'/profile/show/'+id" >Your Profile</a>
 
     <a class="nav-link" [routerLink]="'/profile/edit'" ><h4>Edit Profile</h4></a>
@@ -34,7 +34,7 @@
       <div class="card mb-4">
         <div class="card-header">
           <p>Account Details</p>
-          <button *ngIf="profile?.isConfirm==0" class="btn btn-primary" (click)="reqVerification()">
+          <button *ngIf="profile?.isConfirm==0&&!isSendRQ" class="btn btn-primary" (click)="reqVerification()">
             Verification request
           </button>
           <p *ngIf="profile?.isConfirm==1" style="color: blue;">In Process</p>

@@ -3,7 +3,7 @@
 <!--</div>-->
 
 <div class="container-xl px-4 mt-4">
-  <div id="khungtren" style=" min-height: 100px;margin-top: 10px">
+  <div id="khungtren" style=" min-height: 100px;margin-top: 100px">
     <!-- Account page navigation-->
     <nav class="nav nav-borders" *ngIf="isYourP" >
       <a class="nav-link" [routerLink]="'/profile/show/'+id" ><h4>Your Profile</h4></a>
@@ -13,9 +13,7 @@
       <a class="nav-link" href="" >Email&Password</a>
       <a class="nav-link" [routerLink]="'/profile/wallet'"  >Wallet</a>
     </nav>
-    <div id="item-khungtren" *ngIf="!isYourP">
-        <h1> Profile of {{profile?.appUser?.userName}}</h1>
-    </div>
+
   </div>
 
 
@@ -35,10 +33,17 @@
 <!--          <input class="btn btn-primary" id="inputavatar" type="file" hidden (change)="upfile($event,'avatar')">-->
         </div>
         <div id="view-and-order">
+          <div id="usernameProfile">
+            <h3 style="text-align: center">{{profile?.appUser?.userName}}</h3>
+          </div>
+          <div id="view-and-order-times">
+            <h5>{{profile?.views}} views</h5>
+            <h5 *ngIf="isCCDV"> - {{profile?.hireTimes}} orders</h5>
+          </div>
 
         </div>
         <div id="chucnang" *ngIf="!isYourP&&profile?.status==5">
-
+          <button id="btnchat" class="btn btn-danger" (click)="openchat()">Chat</button>
           <button id="btnhire" (click)="showFormHire()" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Hire</button>
         </div>
       </div>

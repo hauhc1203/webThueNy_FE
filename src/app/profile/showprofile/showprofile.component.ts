@@ -9,6 +9,7 @@ import {WalletService} from "../../service/wallet.service";
 import {data} from "jquery";
 import {createLogErrorHandler} from "@angular/compiler-cli/ngcc/src/execution/tasks/completion";
 import {OrderService} from "../../service/order.service";
+import {MessageService} from "../../service/message/message.service";
 @Component({
   selector: 'app-showprofile',
   templateUrl: './showprofile.component.html',
@@ -38,14 +39,18 @@ export class ShowprofileComponent implements OnInit {
   total:number;
   // @ts-ignore
   islogin:boolean;
-
-  constructor(private orderS:OrderService,private walletS:WalletService,private profileService:ProfileService,private uploadFile:UploadIMGService,private route:ActivatedRoute,private loginS:LoginService,private router:Router) {
+  isCCDV:boolean=false;
+  constructor(private orderS:OrderService,private walletS:WalletService,
+              private profileService:ProfileService,private uploadFile:UploadIMGService,
+              private route:ActivatedRoute,private messageS:MessageService,
+              private loginS:LoginService,private router:Router) {
     let ut=this.loginS.getUserToken();
     this.islogin=ut!=null
     if (this.islogin){
       this.walletS.getWallet().subscribe((data)=>{
         this.wallet=data;
       })
+      this.isCCDV=this.loginS.containsRole('ROLE_CCDV',this.loginS.getUserToken())
     }
     this.route.paramMap.subscribe(paramMap => {
       // @ts-ignore
@@ -185,5 +190,41 @@ export class ShowprofileComponent implements OnInit {
     this.orderS.createOrder(order,aS).subscribe(()=>{
       alert("Create order successfull")
     })
+  }
+
+  openchat(){
+      this.messageS.getR( this.profile.appUser.id).subscribe((d)=>{
+        if (d==null){
+          let ut=this.loginS.getUserToken();
+          let room1=ut.userName+'room'+this.profile.appUser.userName;
+
+          let mRoom={
+              person1: {
+                id:ut.id
+              },
+              person2:{
+                id:this.profile.appUser.id
+              },
+              room:room1
+          }
+          this.messageS.sendRq(mRoom)
+
+          d=mRoom;
+          this.messageS.createRoom(mRoom).subscribe((d)=>{
+            this.messageS.createNewConnet(d.room)
+
+            this.messageS.getAllRoom().subscribe((d)=>{
+              this.loginS.setroomsChat(d);
+              this.loginS.getProfiles(this.loginS.getListIdUser(d))
+              this.loginS.setroomsChat(d);
+            })
+          })
+        }
+        this.messageS.createNewWindowChat(d.room,this.profile)
+
+        // this.loginS.setroomsChat(this.loginS.getroomsChat().push(d))
+
+      })
+
   }
 }

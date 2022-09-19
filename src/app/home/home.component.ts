@@ -1,17 +1,20 @@
 import {Component, DoCheck, OnInit} from '@angular/core';
 import {LoginService} from "../service/login.service";
-import  * as $ from 'jquery'
 import {HomeService} from "../service/home.service";
-import {data} from "jquery";
 import {Profile} from "../models/Profile";
 import {FormControl, FormGroup} from "@angular/forms";
 import {ProfileService} from "../service/profile.service";
+import {Stomp} from "@stomp/stompjs";
+import {MessageService} from "../service/message/message.service";
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit,DoCheck {
+
+
+// ----------------------------------------
   profiless!:Profile[]
 
 
@@ -31,7 +34,9 @@ export class HomeComponent implements OnInit,DoCheck {
   ut:any;
   citys:any
 
-  constructor(private loginService:LoginService,private homeS:HomeService,private profileService:ProfileService) {
+  constructor(private loginService:LoginService,private homeS:HomeService,
+              private profileService:ProfileService,
+              private messRoomS:MessageService) {
       homeS.newCCDV().subscribe((data)=>{
         this.newccdvs=data;
       })
@@ -45,6 +50,7 @@ export class HomeComponent implements OnInit,DoCheck {
       this.getNear(0);
       this.getProfileByGender(0)
     }
+    // this.connect();
   }
 
   getNear(page:number){
@@ -106,7 +112,7 @@ export class HomeComponent implements OnInit,DoCheck {
       this.profiles=data;
     })
   }
-
+// -----------------------------------------------------------------------------------------
 
 
 }

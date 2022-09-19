@@ -21,6 +21,8 @@ import {AdminComponent} from "./admin/admin/admin.component";
 import {LoginGuard} from "./guard/login.guard";
 import {NgxPaginationModule} from "ngx-pagination";
 import { ShowOrderDetailComponent } from './admin/show-order-detail/show-order-detail.component';
+import { IonicModule } from '@ionic/angular';
+import {FaIconLibrary, FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 
 
 @NgModule({
@@ -43,7 +45,10 @@ import { ShowOrderDetailComponent } from './admin/show-order-detail/show-order-d
         HttpClientModule,
         AngularFireStorageModule,
         AngularFireModule.initializeApp(environment.firebaseConfig, "cloud"),
-        NgxPaginationModule
+        NgxPaginationModule,
+        IonicModule.forRoot(),
+        FontAwesomeModule,
+
     ],
   providers: [
     {

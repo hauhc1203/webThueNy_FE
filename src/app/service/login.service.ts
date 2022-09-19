@@ -3,13 +3,16 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {UserToken} from "../models/UserToken";
 import {Router} from "@angular/router";
+import {ProfileService} from "./profile.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
-
-  constructor(private http:HttpClient, private  router: Router) { }
+  friendsChat:any;
+  roomsChat:any;
+  profile:any;
+  constructor(private http:HttpClient, private  router: Router,private profileS:ProfileService) { }
 
   login(user:any):Observable<any>{
     return this.http.post<any>("http://localhost:8080/login",user)
@@ -64,6 +67,45 @@ export class LoginService {
         }
     }
     return false;
+
+  }
+  setfriendsChat(list:any){
+    localStorage.setItem("friendschat",JSON.stringify(list));
+  }
+  setroomsChat(list:any){
+    localStorage.setItem("roomschat",JSON.stringify(list));
+  }
+  setProfile(p:any){
+    localStorage.setItem("profile",JSON.stringify(p));
+  }
+  getfriendsChat(): any{
+    return JSON.parse(<string>localStorage.getItem("friendschat"));
+  }
+
+  getroomsChat(): any{
+    return JSON.parse(<string>localStorage.getItem("roomschat"));
+  }
+  getProfile(): any{
+    return JSON.parse(<string>localStorage.getItem("profile"));
+  }
+
+
+  getListIdUser(listA:any){
+    let listU =new Array();
+    let idU=this.getUserToken().id;
+    for (let a of listA){
+      if (idU!=a.person1.id){
+        listU.push(a.person1.id)
+      }else {
+        listU.push(a.person2.id)
+      }
+    }
+    return listU;
+  }
+  getProfiles(listU:any){
+    this.profileS.getListP(listU).subscribe((data)=>{
+      this.setfriendsChat(data);
+    })
 
   }
 }
